@@ -1,16 +1,28 @@
 "use client"
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useSwiper } from 'swiper/react'
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+import 'swiper/css/navigation'
 
 // import required modules
-import { Pagination, Autoplay } from 'swiper/modules';
+import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 import { TbCurrencyNaira } from 'react-icons/tb';
 import Navbar from './components/nav-bar/Navbar';
+import ServicesCard from './components/services-card/ServicesCard';
+import Footer from './components/footer/Footer';
+import NewlyPostedJobsCards from './components/newly-posted-jobs-cards/NewlyPostedJobsCards';
+import { BiChevronLeft, BiChevronRight, BiUser } from 'react-icons/bi';
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
+import NewlyPostedJobsComponent from './components/newly-posteed-jobs-component/NewlyPostedJobsComponent';
+import { BsClock } from 'react-icons/bs';
+import BlogCard from './components/blog-card/BlogCard';
+
+// import { ChevronLeft, ChevronRight } from 'react-icons/lucide-react'
 
 
 export default function Home() {
@@ -35,6 +47,44 @@ export default function Home() {
       buttonText: "Schedule a seminar for your staff"
     }
   ];
+
+  const blogArray = [
+    {
+      image: "./images/School-Kids-scaled.jpg",
+      title: "School Life",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque. Donec convallis orci et nisi semper, vel posuere lectus faucibus.",
+      author: "John Doe",
+      date: "2022-12-12"
+    },
+    {
+      image: "./images/child-girl-schoolgirl-elementary-school-student-123686003.webp",
+      title: "School Life",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque. Donec convallis orci et nisi semper, vel posuere lectus faucibus.",
+      author: "John Doe",
+      date: "2025-01-12"
+    },
+    {
+      image: "./images/Study-Office-Administration.jpg",
+      title: "School Life",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque. Donec convallis orci et nisi semper, vel posuere lectus faucibus.",
+      author: "John Doe",
+      date: "2023-12-12"
+    },
+    {
+      image: "./images/School-Kids-scaled.jpg",
+      title: "School Life",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque. Donec convallis orci et nisi semper, vel posuere lectus faucibus.",
+      author: "John Doe",
+      date: "2024-12-12"
+    },
+    {
+      image: "./images/School-Kids-scaled.jpg",
+      title: "School Life",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque. Donec convallis orci et nisi semper, vel posuere lectus faucibus.",
+      author: "John Doe",
+      date: "2023-2-12"
+    }
+  ]
 
   return (
     <div>
@@ -94,22 +144,78 @@ export default function Home() {
       </section>
 
       <section>
-        <p className='text-[35px] text-center mt-[5rem] mb-5'>Our Services</p>
-        <div className='grid grid-cols-3 gap-4 w-[85%] mx-auto'>
-          <div className='text-center border rounded-[15px] shadow-xl py-8'>
-            <img src="./images/get-hired-by-a-school.jpg" alt="" className='w-[150px] h-[150px] rounded-full mx-auto object-cover'/>
-            <p className='mt-3'>Get Hired By A School.</p>
+        <div className='mt-[5rem] mb-4 w-[85%] mx-auto flex items-center justify-between'>
+          <div className='text-left'>
+            <p className='text-[35px] font-[600] mb-[-10px] text-[#FF0200]'>Newly Posted Jobs</p>
+            <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
           </div>
-          <div className='text-center border rounded-[15px] shadow-xl py-8'>
-            <img src="./images/get-hired-by-a-school.jpg" alt="" className='w-[150px] h-[150px] rounded-full mx-auto object-cover'/>
-            <p className='mt-3'>Hire a staff now.</p>
-          </div>
-          <div className='text-center border rounded-[15px] shadow-xl py-8'>
-            <img src="./images/Study-Office-Administration.jpg" alt="" className='w-[150px] h-[150px] rounded-full mx-auto object-cover'/>
-            <p className='mt-3'>Schedule a seminar for your staff</p>
+          <button className='text-[12px] border rounded-full px-4 py-2'>View More</button>
+        </div>
+
+        <div className="relative w-[85%] mx-auto overflow-visible"> {/* Add padding to make room for arrows */}
+          <NewlyPostedJobsComponent />
+        </div>
+      </section>
+
+      <section>
+        <div className='text-left mt-[5rem] mb-4 w-[85%] mx-auto'>
+          <p className='text-[35px] font-[600] mb-[-10px] text-[#FF0200]'>About Us</p>
+          <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
+        </div>
+        <div className='flex items-center justify-between w-[85%] mx-auto mt-8 gap-5'>
+          <img src="./images/School-Kids-scaled.jpg" alt="" className='w-[450px] rounded-[12px]' />
+          <div className='grid gap-7'>
+            <div>
+              <p className='font-bold text-[18px]'>Title</p>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident neque accusantium nemo quod incidunt!</p>
+            </div>
+            <div>
+              <p className='font-bold text-[18px]'>Title</p>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident neque accusantium nemo quod incidunt!</p>
+            </div>
+            <div>
+              <p className='font-bold text-[18px]'>Title</p>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident neque accusantium nemo quod incidunt!</p>
+            </div>
           </div>
         </div>
       </section>
+
+      <section className='w-[85%] mx-auto mt-[6rem]'>
+        <div className="text-center bg-gradient-to-r from-[#8b2e2e] to-[#FF0200] h-64 flex flex-col items-center justify-center text-white mt-[60px] rounded-[18px]">
+          <p className="font-[600] md:text-[30px] text-[20px]">You're a step away from your dream home</p>
+          <button className="py-[10px] px-[20px] bg-[#FF0200] mt-[3rem] rounded-[8px]">Get Started</button>
+        </div>
+      </section>
+
+      <section>
+        <div className='text-left mt-[5rem] mb-4 w-[85%] mx-auto'>
+          <p className='text-[35px] font-[600] mb-[-10px] text-[#FF0200]'>Our Services</p>
+          <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
+        </div>
+        <div className='grid grid-cols-3 gap-4 w-[85%] mx-auto mt-8'>
+          <ServicesCard />
+        </div>
+      </section>
+
+      <section>
+        <div className='mt-[5rem] mb-4 w-[85%] mx-auto flex items-center justify-between'>
+          <div className='text-left'>
+            <p className='text-[35px] font-[600] mb-[-10px] text-[#FF0200]'>Latest Blogs</p>
+            <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
+          </div>
+          <button className='text-[12px] border rounded-full px-4 py-2'>View More</button>
+        </div>
+        <div className='grid grid-cols-4 gap-2 w-[85%] mx-auto mt-8'>
+          {
+            blogArray.map((blog, index) => (
+              <BlogCard blog={blog} key={index} />
+            )).slice(0, 4)
+          }
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }

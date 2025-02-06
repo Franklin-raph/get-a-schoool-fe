@@ -12,13 +12,13 @@ export default function Footer() {
   };
 
   return (
-    <footer className="text-[#777575]">
+    <footer className="text-[#777575] mt-[8rem]">
       <div className="md:max-w-[2000px] w-[95%] mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo and Vision Section */}
           <div className="flex flex-col gap-2 w-[400px]">
             <div className="flex items-center gap-1">
-              <h1 className="text-3xl font-bold text-[#22AC00]">Zillow9ja</h1>
+              <img src="./images/Get-a-school.png" alt="" className='w-[60px]' />
             </div>
             <p className="text-[#777575] text-[13px]">
             Zillow9ja is Nigeria's trusted platform for buying, selling, and renting apartments. We connect people to their perfect homes with ease, offering a wide range of verified listings, simple search tools, and reliable support. Whether you're looking for a place to live or a buyer for your property, Zillow9ja makes the process smooth and stress-free.
@@ -36,7 +36,7 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="bg-[#13544E] text-white px-4 py-2 rounded-r flex items-center gap-2 hover:bg-[#154742] transition-colors"
+                className="bg-[#FF0200] text-white px-4 py-2 rounded-r flex items-center gap-2 hover:bg-[#154742] transition-colors"
               >
                 Submit
                 <IoIosSend />
