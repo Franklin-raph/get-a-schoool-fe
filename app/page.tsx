@@ -50,7 +50,7 @@ export default function Home() {
 
   const blogArray = [
     {
-      image: "./images/School-Kids-scaled.jpg",
+      image: "./images/hire-staff.jpeg",
       title: "School Life",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque. Donec convallis orci et nisi semper, vel posuere lectus faucibus.",
       author: "John Doe",
@@ -180,10 +180,12 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <section className='w-[85%] mx-auto mt-[6rem]'>
-        <div className="text-center bg-gradient-to-r from-[#8b2e2e] to-[#FF0200] h-64 flex flex-col items-center justify-center text-white mt-[60px] rounded-[18px]">
-          <p className="font-[600] md:text-[30px] text-[20px]">You're a step away from your dream home</p>
+      {/* bg-gradient-to-r from-[#8b2e2e] to-[#FF0200] h-64 */}
+      <section className='w-[100%] mx-auto mt-[6rem] bg-video flex flex-col items-center justify-center'>
+        <div className="text-center flex flex-col items-center justify-center text-white mt-[60px]">
+          <p className="font-[600] md:text-[30px] text-[20px]">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          </p>
           <button className="py-[10px] px-[20px] bg-[#FF0200] mt-[3rem] rounded-[8px]">Get Started</button>
         </div>
       </section>

@@ -19,7 +19,7 @@ interface Blog {
 export default function BlogCard({blog}: BlogCardProps ) {
   return (
     <div className='border rounded-[10px] pb-4 h-[350px] overflow-y-scroll'>
-        <img src="./images/School-Kids-scaled.jpg" alt="" className='w-full h-[180px] rounded-t-[10px] object-cover'/>
+        <img src={blog.image} alt="" className='w-full h-[180px] rounded-t-[10px] object-cover'/>
         <div className='px-3 pt-3'>
         <div className='flex items-center justify-between'>
             <p className='font-[500]'>{blog.title}</p>
