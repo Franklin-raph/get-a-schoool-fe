@@ -9,11 +9,11 @@ export default function Navbar() {
     const navLinks = [
         {
             label: "Blog",
-            link: "/",
+            link: "/blog",
         },
         {
             label: "Post Job",
-            link: "/",
+            link: "/post-job",
         },
         // {
         //     label: "Sell",
