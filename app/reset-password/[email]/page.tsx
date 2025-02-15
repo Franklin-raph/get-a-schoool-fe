@@ -10,7 +10,7 @@ import { post } from '../../utils/axiosHelpers'
 import { BiChevronLeft } from 'react-icons/bi'
 import { useParams, useRouter } from 'next/navigation'
 
-export default function page() {
+export default function Page() {
 
     const router = useRouter()
     const { email } = useParams()

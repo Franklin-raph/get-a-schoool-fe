@@ -8,7 +8,7 @@ import Alert from '../components/alert/Alert'
 import BtnLoader from '../components/btnLoader/BtnLoader'
 import { post } from '../utils/axiosHelpers';
 
-export default function page() {
+export default function Page() {
 
     const router = useRouter()
     const [loading, setLoading] = useState<boolean>(false)

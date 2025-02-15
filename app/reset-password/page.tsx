@@ -9,7 +9,7 @@ import BtnLoader from '../components/btnLoader/BtnLoader'
 import { post } from '../utils/axiosHelpers'
 import { useRouter } from 'next/navigation'
 
-export default function page() {
+export default function Page() {
 
     const router = useRouter()
     const [showPassword, setShowPassword] = useState<boolean>(false)

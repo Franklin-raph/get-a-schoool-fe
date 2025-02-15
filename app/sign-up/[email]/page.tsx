@@ -11,7 +11,7 @@ import Alert from '../../components/alert/Alert'
 import Cookies from 'js-cookie';
 import Footer from '../../components/footer/Footer'
 
-export default function page() {
+export default function Page() {
 
     const [otp, setOtp] = useState<string>('')
     const router = useRouter()

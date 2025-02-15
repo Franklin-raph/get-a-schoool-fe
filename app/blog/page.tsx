@@ -7,7 +7,7 @@ import { BiUser } from 'react-icons/bi'
 import Footer from '../components/footer/Footer'
 
 
-export default function page() {
+export default function Page() {
   return (
     <div>
         <Navbar />
