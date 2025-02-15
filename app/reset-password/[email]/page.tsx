@@ -9,6 +9,7 @@ import BtnLoader from '../../components/btnLoader/BtnLoader'
 import { post } from '../../utils/axiosHelpers'
 import { BiChevronLeft } from 'react-icons/bi'
 import { useParams, useRouter } from 'next/navigation'
+import { AxiosError } from 'axios'
 
 export default function Page() {
 
@@ -24,7 +25,7 @@ export default function Page() {
         token: ''
     })
 
-    const handleInputChange = (e: any) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setPasswordResetData(prev => ({
             ...prev,
@@ -33,37 +34,39 @@ export default function Page() {
     };
 
     const handleSubmit = async () => {
-        console.log(passwordResetData);
-        
-        // Validation
         try {
-            if(!passwordResetData.password || !passwordResetData.confirmPassword) {
+            if (!passwordResetData.password || !passwordResetData.confirmPassword) {
                 setMsg('Please fill in all fields.');
                 setAlertType('error');
-                return
+                return;
             }
-            if(passwordResetData.password!== passwordResetData.confirmPassword){
+            if (passwordResetData.password !== passwordResetData.confirmPassword) {
                 setMsg('Passwords do not match.');
                 setAlertType('error');
-                return
+                return;
             }
-            setLoading(true)
-            console.log("Sign Up");
-            const response = await post('/set-new-password', {email:decodeURIComponent(email as string), password: passwordResetData.password, token:passwordResetData.token});
-            router.push(`/login`)
+    
+            setLoading(true);
+            const response = await post('/set-new-password', {
+                email: decodeURIComponent(email as string),
+                password: passwordResetData.password,
+                token: passwordResetData.token,
+            });
+    
             setMsg(response?.message);
             setAlertType('success');
-            console.log(response);
-        } catch (error: any) {
-            console.log(error);
-            
-            setMsg(error?.response?.data?.message);
+            router.push(`/login`);
+        } catch (error: unknown) {
+            if (error instanceof AxiosError) {
+                setMsg(error.response?.data?.message || 'An error occurred');
+            } else {
+                setMsg('An unexpected error occurred.');
+            }
             setAlertType('error');
-            return;
-        }finally{
-            setLoading(false)
+        } finally {
+            setLoading(false);
         }
-    }
+    };
 
   return (
     <div className='text-[14px]'>

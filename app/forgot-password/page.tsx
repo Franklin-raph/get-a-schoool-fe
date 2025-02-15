@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import Alert from '../components/alert/Alert'
 import BtnLoader from '../components/btnLoader/BtnLoader'
 import { post } from '../utils/axiosHelpers';
+import { AxiosError } from 'axios'
 
 export default function Page() {
 
@@ -31,13 +32,15 @@ export default function Page() {
             setAlertType('success');
             router.push(`/reset-password/${email}`)
             // window.location.assign('/dashboard');
-        } catch (error: any) {
-            console.log(error);
-            // Handle errors from the POST request
-            setMsg(error?.response?.data?.message);
+        } catch (error: unknown) {
+            if (error instanceof AxiosError) {
+                setMsg(error.response?.data?.message || 'An error occurred');
+            } else {
+                setMsg('An unexpected error occurred.');
+            }
             setAlertType('error');
-        }finally{
-            setLoading(false)
+        } finally {
+            setLoading(false);
         }
     }
 

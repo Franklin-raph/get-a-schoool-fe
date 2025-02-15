@@ -22,7 +22,7 @@ export default function Page() {
         token: ''
     })
 
-    const handleInputChange = (e: any) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setPasswordResetData(prev => ({
             ...prev,
@@ -30,8 +30,7 @@ export default function Page() {
         }));
     };
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
         console.log(passwordResetData);
         
         // Validation
@@ -76,7 +75,7 @@ export default function Page() {
             <h1 className='font-[600] text-[#101750] text-[24px] mb-7'>Reset account Password</h1>
             <div>
                 <p>Token</p>
-                <input type="text" placeholder='jhondoe@gmail.com' onChange={handleInputChange} name='token' value={passwordResetData.token} className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2' />
+                <input type="text" placeholder='1234' onChange={handleInputChange} name='token' value={passwordResetData.token} className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2' />
             </div>
             <div className='mt-6'>
                 <p>Password</p>

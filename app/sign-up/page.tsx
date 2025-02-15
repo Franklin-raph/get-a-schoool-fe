@@ -10,6 +10,7 @@ import BtnLoader from '../components/btnLoader/BtnLoader'
 import { post } from '../utils/axiosHelpers'
 import { BiChevronDown } from 'react-icons/bi'
 import { useRouter } from 'next/navigation'
+import { AxiosError } from 'axios'
 
 export default function Page() {
 
@@ -30,7 +31,7 @@ export default function Page() {
         role: ''
     })
 
-    const handleInputChange = (e: any) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setRegisterData(prev => ({
             ...prev,
@@ -58,14 +59,15 @@ export default function Page() {
             const response = await post('/register', {role:registerData.role, email: registerData.email, password: registerData.password});
             router.push(`/register/${registerData.email}`)
             console.log(response);
-        } catch (error: any) {
-            console.log(error);
-            
-            setMsg(error?.response?.data?.message);
+        } catch (error: unknown) {
+            if (error instanceof AxiosError) {
+                setMsg(error.response?.data?.message || 'An error occurred');
+            } else {
+                setMsg('An unexpected error occurred.');
+            }
             setAlertType('error');
-            return;
-        }finally{
-            setLoading(false)
+        } finally {
+            setLoading(false);
         }
     }
 
