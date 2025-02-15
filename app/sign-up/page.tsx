@@ -38,8 +38,7 @@ export default function Page() {
         }));
     };
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
         console.log(registerData);
         
         // Validation

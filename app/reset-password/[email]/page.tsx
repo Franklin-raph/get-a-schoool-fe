@@ -15,7 +15,6 @@ export default function Page() {
     const router = useRouter()
     const { email } = useParams()
     const [showPassword, setShowPassword] = useState<boolean>(false)
-    const [dropDown, setDropDown] = useState<string>('')
     const [msg, setMsg] = useState<string>('')
     const [alertType, setAlertType] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
@@ -33,8 +32,7 @@ export default function Page() {
         }));
     };
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
         console.log(passwordResetData);
         
         // Validation

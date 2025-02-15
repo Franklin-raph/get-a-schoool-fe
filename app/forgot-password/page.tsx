@@ -16,8 +16,7 @@ export default function Page() {
     const [alertType, setAlertType] = useState<string>('')
     const [email, setEmail] = useState<string>('')
 
-    const handleSignIn = async (e: any) => {
-        e.preventDefault();
+    const handleForgotPassword = async () => {
         try {
             if(!email) {
                 setMsg('Please enter your email address.');
@@ -65,7 +64,7 @@ export default function Page() {
                     <BtnLoader />
                 </div>
                 :
-                <button className='w-full bg-[#FF0200] text-white py-[0.4rem] mt-6 rounded-[6px]' onClick={handleSignIn}>Proceed</button>
+                <button className='w-full bg-[#FF0200] text-white py-[0.4rem] mt-6 rounded-[6px]' onClick={handleForgotPassword}>Proceed</button>
             }
         </div>
         <Footer />

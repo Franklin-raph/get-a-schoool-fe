@@ -69,12 +69,11 @@ export default function Page() {
         <div className='bg-[#F5F6F7]'>
             <div className='py-[4rem] max-w-[1600px] mx-auto px-[4rem]'>
                 <h1 className='text-[#101750] text-[32px] font-bold'>My Account</h1>
-                <p>Home / <span className='text-[#FF0200]'>Register</span></p>
+                <p>Home / <span className='text-[#FF0200]'>Reset Password</span></p>
             </div>
         </div>
         <div className='w-[544px] mx-auto mt-[4rem] p-[4rem] shadow-xl text-[#9096B2] mb-[9rem]'>
-            <h1 className='font-[600] text-[#101750] text-[24px]'>Create account</h1>
-            <p className='mb-7'>Welcome to Zillow9ja. Let's create your account</p>
+            <h1 className='font-[600] text-[#101750] text-[24px] mb-7'>Reset account Password</h1>
             <div>
                 <p>Token</p>
                 <input type="text" placeholder='jhondoe@gmail.com' onChange={handleInputChange} name='token' value={passwordResetData.token} className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2' />
