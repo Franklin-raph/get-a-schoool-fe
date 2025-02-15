@@ -10,6 +10,7 @@ import BtnLoader from '../components/btnLoader/BtnLoader'
 import Cookies from 'js-cookie'
 import { post } from '../utils/axiosHelpers'
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
+import { AxiosError } from 'axios'
 
 export default function Page() {
 
@@ -35,13 +36,19 @@ export default function Page() {
             localStorage.setItem('user', JSON.stringify(response.data.user))
             setMsg(`Login successful! Welcome`)
             setAlertType('success')
-        } catch (error: any) {
-            if (error?.response?.data?.data?.is_active === false) {
-                router.push(`/register/${email}`)
+        } catch (error: unknown) {
+            if (error instanceof AxiosError) {
+                if (error?.response?.data?.data?.is_active === false) {
+                    router.push(`/register/${email}`)
+                }
+                setMsg(error.response?.data?.message || 'An error occurred');
+            } else {
+                setMsg('An unexpected error occurred.');
             }
-            console.log(error)
-            setMsg(error?.response?.data?.message)
-            setAlertType('error')
+            setAlertType('error');
+            // console.log(error)
+            // setMsg(error?.response?.data?.message)
+            // setAlertType('error')
         } finally {
             setLoading(false)
         }

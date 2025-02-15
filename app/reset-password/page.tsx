@@ -8,6 +8,7 @@ import Alert from '../components/alert/Alert'
 import BtnLoader from '../components/btnLoader/BtnLoader'
 import { post } from '../utils/axiosHelpers'
 import { useRouter } from 'next/navigation'
+import { AxiosError } from 'axios'
 
 export default function Page() {
 
@@ -50,14 +51,15 @@ export default function Page() {
             const response = await post('/register', {email:"lll", password: passwordResetData.password, token:passwordResetData.token});
             router.push(`/login`)
             console.log(response);
-        } catch (error: any) {
-            console.log(error);
-            
-            setMsg(error?.response?.data?.message);
+        } catch (error: unknown) {
+            if (error instanceof AxiosError) {
+                setMsg(error.response?.data?.message || 'An error occurred');
+            } else {
+                setMsg('An unexpected error occurred.');
+            }
             setAlertType('error');
-            return;
-        }finally{
-            setLoading(false)
+        } finally {
+            setLoading(false);
         }
     }
 
