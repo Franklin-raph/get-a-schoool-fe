@@ -5,6 +5,7 @@ import { MdAlarm } from 'react-icons/md'
 import { BsClock } from 'react-icons/bs'
 import { format } from 'timeago.js';
 import { BiUser } from 'react-icons/bi'
+import Footer from '../components/footer/Footer'
 
 
 export default function page() {
@@ -18,8 +19,8 @@ export default function page() {
             </div>
         </div>
         <div className='py-[4rem] max-w-[1600px] mx-auto px-[4rem]'>
-            <div className='flex justify-between'>
-                <div className='w-[800px]'>
+            <div className='flex justify-center gap-[5rem]'>
+                <div className='w-[700px]'>
                     <div className='flex items-center gap-3 mb-3 text-gray-700'>
                         <MdAlarm />
                         <p>12 Jun, 2022</p>
@@ -32,21 +33,26 @@ export default function page() {
                 </div>
                 <img src="./images/Study-Office-Administration.jpg" className='w-[400px] h-[400px] object-cover rounded-[10px]' alt="" />
             </div>
-            <div>
-                <div className='border rounded-[10px] pb-4 h-[350px] overflow-y-scroll'>
-                    <img src="./images/Study-Office-Administration.jpg" alt="" className='w-full h-[180px] rounded-t-[10px] object-cover'/>
-                    <div className='px-3 pt-3'>
-                    <div className='flex items-center justify-between'>
-                        <p className='font-[500]'>Lorem ipsum dolor sit</p>
-                        <p className='text-[12px] flex items-center gap-1 text-gray-500'> <BsClock /> {format("12-06-2021")}</p>
-                    </div>
-                    <p className='text-[12px] text-gray-500 flex items-center gap-1'> <BiUser /> Jhon Doe</p>
-                    {/* <p className='text-[12px] text-gray-500 mt-3'>{blog.description}</p> */}
-                    <button className='border border-gray-500 text-[12px] text-gray-500 px-2 py-1 mt-3'>Read More</button>
-                    </div>
-                </div>
+            <div className='grid grid-cols-4 gap-5 mt-[5rem]'>
+                {
+                    [1,2,3,4,5].map(x => (
+                        <div className='pb-4 h-[250px] cursor-pointer' key={x}>
+                            <img src="./images/Study-Office-Administration.jpg" alt="" className='w-full h-[180px] object-cover'/>
+                            <div className='pt-3'>
+                            <div className='flex items-center justify-between'>
+                                <p className='font-[500]'>Lorem ipsum dolor sit</p>
+                                <p className='text-[12px] flex items-center gap-1 text-gray-500'> <BsClock /> {format("12-06-2021")}</p>
+                            </div>
+                            <p className='text-[12px] text-gray-500 flex items-center gap-1'> <BiUser /> Jhon Doe</p>
+                            {/* <p className='text-[12px] text-gray-500 mt-3'>{blog.description}</p> */}
+                            {/* <button className='border border-gray-500 text-[12px] text-gray-500 px-2 py-1 mt-3'>Read More</button> */}
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
         </div>
+        <Footer />
     </div>
   )
 }

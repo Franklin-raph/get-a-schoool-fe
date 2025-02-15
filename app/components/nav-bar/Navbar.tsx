@@ -15,10 +15,10 @@ export default function Navbar() {
             label: "Post Job",
             link: "/post-job",
         },
-        // {
-        //     label: "Sell",
-        //     link: "/",
-        // },
+        {
+            label: "Search For Jobs",
+            link: "/search-for-jobs",
+        },
         // {
         //     label: "Short Let",
         //     link: "/",

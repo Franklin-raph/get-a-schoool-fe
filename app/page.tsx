@@ -16,11 +16,13 @@ import Navbar from './components/nav-bar/Navbar';
 import ServicesCard from './components/services-card/ServicesCard';
 import Footer from './components/footer/Footer';
 import NewlyPostedJobsCards from './components/newly-posted-jobs-cards/NewlyPostedJobsCards';
-import { BiChevronLeft, BiChevronRight, BiUser } from 'react-icons/bi';
+import { BiArrowFromRight, BiArrowToRight, BiChevronLeft, BiChevronRight, BiUser } from 'react-icons/bi';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import NewlyPostedJobsComponent from './components/newly-posteed-jobs-component/NewlyPostedJobsComponent';
 import { BsClock } from 'react-icons/bs';
 import BlogCard from './components/blog-card/BlogCard';
+import { IoIosArrowRoundForward } from 'react-icons/io';
+import { useRouter } from 'next/navigation';
 
 // import { ChevronLeft, ChevronRight } from 'react-icons/lucide-react'
 
@@ -86,6 +88,8 @@ export default function Home() {
     }
   ]
 
+  const router = useRouter()
+
   return (
     <div>
       <Navbar />
@@ -125,7 +129,7 @@ export default function Home() {
               <div className='mb-5 shadow-md rounded-[20px] relative h-full'>
                 <div className='absolute bg-[#212121a8] text-white h-full w-full px-3 py-1 md:text-[14px] text-[12px] rounded-r-[5px] flex flex-col items-center justify-center'>
                   <div className='text-center w-[90%] mx-auto'>
-                    <p className='text-[50px] fonnt-bold'>
+                    <p className='md:text-[50px] text-[30px] fonnt-bold'>
                       {content.heroText}
                     </p>
                     <p className='text-[18px]'>
@@ -162,7 +166,7 @@ export default function Home() {
           <p className='text-[35px] font-[600] mb-[-10px] text-[#FF0200]'>About Us</p>
           <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
         </div>
-        <div className='flex items-center justify-between w-[85%] mx-auto mt-8 gap-5'>
+        <div className='flex items-center justify-between flex-col md:flex-row w-[85%] mx-auto mt-8 gap-5'>
           <img src="./images/School-Kids-scaled.jpg" alt="" className='w-[450px] rounded-[12px]' />
           <div className='grid gap-7'>
             <div>
@@ -195,7 +199,7 @@ export default function Home() {
           <p className='text-[35px] font-[600] mb-[-10px] text-[#FF0200]'>Our Services</p>
           <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
         </div>
-        <div className='grid grid-cols-3 gap-4 w-[85%] mx-auto mt-8'>
+        <div className='grid md:grid-cols-3 gap-4 w-[85%] mx-auto mt-8'>
           <ServicesCard />
         </div>
       </section>
@@ -206,14 +210,20 @@ export default function Home() {
             <p className='text-[35px] font-[600] mb-[-10px] text-[#FF0200]'>Latest Blogs</p>
             <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
           </div>
-          <button className='text-[12px] border rounded-full px-4 py-2'>View More</button>
+          <button className='text-[12px] border rounded-full px-4 py-2'>Create a blog</button>
         </div>
-        <div className='grid grid-cols-4 gap-2 w-[85%] mx-auto mt-8'>
+        <div className='grid md:grid-cols-4 grid-cols-2 gap-2 w-[85%] mx-auto mt-8'>
           {
             blogArray.map((blog, index) => (
               <BlogCard blog={blog} key={index} />
             )).slice(0, 4)
           }
+        </div>
+        <div className='flex items-center justify-center mt-9'>
+          <button className='text-[12px] border rounded-full px-4 py-2 flex items-center gap-4' onClick={() => router.push('/blog')}>
+            <p>View All Blogs</p>
+            <IoIosArrowRoundForward />
+          </button>
         </div>
       </section>
 
