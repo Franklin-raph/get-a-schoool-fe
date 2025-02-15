@@ -200,7 +200,7 @@ export default function Home() {
 
       <section>
         <div className='mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto flex items-center justify-between'>
-          <div className='text-left w-[70%]'>
+          <div className='text-left w-[60%]'>
             <p className='md:text-[35px] text-[20px] font-[600] md:mb-[-1px] mb-2 text-[#FF0200]'>Latest Blogs</p>
             <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
           </div>

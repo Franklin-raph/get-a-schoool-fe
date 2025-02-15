@@ -14,7 +14,7 @@ export default function Footer() {
 
   return (
     <footer className="text-[#777575] mt-[8rem]">
-      <div className="md:max-w-[2000px] w-[95%] mx-auto px-4">
+      <div className="md:max-w-[2000px] w-[95%] mx-auto md:px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo and Vision Section */}
           <div className="flex flex-col gap-2 md:w-[600px]">

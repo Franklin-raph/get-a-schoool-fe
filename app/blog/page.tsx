@@ -12,33 +12,33 @@ export default function Page() {
     <div>
         <Navbar />
         <div className='bg-[#F5F6F7]'>
-            <div className='py-[4rem] max-w-[1600px] mx-auto px-[4rem]'>
-                <h1 className='text-[#101750] text-[32px] font-bold'>Blogs</h1>
-                <p>Home / <span className='text-[#FF0200]'>Blog</span></p>
+            <div className='md:py-[4rem] py-[2rem] max-w-[1600px] mx-auto md:px-[4rem] px-[1.2rem]'>
+                <h1 className='text-[#101750] md:text-[32px] text-[22px] font-bold'>Blogs</h1>
+                <p className='md:text-[15px] text-[12px]'>Home / <span className='text-[#FF0200]'>Blog</span></p>
             </div>
         </div>
-        <div className='py-[4rem] max-w-[1600px] mx-auto px-[4rem]'>
-            <div className='flex justify-center gap-[5rem]'>
-                <div className='w-[700px]'>
+        <div className='pt-[4rem] max-w-[1600px] mx-auto md:px-[4rem] px-[1.2rem]'>
+            <div className='flex justify-center md:gap-[5rem] gap-[2rem] flex-col md:flex-row'>
+                <div className='md:w-[700px]'>
                     <div className='flex items-center gap-3 mb-3 text-gray-700'>
                         <MdAlarm />
                         <p>12 Jun, 2022</p>
                     </div>
-                    <p className='text-[22px] font-[600] mb-2'>Lorem ipsum dolor sit amet consectetur.</p>
-                    <p>
+                    <p className='md:text-[22px] text-[18px] font-[600] mb-2'>Lorem ipsum dolor sit amet consectetur.</p>
+                    <p className='md:text-[17px] text-[14px]'>
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, cumque. Aperiam totam consequatur libero ut ipsa quibusdam ea praesentium, vel doloremque modi sint eum expedita laudantium suscipit deleniti tempore odit impedit? Soluta, eos nobis recusandae dolores ipsa dolor molestiae molestias.
                     </p>
-                    <button className='border py-[7px] px-[18px] mt-5 rounded-[4px]'>Read More</button>
+                    <button className='border py-[7px] px-[18px] mt-5 rounded-[4px] text-[14px]'>Read More</button>
                 </div>
-                <img src="./images/Study-Office-Administration.jpg" className='w-[400px] h-[400px] object-cover rounded-[10px]' alt="" />
+                <img src="./images/Study-Office-Administration.jpg" className='md:w-[400px] h-[400px] object-cover rounded-[10px]' alt="" />
             </div>
-            <div className='grid grid-cols-4 gap-5 mt-[5rem]'>
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-[4rem] border-t pt-[4rem]'>
                 {
                     [1,2,3,4,5].map(x => (
-                        <div className='pb-4 h-[250px] cursor-pointer' key={x}>
+                        <div className='pb-4 h-[280px] cursor-pointer' key={x}>
                             <img src="./images/Study-Office-Administration.jpg" alt="" className='w-full h-[180px] object-cover'/>
                             <div className='pt-3'>
-                            <div className='flex items-center justify-between'>
+                            <div className='flex items-start justify-between flex-col md:flex-row md:items-center'>
                                 <p className='font-[500]'>Lorem ipsum dolor sit</p>
                                 <p className='text-[12px] flex items-center gap-1 text-gray-500'> <BsClock /> {format("12-06-2021")}</p>
                             </div>

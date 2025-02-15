@@ -21,9 +21,9 @@ export default function BlogCard({blog}: BlogCardProps ) {
     <div className='border rounded-[10px] pb-4 h-[350px] overflow-y-scroll'>
         <img src={blog.image} alt="" className='w-full h-[180px] rounded-t-[10px] object-cover'/>
         <div className='px-3 pt-3'>
-        <div className='flex items-center justify-between'>
-            <p className='font-[500] md:text-[15px] text-[13px]'>{blog.title}</p>
-            <p className='text-[12px] flex items-center gap-1 text-gray-500'> <BsClock /> {format(blog.date)}</p>
+        <div className='flex sm:items-center justify-between flex-col items-start'>
+            <p className='font-[500] text-[14px] mb-2'>{blog.title}</p>
+            <p className='text-[12px] flex items-center gap-1 text-gray-500'> <BsClock className='text-[12px]'/> {format(blog.date)}</p>
         </div>
         <p className='text-[12px] text-gray-500 flex items-center gap-1'> <BiUser /> {blog.author}</p>
         <p className='text-[12px] text-gray-500 mt-3'>{blog.description}</p>
