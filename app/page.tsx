@@ -1,7 +1,6 @@
 "use client"
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useSwiper } from 'swiper/react'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -10,16 +9,11 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation'
 
 // import required modules
-import { Pagination, Autoplay, Navigation } from 'swiper/modules';
-import { TbCurrencyNaira } from 'react-icons/tb';
+import { Pagination, Autoplay } from 'swiper/modules';
 import Navbar from './components/nav-bar/Navbar';
 import ServicesCard from './components/services-card/ServicesCard';
 import Footer from './components/footer/Footer';
-import NewlyPostedJobsCards from './components/newly-posted-jobs-cards/NewlyPostedJobsCards';
-import { BiArrowFromRight, BiArrowToRight, BiChevronLeft, BiChevronRight, BiUser } from 'react-icons/bi';
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import NewlyPostedJobsComponent from './components/newly-posted-jobs-component/NewlyPostedJobsComponent';
-import { BsClock } from 'react-icons/bs';
 import BlogCard from './components/blog-card/BlogCard';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { useRouter } from 'next/navigation';
