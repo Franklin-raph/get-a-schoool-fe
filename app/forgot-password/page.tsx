@@ -3,23 +3,18 @@
 import React, { useState } from 'react'
 import Footer from '../components/footer/Footer'
 import Navbar from '../components/nav-bar/Navbar'
-import { FcGoogle } from 'react-icons/fc'
 import { useRouter } from 'next/navigation'
 import Alert from '../components/alert/Alert'
 import BtnLoader from '../components/btnLoader/BtnLoader'
-import Cookies from 'js-cookie';
 import { post } from '../utils/axiosHelpers';
-import { BsEye, BsEyeSlash } from 'react-icons/bs'
 
 export default function page() {
 
     const router = useRouter()
     const [loading, setLoading] = useState<boolean>(false)
-    const [showPassword, setShowPassword] = useState<boolean>(false)
     const [msg, setMsg] = useState<string>('')
     const [alertType, setAlertType] = useState<string>('')
     const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
 
     const handleSignIn = async (e: any) => {
         e.preventDefault();

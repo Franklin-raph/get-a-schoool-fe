@@ -18,7 +18,7 @@ import Footer from './components/footer/Footer';
 import NewlyPostedJobsCards from './components/newly-posted-jobs-cards/NewlyPostedJobsCards';
 import { BiArrowFromRight, BiArrowToRight, BiChevronLeft, BiChevronRight, BiUser } from 'react-icons/bi';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
-import NewlyPostedJobsComponent from './components/newly-posteed-jobs-component/NewlyPostedJobsComponent';
+import NewlyPostedJobsComponent from './components/newly-posted-jobs-component/NewlyPostedJobsComponent';
 import { BsClock } from 'react-icons/bs';
 import BlogCard from './components/blog-card/BlogCard';
 import { IoIosArrowRoundForward } from 'react-icons/io';

@@ -1,7 +1,5 @@
 import React from 'react'
 import Navbar from '../components/nav-bar/Navbar'
-import { CiLock } from 'react-icons/ci'
-import { MdAlarm } from 'react-icons/md'
 import { BsClock } from 'react-icons/bs'
 import { format } from 'timeago.js';
 import { BiUser } from 'react-icons/bi'

@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React from 'react'
-import { MdMail } from 'react-icons/md'
 import logo from '../../../public/images/Get-a-school.png'
 import Image from 'next/image'
 

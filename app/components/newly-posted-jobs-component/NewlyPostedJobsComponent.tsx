@@ -62,7 +62,7 @@ const NewlyPostedJobsComponent = () => {
         )
     }
 
-    let settings = {
+    const settings = {
         dots: false,
         infinite: true,
         arrows:true,

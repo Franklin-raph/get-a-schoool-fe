@@ -8,8 +8,7 @@ import logo from '../../../public/images/Get-a-school.png'
 
 export default function Footer() {
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     // Handle newsletter submission
   };
 
@@ -31,14 +30,14 @@ export default function Footer() {
             {/* Newsletter Section */}
             <div className="flex flex-col gap-2">
               <h2 className="text-[#777575] text-[13px]">Subscribe for our weekly news letter</h2>
-              <form onSubmit={handleSubmit} className="flex text-[13px]">
+              <form className="flex text-[13px]">
                 <input
                   type="email"
                   placeholder="johndoe@gmail.com"
                   className="px-4 py-2 rounded-l bg-white text-black w-[20rem] border focus:outline-none"
                 />
                 <button
-                  type="submit"
+                  onClick={handleSubmit}
                   className="bg-[#FF0200] text-white px-4 py-2 rounded-r flex items-center gap-2 hover:bg-[#154742] transition-colors"
                 >
                   Submit

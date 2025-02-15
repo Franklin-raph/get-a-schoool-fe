@@ -3,12 +3,11 @@
 import React, { useState } from 'react'
 import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/nav-bar/Navbar'
-import { FcGoogle } from 'react-icons/fc'
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
 import Alert from '../../components/alert/Alert'
 import BtnLoader from '../../components/btnLoader/BtnLoader'
 import { post } from '../../utils/axiosHelpers'
-import { BiChevronDown, BiChevronLeft } from 'react-icons/bi'
+import { BiChevronLeft } from 'react-icons/bi'
 import { useParams, useRouter } from 'next/navigation'
 
 export default function page() {
