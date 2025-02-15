@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="md:max-w-[2000px] w-[95%] mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo and Vision Section */}
-          <div className="flex flex-col gap-2 w-[600px]">
+          <div className="flex flex-col gap-2 md:w-[600px]">
             <div className="flex items-center gap-1">
               <Image src={logo} width="40" height="40" alt='Logo' />
             </div>
@@ -26,7 +26,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex w-full justify-between ml-[5rem]">
+          <div className="flex w-full justify-between flex-col sm:flex-row lg:ml-[5rem] gap-[1rem] md:ml-[2rem] ml-0">
             {/* Newsletter Section */}
             <div className="flex flex-col gap-2">
               <h2 className="text-[#777575] text-[13px]">Subscribe for our weekly news letter</h2>
@@ -34,7 +34,7 @@ export default function Footer() {
                 <input
                   type="email"
                   placeholder="johndoe@gmail.com"
-                  className="px-4 py-2 rounded-l bg-white text-black w-[20rem] border focus:outline-none"
+                  className="px-4 py-2 rounded-l bg-white text-black sm:w-[20rem] w-full border focus:outline-none"
                 />
                 <button
                   onClick={handleSubmit}
@@ -47,8 +47,8 @@ export default function Footer() {
             </div>
 
             {/* Location and Navigation */}
-            <div className="flex flex-col items-end gap-2">
-              <div className="flex flex-col items-end gap-2 text-[#777575]">
+            <div className="flex flex-col sm:items-end gap-2">
+              <div className="flex flex-col sm:items-end gap-2 text-[#777575]">
                 <IoLocationOutline className="text-[20px]" />
                 <p className=" text-[13px]">145 New York, FL 5467, USA</p>
               </div>

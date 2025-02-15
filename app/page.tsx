@@ -48,35 +48,35 @@ export default function Home() {
     {
       image: "./images/hire-staff.jpeg",
       title: "School Life",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque. Donec convallis orci et nisi semper, vel posuere lectus faucibus.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque.",
       author: "John Doe",
       date: "2022-12-12"
     },
     {
       image: "./images/child-girl-schoolgirl-elementary-school-student-123686003.webp",
       title: "School Life",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque. Donec convallis orci et nisi semper, vel posuere lectus faucibus.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque.",
       author: "John Doe",
       date: "2025-01-12"
     },
     {
       image: "./images/Study-Office-Administration.jpg",
       title: "School Life",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque. Donec convallis orci et nisi semper, vel posuere lectus faucibus.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque.",
       author: "John Doe",
       date: "2023-12-12"
     },
     {
       image: "./images/School-Kids-scaled.jpg",
       title: "School Life",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque. Donec convallis orci et nisi semper, vel posuere lectus faucibus.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque.",
       author: "John Doe",
       date: "2024-12-12"
     },
     {
       image: "./images/School-Kids-scaled.jpg",
       title: "School Life",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque. Donec convallis orci et nisi semper, vel posuere lectus faucibus.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque.",
       author: "John Doe",
       date: "2023-2-12"
     }
@@ -120,7 +120,7 @@ export default function Home() {
         >
           {heroContent.map((content, index) => (
             <SwiperSlide key={index}>
-              <div className='mb-5 shadow-md rounded-[20px] relative h-full'>
+              <div className='mb-5 shadow-md rounded-[20px] relative md:h-full h-[50vh]'>
                 <div className='absolute bg-[#212121a8] text-white h-full w-full px-3 py-1 md:text-[14px] text-[12px] rounded-r-[5px] flex flex-col items-center justify-center'>
                   <div className='text-center w-[90%] mx-auto'>
                     <p className='md:text-[50px] text-[30px] fonnt-bold'>
@@ -142,26 +142,26 @@ export default function Home() {
       </section>
 
       <section>
-        <div className='mt-[5rem] mb-4 w-[85%] mx-auto flex items-center justify-between'>
-          <div className='text-left'>
-            <p className='text-[35px] font-[600] mb-[-10px] text-[#FF0200]'>Newly Posted Jobs</p>
-            <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
+        <div className='mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto flex items-center justify-between'>
+          <div className='text-left w-[70%]'>
+            <p className='md:text-[35px] text-[20px] font-[600] mb-[-1px] text-[#FF0200]'>Newly Posted Jobs</p>
+            <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
           </div>
-          <button className='text-[12px] border rounded-full px-4 py-2'>View More</button>
+          <button className='text-[12px] border rounded-full md:px-4 px-2 py-2 w-[110px]'>View More</button>
         </div>
 
-        <div className="relative w-[85%] mx-auto overflow-visible"> {/* Add padding to make room for arrows */}
+        <div className="relative md:w-[85%] w-[95%] mx-auto overflow-visible"> {/* Add padding to make room for arrows */}
           <NewlyPostedJobsComponent />
         </div>
       </section>
 
       <section>
-        <div className='text-left mt-[5rem] mb-4 w-[85%] mx-auto'>
-          <p className='text-[35px] font-[600] mb-[-10px] text-[#FF0200]'>About Us</p>
-          <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
+        <div className='text-left mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto'>
+          <p className='md:text-[35px] text-[20px] font-[600] mb-[-1px] text-[#FF0200]'>About Us</p>
+          <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
         </div>
-        <div className='flex items-center justify-between flex-col md:flex-row w-[85%] mx-auto mt-8 gap-5'>
-          <img src="./images/School-Kids-scaled.jpg" alt="" className='w-[450px] rounded-[12px]' />
+        <div className='flex items-center justify-between flex-col md:flex-row md:w-[85%] w-[95%] mx-auto mt-8 gap-5'>
+          <img src="./images/School-Kids-scaled.jpg" alt="" className='md:w-[450px] w-full rounded-[12px]' />
           <div className='grid gap-7'>
             <div>
               <p className='font-bold text-[18px]'>Title</p>
@@ -189,9 +189,9 @@ export default function Home() {
       </section>
 
       <section>
-        <div className='text-left mt-[5rem] mb-4 w-[85%] mx-auto'>
-          <p className='text-[35px] font-[600] mb-[-10px] text-[#FF0200]'>Our Services</p>
-          <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
+        <div className='text-left mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto'>
+          <p className='md:text-[35px] text-[20px] font-[600] mb-[-1px] text-[#FF0200]'>Our Services</p>
+          <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
         </div>
         <div className='grid md:grid-cols-3 gap-4 w-[85%] mx-auto mt-8'>
           <ServicesCard />
@@ -199,14 +199,14 @@ export default function Home() {
       </section>
 
       <section>
-        <div className='mt-[5rem] mb-4 w-[85%] mx-auto flex items-center justify-between'>
-          <div className='text-left'>
-            <p className='text-[35px] font-[600] mb-[-10px] text-[#FF0200]'>Latest Blogs</p>
-            <p className='text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
+        <div className='mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto flex items-center justify-between'>
+          <div className='text-left w-[70%]'>
+            <p className='md:text-[35px] text-[20px] font-[600] md:mb-[-1px] mb-2 text-[#FF0200]'>Latest Blogs</p>
+            <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
           </div>
-          <button className='text-[12px] border rounded-full px-4 py-2'>Create a blog</button>
+          <button className='text-[12px] border rounded-full md:px-4 px-2 py-2 md:w-[120px] w-[110px]'>Create a blog</button>
         </div>
-        <div className='grid md:grid-cols-4 grid-cols-2 gap-2 w-[85%] mx-auto mt-8'>
+        <div className='grid md:grid-cols-4 grid-cols-2 md:gap-2 gap-4 md:w-[85%] w-[95%] mx-auto mt-8'>
           {
             blogArray.map((blog, index) => (
               <BlogCard blog={blog} key={index} />
@@ -220,7 +220,14 @@ export default function Home() {
           </button>
         </div>
       </section>
-
+      <section className='w-[100%] mx-auto mt-[6rem] bg-video flex flex-col items-center justify-center'>
+        <div className="text-center flex flex-col items-center justify-center text-white mt-[60px]">
+          <p className="font-[600] md:text-[30px] text-[20px]">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          </p>
+          <button className="py-[10px] px-[20px] bg-[#FF0200] mt-[3rem] rounded-[8px]">Get Started</button>
+        </div>
+      </section>
       <Footer />
     </div>
   );

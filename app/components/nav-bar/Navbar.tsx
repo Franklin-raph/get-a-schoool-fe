@@ -29,7 +29,7 @@ export default function Navbar() {
     ]
 
   return (
-    <div className='flex items-center justify-between max-w-[1600px] mx-auto px-[4rem] py-4'>
+    <div className='flex items-center justify-between max-w-[1600px] mx-auto md:px-[4rem] px-[1rem] py-4'>
         <div className='flex items-center gap-8'>
             <Link className='text-primary-color font-[700] mr-5' href="/">
                 <Image src={logo} width="40" height="40" alt='Logo' />
