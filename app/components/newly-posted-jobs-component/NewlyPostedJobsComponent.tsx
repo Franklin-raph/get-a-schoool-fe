@@ -7,7 +7,7 @@ import Slider from "react-slick"
 import { IoIosArrowForward } from "react-icons/io";
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import NewlyPostedJobsCards from "../newly-posted-jobs-cards/NewlyPostedJobsCards";
-
+import { CustomArrowProps } from "react-slick";
 
 const NewlyPostedJobsComponent = () => {
 
@@ -44,7 +44,7 @@ const NewlyPostedJobsComponent = () => {
         }
     ]
 
-    const SampleNextArrow = (props: any) => {
+    const SampleNextArrow = (props: CustomArrowProps) => {
         const { onClick } = props;
         return(
             <div onClick={onClick} >
@@ -53,7 +53,7 @@ const NewlyPostedJobsComponent = () => {
         )
     }
     
-    function SamplePrevArrow(props: any) {
+    function SamplePrevArrow(props: CustomArrowProps) {
         const { onClick } = props;
         return(
             <div onClick={onClick} >
