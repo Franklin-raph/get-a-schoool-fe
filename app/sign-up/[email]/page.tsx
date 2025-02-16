@@ -93,13 +93,13 @@ export default function Page() {
                         <p className='text-[14px] text-[#828282] mb-[35px] mt-[2.5rem] text-center'>A verification code has been sent to your email address {decodeURIComponent(email as string)} Enter the code below to complete your registration.</p>
                         <div style={{ display:'flex', justifyContent:'center', alignItems:'center' }}>
                             <OTPInput
-                            value={otp}
-                            inputType='number'
-                            onChange={setOtp}
-                            numInputs={4}
-                            renderSeparator={<span style={{ visibility:'hidden' }}>---</span>}
-                            renderInput={(props) => <input {...props} placeholder='1' style={{ width:"71px" }} className='text-center outline-none font-[500] h-[58px] rounded-[4px] w-[71px] border placeholder:text-[#BDBDBD59] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'/>}
-                        />
+                                value={otp}
+                                inputType='number'
+                                onChange={setOtp}
+                                numInputs={4}
+                                renderSeparator={<span style={{ visibility:'hidden' }}>---</span>}
+                                renderInput={(props) => <input {...props} placeholder='1' style={{ width:"71px" }} className='text-center outline-none font-[500] h-[58px] rounded-[4px] w-[71px] border placeholder:text-[#BDBDBD59] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'/>}
+                            />
                         </div>
                         {
                             isLoading ? 

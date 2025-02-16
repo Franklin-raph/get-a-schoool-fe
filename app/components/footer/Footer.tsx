@@ -47,18 +47,18 @@ export default function Footer() {
             </div>
 
             {/* Location and Navigation */}
-            <div className="flex flex-col sm:items-end gap-2">
+            <div className="flex flex-col sm:items-end gap-2 md:w-[100px]">
               <div className="flex flex-col sm:items-end gap-2 text-[#777575]">
                 <IoLocationOutline className="text-[20px]" />
                 <p className=" text-[13px]">145 New York, FL 5467, USA</p>
               </div>
-              <nav>
+              {/* <nav>
                 <ul className="flex gap-6 text-[#777575] text-[13px]">
                   <li><a href="#" className="hover:text-[#121212] transition-colors">Buy</a></li>
                   <li><a href="#" className="hover:text-[#121212] transition-colors">Sell</a></li>
                   <li><a href="#" className="hover:text-[#121212] transition-colors">Find an agent</a></li>
                 </ul>
-              </nav>
+              </nav> */}
             </div>
           </div>
 
