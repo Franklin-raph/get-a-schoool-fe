@@ -54,7 +54,7 @@ export default function Navbar() {
             {
                 mobileNavOpen &&
                 <div className='block sm:hidden fixed left-0 top-0 h-[100%] bg-black z-[999] text-white w-[45%]'>
-                    <div className='fixed top-0 left-0 w-[100%] h-full bg-[#000000ab] z-[1]'></div>
+                    <div className='fixed top-0 left-0 w-[100%] h-full bg-[#000000ab] z-[1]' onClick={() => setMobileNavOpen(false)}></div>
                     <div onClick={() => setMobileNavOpen(false)} className='text-white text-right fixed right-[16px] top-[25px] z-[2] border text-[20px] p-1 cursor-pointer'>
                         <IoCloseOutline className='cursor-pointer'/>
                     </div>

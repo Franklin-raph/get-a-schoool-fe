@@ -35,7 +35,8 @@ export default function Page() {
     };
 
     const handleSubmit = async () => {
-
+        setLoading(false)
+        router.refresh()
     }
 
   return (
