@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Footer from '../components/footer/Footer'
 import Navbar from '../components/nav-bar/Navbar'
-import { FcGoogle } from 'react-icons/fc'
+// import { FcGoogle } from 'react-icons/fc'
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
 import Alert from '../components/alert/Alert'
 import BtnLoader from '../components/btnLoader/BtnLoader'
@@ -142,16 +142,16 @@ export default function Page() {
                 :
                 <button className='w-full bg-[#FF0200] text-white py-[0.4rem] mt-6 rounded-[6px]' onClick={handleSubmit}>Sign Up</button>
             }
-            <div className='flex items-center gap-2 text-[12px] mt-2'>
+            <div className='flex items-center gap-2 text-[12px] mt-4'>
                 <input type="checkbox" />
                 <p>By submitting, I agree to the terms and conditions of get a school</p>
             </div>
-            <div className='flex items-center mt-5'>
+            {/* <div className='flex items-center mt-5'>
                 <p className='h-[1px] bg-[#777575] w-full'></p>
                 <p className='px-4'>OR</p>
                 <p className='h-[1px] bg-[#777575] w-full'></p>
-            </div>
-            <button className='w-full text-[#212121] border border-[#C2C5E1] py-[0.4rem] mt-6 rounded-[6px] flex items-center justify-center gap-4'> <FcGoogle /> Continue with Google</button>
+            </div> */}
+            {/* <button className='w-full text-[#212121] border border-[#C2C5E1] py-[0.4rem] mt-6 rounded-[6px] flex items-center justify-center gap-4'> <FcGoogle /> Continue with Google</button> */}
             <p className='text-[13px] mt-5 text-center'>Already have an account? <span className='text-[#FF0200] cursor-pointer' onClick={() => router.push('/sign-in')}>Log In</span> </p>
         </div>
         <Footer />

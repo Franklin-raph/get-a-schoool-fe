@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Footer from '../components/footer/Footer'
 import Navbar from '../components/nav-bar/Navbar'
-import { FcGoogle } from 'react-icons/fc'
+// import { FcGoogle } from 'react-icons/fc'
 import { useRouter } from 'next/navigation'
 import Alert from '../components/alert/Alert'
 import BtnLoader from '../components/btnLoader/BtnLoader'
@@ -91,14 +91,14 @@ export default function Page() {
                         :
                         <button className='w-full bg-[#FF0200] text-white py-[0.4rem] mt-6 rounded-[6px]' onClick={handleSignIn}>Sign In</button>
                 }
-                <div className='flex items-center mt-5'>
+                {/* <div className='flex items-center mt-5'>
                     <p className='h-[1px] bg-[#777575] w-full'></p>
                     <p className='px-4'>OR</p>
                     <p className='h-[1px] bg-[#777575] w-full'></p>
                 </div>
                 <button className='w-full text-[#212121] border border-[#C2C5E1] py-[0.4rem] mt-6 rounded-[6px] flex items-center justify-center gap-4'>
                     <FcGoogle /> Continue with Google
-                </button>
+                </button> */}
                 <p className='text-[13px] mt-5 text-center'>Don&apos;t have an Account? <span className='text-[#FF0200] cursor-pointer' onClick={() => router.push('/sign-up')}>Create account</span> </p>
             </div>
             <Footer />
