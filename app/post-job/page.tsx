@@ -60,14 +60,14 @@ export default function Page() {
                 <input type="text" placeholder='081-123-123-12' className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
             </div>
             <div className='w-full mt-6 relative'>
-                <p>Select Role</p>
+                <p>Salary Range</p>
                 <div onClick={() => setDropDown(dropDown === 'user-type' ? '' : 'user-type' )} className='border border-[#C2C5E1] h-[42px] pl-2 rounded-[6px] pr-2 flex items-center justify-between cursor-pointer'>
                     <p>{jobData.salary}...</p>
                     <BiChevronDown className='text-[20px]'/>
                 </div>
                 {
                     dropDown === 'user-type' && (
-                        <div className='absolute z-10 top-[65px] bg-[#fff] rounded-[8px] w-full border border-[#C2C5E1] h-[150px] overflow-y-auto'>
+                        <div className='absolute z-10 top-[70px] bg-[#fff] rounded-[8px] w-full border border-[#C2C5E1] h-[150px] overflow-y-auto'>
                             {
                                 salaryRangeArray.map((salary, index) => (
                                     <div key={index} onClick={() => {
@@ -91,7 +91,7 @@ export default function Page() {
             </div>
             <div className='mt-6'>
                 <p>Landmark around the school</p>
-                <input type="text" placeholder='Alimosho Local Government Area' className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
+                <input type="text" placeholder='UBA Bank' className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
             </div>
             {
                 loading ?

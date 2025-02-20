@@ -225,7 +225,7 @@ export default function Home() {
           <p className="font-[600] md:text-[30px] text-[20px]">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </p>
-          <button className="py-[10px] px-[20px] bg-[#FF0200] mt-[3rem] rounded-[8px]">Get Started</button>
+          <button onClick={() => router.push('/sign-up')} className="py-[10px] px-[20px] bg-[#FF0200] mt-[3rem] rounded-[8px]">Get Started</button>
         </div>
       </section>
       <Footer />

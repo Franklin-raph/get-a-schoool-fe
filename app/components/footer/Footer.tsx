@@ -38,7 +38,7 @@ export default function Footer() {
                 />
                 <button
                   onClick={handleSubmit}
-                  className="bg-[#FF0200] text-white px-4 py-2 rounded-r flex items-center gap-2 hover:bg-[#154742] transition-colors"
+                  className="bg-[#FF0200] text-white px-4 py-2 rounded-r flex items-center gap-2 hover:bg-[#df3939] transition-colors"
                 >
                   Submit
                   <IoIosSend />
