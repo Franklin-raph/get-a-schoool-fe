@@ -196,7 +196,7 @@ export default function Home() {
             <p className='md:text-[35px] text-[20px] font-[600] mb-[-1px] text-[#FF0200]'>Newly Posted Jobs</p>
             <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
           </div>
-          <button className='text-[12px] border rounded-full md:px-4 px-2 py-2 w-[110px]'>View More</button>
+          <button onClick={() => router.push('/search-for-jobs')} className='text-[12px] border rounded-full md:px-4 px-2 py-2 w-[110px]'>View More</button>
         </div>
 
         <div className="relative md:w-[85%] w-[95%] mx-auto overflow-visible"> {/* Add padding to make room for arrows */}
@@ -233,7 +233,7 @@ export default function Home() {
           <p className="font-[600] md:text-[30px] text-[20px]">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </p>
-          <button className="py-[10px] px-[20px] bg-[#FF0200] mt-[3rem] rounded-[8px]">Get Started</button>
+          <button className="py-[10px] px-[20px] bg-[#FF0200] mt-[3rem] rounded-[8px]" onClick={() => router.push('/sign-up')}>Get Started</button>
         </div>
       </section>
 
@@ -253,7 +253,7 @@ export default function Home() {
             <p className='md:text-[35px] text-[20px] font-[600] md:mb-[-1px] mb-2 text-[#FF0200]'>Latest Blogs</p>
             <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
           </div>
-          <button className='text-[12px] border rounded-full md:px-4 px-2 py-2 md:w-[120px] w-[110px]'>Create a blog</button>
+          <button className='text-[12px] border rounded-full md:px-4 px-2 py-2 md:w-[120px] w-[110px]' onClick={() => router.push('/blog/post-blog')}>Create a blog</button>
         </div>
         <div className='grid md:grid-cols-4 grid-cols-2 md:gap-2 gap-4 md:w-[85%] w-[95%] mx-auto mt-8'>
           {
@@ -339,11 +339,11 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="w-full md:w-1/2">
-              <img 
-                src="./images/contact.png"
+            <div className="w-full md:w-1/2 hidden md:block">
+              <img
+                src="./images/contact.jpeg"
                 alt="Contact Image"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-[10px]"
               />
             </div>
           </div>

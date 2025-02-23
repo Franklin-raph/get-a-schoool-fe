@@ -6,6 +6,7 @@ import Footer from '../components/footer/Footer'
 import { useRouter } from 'next/navigation'
 import { BiChevronDown } from 'react-icons/bi'
 import BtnLoader from '../components/btnLoader/BtnLoader'
+import { LuImage } from 'react-icons/lu'
 
 export default function Page() {
 
@@ -92,6 +93,16 @@ export default function Page() {
             <div className='mt-6'>
                 <p>Landmark around the school</p>
                 <input type="text" placeholder='UBA Bank' className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
+            </div>
+            <div className='mt-6'>
+                <p>School/Organization Logo</p>
+                <div className='block border border-dashed border-[#C2C5E1] h-[100px] rounded-[6px] w-full pl-2 mt-1 relative cursor-pointer'>
+                    <div className='flex items-center flex-col absolute z-10 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full text-center cursor-pointer'>
+                        <LuImage className='text-[20px] mb-2'/>
+                        <p>Choose file to Upload</p>
+                    </div>
+                    <input type="file" className='w-full h-full opacity-0 relative z-20 cursor-pointer' />
+                </div>
             </div>
             {
                 loading ?

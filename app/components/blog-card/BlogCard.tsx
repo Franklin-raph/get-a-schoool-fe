@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import React from 'react'
 import { BiUser } from 'react-icons/bi'
 import { BsClock } from 'react-icons/bs'
@@ -17,6 +18,9 @@ interface Blog {
   }
 
 export default function BlogCard({blog}: BlogCardProps ) {
+
+  const router = useRouter()
+
   return (
     <div className='border rounded-[10px] pb-4 h-[350px] overflow-y-scroll'>
         <img src={blog.image} alt="" className='w-full h-[180px] rounded-t-[10px] object-cover'/>
@@ -27,7 +31,7 @@ export default function BlogCard({blog}: BlogCardProps ) {
         </div>
         <p className='text-[12px] text-gray-500 flex items-center gap-1'> <BiUser /> {blog.author}</p>
         <p className='text-[12px] text-gray-500 mt-3'>{blog.description}</p>
-        <button className='border border-gray-500 text-[12px] text-gray-500 px-2 py-1 mt-3'>Read More</button>
+        <button className='border border-gray-500 text-[12px] text-gray-500 px-2 py-1 mt-3' onClick={() => router.push('/blog/12')}>Read More</button>
         </div>
     </div>
   )

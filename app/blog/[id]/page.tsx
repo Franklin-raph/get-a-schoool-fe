@@ -6,7 +6,6 @@ import { MdAlarm } from 'react-icons/md'
 import { BiDislike, BiLike, BiUser } from 'react-icons/bi'
 import Footer from '../../components/footer/Footer'
 import { TfiCommentAlt } from 'react-icons/tfi';
-import { useRouter } from 'next/navigation';
 
 
 export default function Page() {
@@ -52,24 +51,28 @@ export default function Page() {
                 </div>
             </div>
             <div className='border-t pt-[2rem] mt-[4rem]'>
-                <p className='font-[500] text-[18px]'>Comment Section</p>
+                <p className='font-[500] md:text-[18px]'>Comment Section</p>
                 <textarea className='border outline-none w-full h-[80px] text-[14px] p-2 rounded-[5px] resize-none mt-2'></textarea>
                 <button className='bg-[#FF0200] text-white text-[14px] py-[6px] px-3 rounded-[4px]'>Post Comment</button>
 
-                <div className='mt-6'>
+                <div className='mt-10'>
                     <p>Comments</p>
                     <div>
-                        <div>
-                            <div className='flex items-start mt-3'>
-                                <BiUser className='mt-1'/>
-                                <div>
-                                    <p>John Doe</p>
-                                    <p>
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus, debitis.
-                                    </p>
+                        {
+                            [1,1,1,1].map((comment, index) => (
+                                <div key={index} className='flex items-start mt-7 border-b pb-2'>
+                                    <div className='text-[17px] mr-2 p-[10px] rounded-full bg-gray-200 text-gray-500'>
+                                        <BiUser />
+                                    </div>
+                                    <div className='text-[13px] md:text-[16px]'>
+                                        <p>John Doe</p>
+                                        <p>
+                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus, debitis.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            ))
+                        }
                     </div>
                 </div>
             </div>

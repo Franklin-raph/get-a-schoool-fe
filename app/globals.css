@@ -95,3 +95,7 @@
     height: 50vh !important;
   }
 }
+
+.react-quill .ql-editor{
+  @apply !min-h-[500px] rounded-[10px]
+}

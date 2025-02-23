@@ -24,7 +24,7 @@ export default function Page() {
                     <h1 className='text-[#101750] md:text-[32px] text-[22px] font-bold'>Blogs</h1>
                     <p className='md:text-[15px] text-[12px]'>Home / <span className='text-[#FF0200]'>Blog</span></p>
                 </div>
-                <button className='border py-[6px] px-3 rounded-[4px] border-gray-400 text-gray-500 hover:bg-gray-200 md:text-[15px] text-[12px]'>Post Blog</button>
+                <button className='border py-[6px] px-3 rounded-[4px] border-gray-400 text-gray-500 hover:bg-gray-200 md:text-[15px] text-[12px]' onClick={() => router.push('/blog/post-blog')}>Post Blog</button>
             </div>
         </div>
         <div className='pt-[4rem] max-w-[1600px] mx-auto md:px-[4rem] px-[1.2rem]'>
@@ -52,7 +52,7 @@ export default function Page() {
                             <p>10</p>
                         </div>
                     </div>
-                    <button className='border py-[7px] px-[18px] mt-5 rounded-[4px] text-[14px]'>Read More</button>
+                    <button onClick={() => router.push('/blog/12')} className='border py-[7px] px-[18px] mt-5 rounded-[4px] text-[14px]'>Read More</button>
                 </div>
                 <img src="./images/Study-Office-Administration.jpg" className='md:w-[400px] h-[400px] object-cover rounded-[10px]' alt="" />
             </div>
