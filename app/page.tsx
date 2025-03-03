@@ -19,9 +19,10 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { RxMinus, RxPlus } from 'react-icons/rx';
-import { PiPhoneCall } from 'react-icons/pi';
-import { IoChatboxEllipsesOutline, IoVideocamOutline } from 'react-icons/io5';
+import { PiDotDuotone, PiPhoneCall } from 'react-icons/pi';
+import { IoChatboxEllipsesOutline, IoNotificationsOutline, IoVideocamOutline } from 'react-icons/io5';
 import { FaRegMessage } from 'react-icons/fa6';
+import Marquee from 'react-fast-marquee';
 
 // import { ChevronLeft, ChevronRight } from 'react-icons/lucide-react'
 
@@ -133,9 +134,28 @@ export default function Home() {
 
   const router = useRouter()
 
+  const announcement = ["I can be a React component, multiple React components, or just some text.", "I can be a React component, multiple React components, or just some text.", "I can be a React component, multiple React components, or just some text.", "I can be a React component, multiple React components, or just some text."]
+
   return (
     <div>
       <Navbar />
+      <div className='bg-[#FF0200] flex items-center py-2'>
+        <div className='p-2 text-white'>
+          <IoNotificationsOutline />
+        </div>
+        <Marquee>
+          {
+            announcement.map((item, index) => {
+              return(
+                <div key={index} className='flex items-center gap-1 text-color text-[14px] mx-[20px]'>
+                  <PiDotDuotone className='text-[20px] text-white'/>
+                  <p className='text-white text-[12px] md:text-[16px]'>{item}</p>
+                </div>
+              )
+            })
+          }
+        </Marquee>
+      </div>
       <section className="w-[100%]">
         <Swiper
           slidesPerView={1}
@@ -189,6 +209,24 @@ export default function Home() {
           ))}
         </Swiper>
       </section>
+
+      <div className='bg-[#FF0200] flex items-center py-2'>
+        <div className='p-2 text-white'>
+          <IoNotificationsOutline />
+        </div>
+        <Marquee>
+          {
+            announcement.map((item, index) => {
+              return(
+                <div key={index} className='flex items-center gap-1 text-color text-[14px] mx-[20px]'>
+                  <PiDotDuotone className='text-[20px] text-white'/>
+                  <p className='text-white text-[12px] md:text-[16px]'>{item}</p>
+                </div>
+              )
+            })
+          }
+        </Marquee>
+      </div>
 
       <section>
         <div className='mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto flex items-center justify-between'>
