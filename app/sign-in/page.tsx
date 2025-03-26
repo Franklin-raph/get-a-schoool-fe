@@ -46,9 +46,6 @@ export default function Page() {
                 setMsg('An unexpected error occurred.');
             }
             setAlertType('error');
-            // console.log(error)
-            // setMsg(error?.response?.data?.message)
-            // setAlertType('error')
         } finally {
             setLoading(false)
         }

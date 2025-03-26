@@ -21,8 +21,11 @@ export default function Page() {
     const [alertType, setAlertType] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const roleArray = [
-        { value: 'employer', label: 'Employer (School owners)' },
-        { value: 'employee', label: 'Employee (Teachers, cleaners, non academic staff)' }
+        { value: 'user', label: 'User' },
+        { value: 'teacher', label: 'Teacher' },
+        { value: 'tutor', label: 'Tutor' },
+        { value: 'school_admin', label: 'School Aadmin' },
+        { value: 'main_admin', label: 'Main Aadmin' }
     ]
     const [registerData, setRegisterData] = useState({
         email: '',
@@ -57,7 +60,7 @@ export default function Page() {
             setLoading(true)
             console.log("Sign Up");
             const response = await post('/register', {role:registerData.role, email: registerData.email, password: registerData.password});
-            router.push(`/register/${registerData.email}`)
+            router.push(`/sign-up/${registerData.email}`)
             console.log(response);
         } catch (error: unknown) {
             if (error instanceof AxiosError) {
@@ -96,7 +99,7 @@ export default function Page() {
                 </div>
                 {
                     dropDown === 'user-type' && (
-                        <div className='absolute z-10 top-[65px] bg-[#fff] rounded-[8px] w-full border border-[#C2C5E1] h-[80px] overflow-y-auto'>
+                        <div className='absolute z-10 top-[65px] bg-[#fff] rounded-[8px] w-full border border-[#C2C5E1] h-[120px] overflow-y-auto'>
                             {
                                 roleArray.map((role, index) => (
                                     <div key={index} onClick={() => {

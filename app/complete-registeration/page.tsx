@@ -5,20 +5,21 @@ import Footer from '../components/footer/Footer'
 import Navbar from '../components/nav-bar/Navbar'
 import Alert from '../components/alert/Alert'
 import BtnLoader from '../components/btnLoader/BtnLoader'
-import { post } from '../utils/axiosHelpers'
+import { post, put } from '../utils/axiosHelpers'
 import { AxiosError } from 'axios'
-// import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 export default function Page() {
 
-    // const router = useRouter()
+    const router = useRouter()
     const [msg, setMsg] = useState<string>('')
     const [alertType, setAlertType] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const [registerData, setRegisterData] = useState({
         address: '',
         phone: '',
-        fullName: '',
+        full_name: '',
+        bio: '',
     })
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,14 +35,15 @@ export default function Page() {
         
         // Validation
         try {
-            if(!registerData.address || !registerData.phone || !registerData.fullName) {
+            if(!registerData.address || !registerData.phone || !registerData.full_name || !registerData.bio) {
                 setMsg('Please fill in all fields.');
                 setAlertType('error');
                 return
             }
             setLoading(true)
-            console.log("Sign Up");
-            const response = await post('/register', registerData);
+            console.log(registerData);
+            const response = await put('/dashboard/update-profile', registerData);
+            router.push(`/dashboard`)
             console.log(response);
         } catch (error: unknown) {
             if (error instanceof AxiosError) {
@@ -70,7 +72,7 @@ export default function Page() {
             <p className='mb-7'>Welcome to Get-a-school. Let&apos;s create your account profile</p>
             <div>
                 <p>Full Name</p>
-                <input type="text" placeholder='John Doe' onChange={handleInputChange} name='email' value={registerData.fullName} className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2' />
+                <input type="text" placeholder='John Doe' onChange={handleInputChange} name='full_name' value={registerData.full_name} className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2' />
             </div>
             <div className='mt-6'>
                 <p>Address</p>
@@ -78,12 +80,12 @@ export default function Page() {
             </div>
             <div className='mt-6'>
                 <p>Phone Number</p>
-                <input type="text" placeholder='080-123-323-11' onChange={handleInputChange} name='email' value={registerData.phone} className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2' />
+                <input type="text" placeholder='080-123-323-11' onChange={handleInputChange} name='phone' value={registerData.phone} className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2' />
             </div>
-            {/* <div>
-                <p>Full Name</p>
-                <input type="text" placeholder='John Doe' onChange={handleInputChange} name='email' value={registerData.email} className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2' />
-            </div> */}
+            <div className='mt-6'>
+                <p>Bio</p>
+                <input type="text" placeholder='John Doe' onChange={handleInputChange} name='bio' value={registerData.bio} className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2' />
+            </div>
             {
                 loading ?
                 <div className='mt-[40.4px] mb-[0.5rem]'>

@@ -149,7 +149,7 @@ export default function Home() {
               return(
                 <div key={index} className='flex items-center gap-1 text-color text-[14px] mx-[20px]'>
                   <PiDotDuotone className='text-[20px] text-white'/>
-                  <p className='text-white text-[12px] md:text-[16px]'>{item}</p>
+                  <p className='text-white text-[14px] md:text-[16px]'>{item}</p>
                 </div>
               )
             })
@@ -220,7 +220,7 @@ export default function Home() {
               return(
                 <div key={index} className='flex items-center gap-1 text-color text-[14px] mx-[20px]'>
                   <PiDotDuotone className='text-[20px] text-white'/>
-                  <p className='text-white text-[12px] md:text-[16px]'>{item}</p>
+                  <p className='text-white text-[14px] md:text-[16px]'>{item}</p>
                 </div>
               )
             })
