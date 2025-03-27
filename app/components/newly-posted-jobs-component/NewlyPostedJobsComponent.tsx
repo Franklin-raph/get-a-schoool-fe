@@ -1,5 +1,3 @@
-// import ProductCard from "../productCard/ProductCard";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick"
@@ -22,8 +20,6 @@ interface JobPost {
 }
 
 const NewlyPostedJobsComponent = () => {
-
-
     const SampleNextArrow = (props: CustomArrowProps) => {
         const { onClick } = props;
         return(
@@ -79,16 +75,6 @@ const NewlyPostedJobsComponent = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    // Render loading state
-    if (isLoading) {
-        return <div>Loading jobs...</div>
-    }
-
-    // Render error state
-    if (error) {
-        return <div>Error: {error}</div>
-    }
-
     const getAllJobs = async () => {
         try {
             setIsLoading(true);
@@ -100,7 +86,6 @@ const NewlyPostedJobsComponent = () => {
             const jobsData = response.results || response;
 
             console.log({response, jobsData});
-            
             
             setJobs(jobsData);
             setIsLoading(false);
@@ -115,11 +100,25 @@ const NewlyPostedJobsComponent = () => {
         getAllJobs();
     }, [])
 
+    // Render loading state
+    if (isLoading) {
+        return <div>Loading jobs...</div>
+    }
+
+    // Render error state
+    if (error) {
+        return <div>Error: {error}</div>
+    }
+
+    // Render empty state if no jobs
+    if (jobs.length === 0) {
+        return <div>No jobs found</div>
+    }
 
     return (
         <Slider {...settings}>
             {jobs?.map((job, index) => (
-                <NewlyPostedJobsCards job={job} key={index}/>
+                <NewlyPostedJobsCards job={job} key={job.id || index}/>
             ))}
         </Slider>
     )
