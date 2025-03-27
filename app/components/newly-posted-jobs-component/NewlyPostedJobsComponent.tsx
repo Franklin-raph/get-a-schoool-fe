@@ -23,38 +23,6 @@ interface JobPost {
 
 const NewlyPostedJobsComponent = () => {
 
-    const newlyPostedJobs =[
-        {
-            image: "./images/School-Kids-scaled.jpg",
-            jobTitle: "Teacher's Assistant Position",
-            link: "/",
-            salaryRange: "N10,000 - N15,000 per month"
-        },
-        {
-            image: "./images/School-Kids-scaled.jpg",
-            jobTitle: "Headmaster Position",
-            link: "/",
-            salaryRange: "N10,000 - N15,000 per month"
-        },
-        {
-            image: "./images/School-Kids-scaled.jpg",
-            jobTitle: "Principal Position",
-            link: "/",
-            salaryRange: "N10,000 - N15,000 per month"
-        },
-        {
-            image: "./images/School-Kids-scaled.jpg",
-            jobTitle: "Principal Position",
-            link: "/",
-            salaryRange: "N10,000 - N15,000 per month"
-        },
-        {
-            image: "./images/School-Kids-scaled.jpg",
-            jobTitle: "Principal Position",
-            link: "/",
-            salaryRange: "N10,000 - N15,000 per month"
-        }
-    ]
 
     const SampleNextArrow = (props: CustomArrowProps) => {
         const { onClick } = props;
@@ -108,8 +76,8 @@ const NewlyPostedJobsComponent = () => {
     };
 
     const [jobs, setJobs] = useState<JobPost[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    // const [isLoading, setIsLoading] = useState(true);
+    // const [error, setError] = useState<string | null>(null);
 
     const getAllJobs = async () => {
         try {

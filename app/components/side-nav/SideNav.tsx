@@ -5,7 +5,6 @@ import { LuLayoutGrid } from 'react-icons/lu';
 import { usePathname } from 'next/navigation'; // For Next.js App Router
 import { IoSettingsOutline } from 'react-icons/io5';
 import { HiOutlineUserCircle } from 'react-icons/hi';
-import { BsHousesFill } from 'react-icons/bs';
 import { BiHome } from 'react-icons/bi';
 
 interface Toggle {

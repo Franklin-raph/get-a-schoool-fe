@@ -17,27 +17,16 @@ import NewlyPostedJobsComponent from './components/newly-posted-jobs-component/N
 import BlogCard from './components/blog-card/BlogCard';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { RxMinus, RxPlus } from 'react-icons/rx';
 import { PiDotDuotone, PiPhoneCall } from 'react-icons/pi';
 import { IoChatboxEllipsesOutline, IoNotificationsOutline, IoVideocamOutline } from 'react-icons/io5';
 import { FaRegMessage } from 'react-icons/fa6';
 import Marquee from 'react-fast-marquee';
-import { get } from './utils/axiosHelpers';
+// import { get } from './utils/axiosHelpers';
 
 // import { ChevronLeft, ChevronRight } from 'react-icons/lucide-react'
 // Define a type for your job posts
-interface JobPost {
-  id?: number;
-  title?: string;
-  description?: string;
-  created_at: string;
-  user?: {
-      full_name: string;
-      // other properties of profile_pic if needed
-    };
-  // Add other properties as needed
-}
 
 export default function Home() {
 

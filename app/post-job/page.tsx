@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Navbar from '../components/nav-bar/Navbar'
 import Footer from '../components/footer/Footer'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import { BiChevronDown } from 'react-icons/bi'
 import BtnLoader from '../components/btnLoader/BtnLoader'
 import { post } from '../utils/axiosHelpers'
