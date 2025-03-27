@@ -6,10 +6,12 @@ import logo from '../../../public/images/Get-a-school.png'
 import Image from 'next/image'
 import { BiMenu } from 'react-icons/bi'
 import { IoCloseOutline } from 'react-icons/io5'
+import Cookies from 'js-cookie';
 
 export default function Navbar() {
 
     const [mobileNavOpen, setMobileNavOpen] = useState(false)
+    const token = Cookies.get('token')
 
     const navLinks = [
         {
@@ -66,7 +68,7 @@ export default function Navbar() {
                                 </li>
                             ))
                         }
-                    <Link className='hover:bg-[#FF0200] transition-all ml-[1rem] mt-3 border py-[10px] px-7 text-white' href="/sign-in">Sign In</Link>
+                    <Link className='hover:bg-[#FF0200] transition-all ml-[1rem] mt-3 border py-[10px] px-7 text-white' href="/sign-in">Sign In..</Link>
                     </ul>
                 </div>
             }
@@ -77,7 +79,12 @@ export default function Navbar() {
         <div className='flex items-center gap-5'>
             {/* <MdMail /> */}
             {/* <Link href="">Advertise</Link> */}
-            <Link className='bg-[#FF0200] rounded-[4px] px-[16px] py-[5px] text-white hidden sm:block' href="/sign-in">Sign In</Link>
+            {
+                token ?
+                <Link className='bg-[#FF0200] rounded-[4px] px-[16px] py-[5px] text-white hidden sm:block' href="/my-profile">My Profile</Link>
+                :
+                <Link className='bg-[#FF0200] rounded-[4px] px-[16px] py-[5px] text-white hidden sm:block' href="/sign-in">Sign In.</Link>
+            }
         </div>
     </div>
   )

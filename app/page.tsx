@@ -17,15 +17,27 @@ import NewlyPostedJobsComponent from './components/newly-posted-jobs-component/N
 import BlogCard from './components/blog-card/BlogCard';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RxMinus, RxPlus } from 'react-icons/rx';
 import { PiDotDuotone, PiPhoneCall } from 'react-icons/pi';
 import { IoChatboxEllipsesOutline, IoNotificationsOutline, IoVideocamOutline } from 'react-icons/io5';
 import { FaRegMessage } from 'react-icons/fa6';
 import Marquee from 'react-fast-marquee';
+import { get } from './utils/axiosHelpers';
 
 // import { ChevronLeft, ChevronRight } from 'react-icons/lucide-react'
-
+// Define a type for your job posts
+interface JobPost {
+  id?: number;
+  title?: string;
+  description?: string;
+  created_at: string;
+  user?: {
+      full_name: string;
+      // other properties of profile_pic if needed
+    };
+  // Add other properties as needed
+}
 
 export default function Home() {
 
@@ -136,6 +148,8 @@ export default function Home() {
 
   const announcement = ["I can be a React component, multiple React components, or just some text.", "I can be a React component, multiple React components, or just some text.", "I can be a React component, multiple React components, or just some text.", "I can be a React component, multiple React components, or just some text."]
 
+
+
   return (
     <div>
       <Navbar />
@@ -238,6 +252,9 @@ export default function Home() {
         </div>
 
         <div className="relative md:w-[85%] w-[95%] mx-auto overflow-visible"> {/* Add padding to make room for arrows */}
+          {/* {
+            jobs?.
+          } */}
           <NewlyPostedJobsComponent />
         </div>
       </section>
@@ -291,7 +308,7 @@ export default function Home() {
             <p className='md:text-[35px] text-[20px] font-[600] md:mb-[-1px] mb-2 text-[#FF0200]'>Latest Blogs</p>
             <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
           </div>
-          <button className='text-[12px] border rounded-full md:px-4 px-2 py-2 md:w-[120px] w-[110px]' onClick={() => router.push('/blog/post-blog')}>Create a blog</button>
+          {/* <button className='text-[12px] border rounded-full md:px-4 px-2 py-2 md:w-[120px] w-[110px]' onClick={() => router.push('/blog/post-blog')}>Create a blog</button> */}
         </div>
         <div className='grid md:grid-cols-4 grid-cols-2 md:gap-2 gap-4 md:w-[85%] w-[95%] mx-auto mt-8'>
           {

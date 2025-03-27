@@ -5,6 +5,8 @@ import { LuLayoutGrid } from 'react-icons/lu';
 import { usePathname } from 'next/navigation'; // For Next.js App Router
 import { IoSettingsOutline } from 'react-icons/io5';
 import { HiOutlineUserCircle } from 'react-icons/hi';
+import { BsHousesFill } from 'react-icons/bs';
+import { BiHome } from 'react-icons/bi';
 
 interface Toggle {
   toggleNav: boolean;
@@ -36,18 +38,18 @@ const SideNav = ({toggle}: ToggleProps) => {
         <div className="my-10 text-white w-full">
           <p className='text-center text-[25px] mb-5 text-[#FFF]'>Get A School</p>
           {/* <p className="text-[12px] text-[#6F7975] mb-2">MAIN MENU</p> */}
+          <Link href='/' className={pathname === '/my-properties' ? `flex items-center justify-between py-[12px] bg-[#FF0200] pl-[15px] hover:bg-[#FF0200] hover:text-white ml-2` :`hover:bg-[#FF0200] ml-2 pl-[15px] flex items-center justify-between py-[12px]`}>
+            <div className="flex items-center gap-2">
+              <BiHome />
+              <p className="">Home</p>
+            </div>
+          </Link>
           <Link href='/dashboard' className={pathname === '/dashboard' ? `flex items-start justify-start py-[12px] bg-[#FF0200] pl-[15px] hover:bg-[#FF0200] hover:text-white ml-2` :`hover:bg-[#FF0200] ml-2 pl-[15px] flex items-center justify-start py-[12px]`}>
             <div className="flex items-center gap-2">
               <LuLayoutGrid />
               <p className="">Dashboard</p>
             </div>
           </Link>
-          {/* <Link href='/my-properties' className={pathname === '/my-properties' ? `flex items-center justify-between py-[12px] bg-[#FF0200] pl-[15px] hover:bg-[#FF0200] hover:text-white ml-2` :`hover:bg-[#FF0200] ml-2 pl-[15px] flex items-center justify-between py-[12px]`}>
-            <div className="flex items-center gap-2">
-              <BsHouses />
-              <p className="">Properties</p>
-            </div>
-          </Link> */}
           <Link href='/my-profile' className={pathname === '/my-profile' ? `flex items-center justify-between py-[12px] bg-[#FF0200] pl-[15px] hover:bg-[#FF0200] hover:text-white ml-2` :`hover:bg-[#FF0200] ml-2 pl-[15px] flex items-center justify-between py-[12px]`}>
             <div className="flex items-center gap-2">
               <HiOutlineUserCircle />

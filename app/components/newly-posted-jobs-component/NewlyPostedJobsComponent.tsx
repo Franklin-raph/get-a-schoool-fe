@@ -8,6 +8,18 @@ import { IoIosArrowForward } from "react-icons/io";
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import NewlyPostedJobsCards from "../newly-posted-jobs-cards/NewlyPostedJobsCards";
 import { CustomArrowProps } from "react-slick";
+import { useEffect, useState } from "react";
+import { get } from "@/app/utils/axiosHelpers";
+
+// Define a type for your job posts
+interface JobPost {
+    id?: number;
+    location?: string;
+    description?: string;
+    salary_lower_range?: number;
+    salary_upper_range?: number;
+    // Add other properties as needed
+}
 
 const NewlyPostedJobsComponent = () => {
 
@@ -95,10 +107,40 @@ const NewlyPostedJobsComponent = () => {
         ]
     };
 
+    const [jobs, setJobs] = useState<JobPost[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    const getAllJobs = async () => {
+        try {
+            setIsLoading(true);
+            const response = await get('/job-posts/');
+            
+            // Check the structure of your response
+            // If the API returns data directly, use response
+            // If it returns with a 'data' property, use response.data
+            const jobsData = response.results || response;
+
+            console.log({response, jobsData});
+            
+            
+            setJobs(jobsData);
+            setIsLoading(false);
+        } catch (err) {
+            setError('Failed to fetch jobs');
+            setIsLoading(false);
+            console.error(err);
+        }
+    }
+
+    useEffect(() => {
+        getAllJobs();
+    }, [])
+
 
     return (
         <Slider {...settings}>
-            {newlyPostedJobs?.map((job, index) => (
+            {jobs?.map((job, index) => (
                 <NewlyPostedJobsCards job={job} key={index}/>
             ))}
         </Slider>

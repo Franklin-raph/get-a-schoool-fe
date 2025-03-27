@@ -7,6 +7,11 @@ import { get, put } from '../utils/axiosHelpers'
 import Cookies from 'js-cookie';
 import Alert from '../components/alert/Alert'
 import { AxiosError } from 'axios'
+import { BiCamera } from 'react-icons/bi'
+import ReactCrop, { centerCrop, makeAspectCrop, Crop } from 'react-image-crop'
+import 'react-image-crop/dist/ReactCrop.css'
+import { IoCloseOutline } from 'react-icons/io5'
+import { CiImageOn } from 'react-icons/ci'
 
 interface UserData {
   id: string;
@@ -29,6 +34,12 @@ export default function Page() {
   const [user, setUser] = useState<UserData | null>(null)
 
     const imgRef = useRef<HTMLImageElement | null>(null)
+    const [imagePreviewModal, setImagePreviewModal] = useState<boolean>(false)
+
+    const [imgSrc, setImgSrc] = useState<string>('')
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+    const [crop, setCrop] = useState<Crop>()
+    const [completedCrop, setCompletedCrop] = useState<Crop | null>(null)
 
     // const [loading, setLoading] = useState<boolean>(false)
     const [msg, setMsg] = useState<string>('')
@@ -75,6 +86,61 @@ export default function Page() {
       console.error('Error fetching user profile:', error)
     }
   }
+
+  const onImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const { width, height } = e.currentTarget
+    const cropingWidthPercent = (150 / width) * 100
+    const crop = makeAspectCrop(
+        {
+            unit: '%', // Can be 'px' or '%'
+            x: 25,
+            y: 25,
+            width: cropingWidthPercent,
+            height: 50
+        }, 
+        1,
+        width,
+        height
+    )
+    const centeredCrop = centerCrop(crop, width, height)
+    setCrop(centeredCrop)
+  }
+
+  const getCroppedImage = (): string | null => {
+    if (!completedCrop || !imgRef.current) return null;
+
+    const image = imgRef.current;
+    const canvas = document.createElement('canvas');
+    const scaleX = image.naturalWidth / image.width;
+    const scaleY = image.naturalHeight / image.height;
+
+    canvas.width = completedCrop.width;
+    canvas.height = completedCrop.height;
+    const ctx = canvas.getContext('2d');
+
+    if (!ctx) return null;
+
+    ctx.drawImage(
+        image,
+        completedCrop.x * scaleX,
+        completedCrop.y * scaleY,
+        completedCrop.width * scaleX,
+        completedCrop.height * scaleY,
+        0,
+        0,
+        completedCrop.width,
+        completedCrop.height
+    );
+
+    return canvas.toDataURL('image/jpeg');
+  };
+
+  const handlePreview = () => {
+    const croppedImage = getCroppedImage();
+    if (croppedImage) {
+        setPreviewUrl(croppedImage);
+    }
+  };
 
 
   async function handleFileUpload(file: File){
@@ -157,7 +223,7 @@ export default function Page() {
     const reader = new FileReader();
     reader.addEventListener('load', () => {
         const imgUrl = reader.result?.toString() || ""
-        // setImgSrc(imgUrl)
+        setImgSrc(imgUrl)
         console.log(imgUrl);
     })
     reader.readAsDataURL(file)
@@ -182,6 +248,12 @@ export default function Page() {
         <div className='mt-8 px-5'>
           {/* <h2 className="text-xl font-medium mb-6">{'My Profile'}</h2> */}
           <div className='flex gap-5 flex-col md:w-[50%] mr-auto md:ml-[2rem] pt-6'>
+            <div className='relative w-[100px] h-[100px] rounded-full bg-gray-100'>
+              <img src={user?.profile_pic?.media || './images/user1.png'} alt="User profile" className='w-[100px] h-[100px] rounded-full'/>
+              <div className='absolute bottom-0 right-0 text-[20px] bg-gray-300 p-1 rounded-full'>
+                <BiCamera onClick={() => setImagePreviewModal(true)}/>
+              </div>
+            </div>
             <div>
               <p className='font-[500] border-b border-[#2D8B57]'>Full Name</p>
               <div className='flex gap-3 pt-1'>
@@ -211,6 +283,82 @@ export default function Page() {
               </div>
             </div>
           </div>
+          {
+            imagePreviewModal &&
+            <div style={{position:'fixed', width:'100%', left:'0', top:'0', zIndex:'99', display:'flex', alignItems:'center', justifyContent:'center', height:'100vh', background:"rgba(18, 18, 18, 0.8)" }}>
+                <div className="bg-white md:w-[50%] w-[90%] text-center flex items-center justify-center flex-col py-10 relative" style={{ borderRadius:'10px' }}>
+                    <p className='absolute right-[-10px] bg-gray-300 top-[-18px] cursor-pointer text-[22px] z-[999999] p-[5px] border rounded-full' onClick={() => setImagePreviewModal(false)}>
+                        <IoCloseOutline />
+                    </p>
+                    {
+                        imgSrc ?
+                        <div>
+                            {
+                                previewUrl ?
+                                <div>
+                                    <img src={previewUrl} alt="" className='h-[300px] object-contain mx-auto' />
+                                    <div className='flex flex-col sm:flex-row items-center gap-5 w-full mt-5 justify-center'>
+                                        <button onClick={() => setPreviewUrl(null)} className='text-[#2D8B57] border border-[#2D8B57] rounded-[4px] px-[28px] py-[10px] text-center mx-auto'>Cancel</button>
+                                        <button onClick={() => base64ToFile(previewUrl, "Image")} className='text-white bg-[#2D8B57] rounded-[4px] px-[28px] py-[10px] text-center mx-auto'>Upload Image</button>
+                                    </div>
+                                </div>
+                                :
+                                <>
+                                    <ReactCrop
+                                        crop={crop}
+                                        aspect={1}
+                                        minWidth={150}
+                                        onChange={
+                                            (pixelCrop, percentCrop) => setCrop(percentCrop)
+                                        }
+                                        onComplete={(c) => setCompletedCrop(c)}
+                                        // circularCrop
+                                        keepSelection
+                                    >
+                                        <img ref={imgRef} src={imgSrc} onLoad={onImageLoad} className='h-[300px] object-contain mx-auto' alt="" />
+                                    </ReactCrop>
+                                    <div className='flex flex-col sm:flex-row items-center gap-5 w-full mt-5 justify-center'>
+                                        <button onClick={() => setImgSrc('')} className='text-[#2D8B57] border border-[#2D8B57] rounded-[4px] px-[28px] py-[10px] text-center mx-auto'>Delete Image</button>
+                                        <button onClick={handlePreview} className='text-white bg-[#2D8B57] rounded-[4px] px-[28px] py-[10px] text-center mx-auto'>Preview Image</button>
+                                    </div>
+                                </>
+                            }
+                        </div>
+                        :
+                        <>
+                            <img src="./images/file-upload.svg" alt="" />
+                            <div className='border-dashed border-[#98A2B3] border-2 rounded-[4px] p-[4rem] flex flex-col items-center justify-center mt-5'>
+                              <CiImageOn className='text-[#98A2B3] text-[50px]' />
+                              <p className='text-text-color font-[600] mt-5'>Click to upload <span className='font-[400] text-[#475367] hidden'>or drag and drop</span> </p>
+                              <p className='text-[#98A2B3]'>PNG, JPG (max. 5mb)</p>
+                            </div>
+                            <input
+                              type="file"
+                              className="z-[1] cursor-pointer absolute opacity-0 h-full outline-none w-full rounded-[4px] bg-transparent text-[14px]"
+                              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                if (e.target.files && e.target.files.length > 0) {
+                                  handleImagePreviewAndCroping(e.target.files[0]);
+                                }
+                              }}
+                            />
+
+                        </>
+                    }
+                    {
+                      fileUploadLoader &&
+                      <div style={{position:'fixed', width:'100%', left:'0', top:'0', zIndex:'9999', display:'flex', alignItems:'center', justifyContent:'center', height:'100vh', background:"rgba(18, 18, 18, 0.8)" }}>
+                          <div className="bg-white" style={{ borderRadius:'10px' }}>
+                              {/* <i className=' ri-close-fill block text-[1.2rem] text-end mt-[1rem] mr-[1rem] cursor-pointer'></i> */}
+                              <div className="flex items-center justify-between mt-[1rem] px-[2rem] mb-[2rem] flex-col" style={{ padding:'2rem', textAlign:'center' }} >
+                                  <img src='./images/loader.gif' style={{ height:'40px', width:'40px', margin:'12px auto 30px' }} />
+                                  <p className='text-gray-500 text-[15px] mb-2 text-center'>File Upload in progress, please do not refresh the page</p>
+                              </div>
+                          </div>
+                      </div>
+                  }
+                </div>
+            </div>
+          }
         </div>
       </div>
     </div>

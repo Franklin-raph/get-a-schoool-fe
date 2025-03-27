@@ -5,7 +5,7 @@ import Footer from '../components/footer/Footer'
 import Navbar from '../components/nav-bar/Navbar'
 import Alert from '../components/alert/Alert'
 import BtnLoader from '../components/btnLoader/BtnLoader'
-import { post, put } from '../utils/axiosHelpers'
+import { put } from '../utils/axiosHelpers'
 import { AxiosError } from 'axios'
 import { useRouter } from 'next/navigation'
 

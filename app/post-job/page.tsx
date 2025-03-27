@@ -6,14 +6,12 @@ import Footer from '../components/footer/Footer'
 import { useRouter } from 'next/navigation'
 import { BiChevronDown } from 'react-icons/bi'
 import BtnLoader from '../components/btnLoader/BtnLoader'
-import { LuImage } from 'react-icons/lu'
 import { post } from '../utils/axiosHelpers'
 import { AxiosError } from 'axios'
 import Alert from '../components/alert/Alert'
 
 export default function Page() {
 
-    const router = useRouter()
     const [dropDown, setDropDown] = useState<string>('')
     const [msg, setMsg] = useState<string>('')
     const [alertType, setAlertType] = useState<string>('')

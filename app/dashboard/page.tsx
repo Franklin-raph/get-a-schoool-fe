@@ -35,7 +35,7 @@ export default function Page() {
             <div className='flex items-center justify-between mb-4'>
                 <p className="font-[#212121] font-[700] md:text-[25px] text-[18px] mb-3">Dashboard</p>
                 <div className='flex items-center gap-3'>
-                    <button className='border rounded-[10px] px-5 py-2 hover:bg-[#FF0200] hover:text-white'>Create Blog Post</button>
+                    {/* <button className='border rounded-[10px] px-5 py-2 hover:bg-[#FF0200] hover:text-white'>Create Blog Post</button> */}
                     <button className='border rounded-[10px] px-5 py-2 hover:bg-[#FF0200] hover:text-white' onClick={() => router.push('/post-job')} >Post A Job</button>
                 </div>
             </div>
@@ -46,11 +46,11 @@ export default function Page() {
               </div>
               <div className='bg-[#F9F9F9] p-5 rounded-[10px]'>
                 <PiMoneyWavyLight className='text-[30px] mb-5'/>
-                <p className='text-[18px] text-[#212121] font-[500]'> <span>Total Properties Sold:</span> 123</p>
+                <p className='text-[18px] text-[#212121] font-[500]'> <span>Total Posts:</span> 123</p>
               </div>
               <div className='bg-[#F9F9F9] p-5 rounded-[10px]'>
                 <LuHouse className='text-[30px] mb-5'/>
-                <p className='text-[18px] text-[#212121] font-[500]'> <span>Total Properties:</span> 123</p>
+                <p className='text-[18px] text-[#212121] font-[500]'> <span>Total Posts:</span> 123</p>
               </div>
             </div>
           </section>
