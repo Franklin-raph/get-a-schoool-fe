@@ -22,6 +22,37 @@ interface JobPost {
 }
 
 const NewlyPostedJobsComponent = () => {
+
+
+    const [jobs, setJobs] = useState<JobPost[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    const getAllJobs = async () => {
+        try {
+            setIsLoading(true);
+            const response = await get('/job-posts/');
+            
+            // Check the structure of your response
+            // If the API returns data directly, use response
+            // If it returns with a 'data' property, use response.data
+            const jobsData = response.results || response;
+
+            console.log({response, jobsData});
+            
+            setJobs(jobsData);
+            setIsLoading(false);
+        } catch (err) {
+            setError('Failed to fetch jobs');
+            setIsLoading(false);
+            console.error(err);
+        }
+    }
+
+    useEffect(() => {
+        getAllJobs();
+    }, [])
+
     const SampleNextArrow = (props: CustomArrowProps) => {
         const { onClick } = props;
         return(
@@ -72,35 +103,6 @@ const NewlyPostedJobsComponent = () => {
             }
         ]
     };
-
-    const [jobs, setJobs] = useState<JobPost[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
-    const getAllJobs = async () => {
-        try {
-            setIsLoading(true);
-            const response = await get('/job-posts/');
-            
-            // Check the structure of your response
-            // If the API returns data directly, use response
-            // If it returns with a 'data' property, use response.data
-            const jobsData = response.results || response;
-
-            console.log({response, jobsData});
-            
-            setJobs(jobsData);
-            setIsLoading(false);
-        } catch (err) {
-            setError('Failed to fetch jobs');
-            setIsLoading(false);
-            console.error(err);
-        }
-    }
-
-    useEffect(() => {
-        getAllJobs();
-    }, [])
 
     // Render loading state
     if (isLoading) {
