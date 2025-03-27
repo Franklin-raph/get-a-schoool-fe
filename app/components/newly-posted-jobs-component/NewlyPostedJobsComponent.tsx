@@ -76,8 +76,18 @@ const NewlyPostedJobsComponent = () => {
     };
 
     const [jobs, setJobs] = useState<JobPost[]>([]);
-    // const [isLoading, setIsLoading] = useState(true);
-    // const [error, setError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    // Render loading state
+    if (isLoading) {
+        return <div>Loading jobs...</div>
+    }
+
+    // Render error state
+    if (error) {
+        return <div>Error: {error}</div>
+    }
 
     const getAllJobs = async () => {
         try {
