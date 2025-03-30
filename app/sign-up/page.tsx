@@ -22,8 +22,6 @@ export default function Page() {
     const [loading, setLoading] = useState<boolean>(false)
     const roleArray = [
         { value: 'user', label: 'User' },
-        { value: 'teacher', label: 'Teacher' },
-        { value: 'tutor', label: 'Tutor' },
         { value: 'school_admin', label: 'School Aadmin' },
         { value: 'main_admin', label: 'Main Aadmin' }
     ]
