@@ -9,6 +9,17 @@ import BtnLoader from '../components/btnLoader/BtnLoader'
 import { post } from '../utils/axiosHelpers'
 import { AxiosError } from 'axios'
 import Alert from '../components/alert/Alert'
+import 'react-quill-new/dist/quill.snow.css';
+import { formats, modules } from "../utils/quillEditorConfig"
+
+import dynamic from 'next/dynamic'
+
+const ReactQuill = dynamic(() => import("react-quill-new"), {
+    ssr: false,
+    loading: () => (
+      <div className="h-[450px] bg-stone-100/80 animate-pulse rounded-md" />
+    ),
+});
 
 export default function Page() {
 
@@ -16,6 +27,7 @@ export default function Page() {
     const [msg, setMsg] = useState<string>('')
     const [alertType, setAlertType] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
+    const [description, setDescription] = useState<string>('')
     const salaryRangeArray = [
         { salary_lower_range: 20000, salary_upper_range: 30000, label: '20,000 to 30,000' },
         { salary_lower_range: 40000, salary_upper_range: 50000, label: '40,000 to 50,000' },
@@ -27,7 +39,6 @@ export default function Page() {
         salary_lower_range: 0,
         salary_upper_range: 0,
         salary: '',
-        description: '',
         location: '',
         // lga: '',
         // landmark: '',
@@ -42,14 +53,16 @@ export default function Page() {
     };
 
     const handleSubmit = async () => {
+        console.log({ salary_lower_range:jobData.salary_lower_range, salary_upper_range:jobData.salary_upper_range, location:jobData.location, description });
+        
         try {
-            if(!jobData.salary || !jobData.description || !jobData.location) {
+            if(!jobData.salary || !description || !jobData.location) {
                 setMsg('Please fill in all fields.');
                 setAlertType('error');
                 return
             }else{
                 setLoading(true)
-                const response = await post('/job-posts/', { salary:jobData.salary, location:jobData.location, description:jobData.description })
+                const response = await post('/job-posts/', { salary_lower_range:jobData.salary_lower_range, salary_upper_range:jobData.salary_upper_range, location:jobData.location, description })
                 setMsg('Job posted successfully.');
                 setAlertType('success');
                 console.log(response)
@@ -79,7 +92,7 @@ export default function Page() {
                 <p className='md:text-[15px] text-[12px]'>Home / <span className='text-[#FF0200]'>Post Job</span></p>
             </div>
         </div>
-        <div className='md:w-[544px] mx-auto md:mt-[4rem] md:p-[4rem] py-[4rem] px-[1rem] shadow-xl text-[#9096B2] mb-[9rem]'>
+        <div className='md:w-[844px] mx-auto md:mt-[4rem] md:p-[4rem] py-[4rem] px-[1rem] shadow-xl text-[#9096B2] mb-[9rem]'>
             <h1 className='font-[600] text-[#101750] text-[24px] mb-7'>Post a school</h1>
             {/* <p className='mb-7'>Welcome to Zillow9ja. Let's create your account</p> */}
             {/* <div>
@@ -118,7 +131,8 @@ export default function Page() {
             </div>
             <div className='mt-6'>
                 <p>Description</p>
-                <textarea onChange={handleInputChange} placeholder='Job Description' name="description" className='outline-none block border border-[#C2C5E1] h-[120px] resize-none rounded-[6px] w-full p-2'></textarea>
+                <ReactQuill theme="snow" className='react-quill' value={description} onChange={e => setDescription(e)} formats={formats} modules={modules} />
+                {/* <textarea onChange={handleInputChange} placeholder='Job Description' name="description" className='outline-none block border border-[#C2C5E1] h-[120px] resize-none rounded-[6px] w-full p-2'></textarea> */}
                 {/* <input type="texta"  /> */}
             </div>
             {/* <div className='mt-6'>

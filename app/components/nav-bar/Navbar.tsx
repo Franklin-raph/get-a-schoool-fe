@@ -25,15 +25,7 @@ export default function Navbar() {
         {
             label: "Search For Jobs",
             link: "/search-for-jobs",
-        },
-        // {
-        //     label: "Short Let",
-        //     link: "/",
-        // },
-        // {
-        //     label: "Find an Agent",
-        //     link: "/find-an-agent",
-        // },
+        }
     ]
 
   return (
