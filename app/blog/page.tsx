@@ -1,7 +1,8 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/nav-bar/Navbar'
+import BlogComponent from '../components/blog-component/BlogComponent'
 import { MdAlarm } from 'react-icons/md'
 import { BsClock } from 'react-icons/bs'
 import { format } from 'timeago.js';
@@ -9,11 +10,47 @@ import { BiDislike, BiLike, BiUser } from 'react-icons/bi'
 import Footer from '../components/footer/Footer'
 import { TfiCommentAlt } from 'react-icons/tfi';
 import { useRouter } from 'next/navigation';
+import { get } from '../utils/axiosHelpers'
 
+interface BlogPost {
+    image: string;
+    title: string;
+    description: string;
+    author: string;
+    date: string;
+}
 
 export default function Page() {
 
     const router = useRouter()
+    const [blogs, setBlogs] = useState<BlogPost[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    const getAllBlogs = async () => {
+        try {
+            setIsLoading(true);
+            const response = await get('/blog-posts/');
+            
+            // Check the structure of your response
+            // If the API returns data directly, use response
+            // If it returns with a 'data' property, use response.data
+            const blogsData = response.results || response;
+
+            console.log({response, blogsData});
+            
+            setBlogs(blogsData);
+            setIsLoading(false);
+        } catch (err) {
+            setError('Failed to fetch jobs');
+            setIsLoading(false);
+            console.error(err);
+        }
+    }
+
+    useEffect(() => {
+        getAllBlogs();
+    }, [])
 
   return (
     <div>
@@ -24,7 +61,7 @@ export default function Page() {
                     <h1 className='text-[#101750] md:text-[32px] text-[22px] font-bold'>Blogs</h1>
                     <p className='md:text-[15px] text-[12px]'>Home / <span className='text-[#FF0200]'>Blog</span></p>
                 </div>
-                <button className='border py-[6px] px-3 rounded-[4px] border-gray-400 text-gray-500 hover:bg-gray-200 md:text-[15px] text-[12px]' onClick={() => router.push('/blog/post-blog')}>Post Blog</button>
+                {/* <button className='border py-[6px] px-3 rounded-[4px] border-gray-400 text-gray-500 hover:bg-gray-200 md:text-[15px] text-[12px]' onClick={() => router.push('/blog/post-blog')}>Post Blog</button> */}
             </div>
         </div>
         <div className='pt-[4rem] max-w-[1600px] mx-auto md:px-[4rem] px-[1.2rem]'>
@@ -57,7 +94,7 @@ export default function Page() {
                 <img src="./images/Study-Office-Administration.jpg" className='md:w-[400px] h-[400px] object-cover rounded-[10px]' alt="" />
             </div>
             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-[4rem] border-t pt-[4rem]'>
-                {
+                {/* {
                     [1,2,3,4,5].map(x => (
                         <div className='pb-4 h-[280px] cursor-pointer' key={x} onClick={() => router.push(`/blog/12`)}>
                             <img src="./images/Study-Office-Administration.jpg" alt="" className='w-full h-[180px] object-cover'/>
@@ -67,12 +104,11 @@ export default function Page() {
                                 <p className='text-[12px] flex items-center gap-1 text-gray-500'> <BsClock /> {format("12-06-2021")}</p>
                             </div>
                             <p className='text-[12px] text-gray-500 flex items-center gap-1'> <BiUser /> John Doe</p>
-                            {/* <p className='text-[12px] text-gray-500 mt-3'>{blog.description}</p> */}
-                            {/* <button className='border border-gray-500 text-[12px] text-gray-500 px-2 py-1 mt-3'>Read More</button> */}
                             </div>
                         </div>
                     ))
-                }
+                } */}
+                <BlogComponent  />
             </div>
         </div>
         <Footer />

@@ -40,25 +40,25 @@ const SideNav = ({toggle}: ToggleProps) => {
           <Link href='/' className={pathname === '/my-properties' ? `flex items-center justify-between py-[12px] bg-[#FF0200] pl-[15px] hover:bg-[#FF0200] hover:text-white ml-2` :`hover:bg-[#FF0200] ml-2 pl-[15px] flex items-center justify-between py-[12px]`}>
             <div className="flex items-center gap-2">
               <BiHome />
-              <p className="">Home</p>
+              <p>Home</p>
             </div>
           </Link>
           <Link href='/dashboard' className={pathname === '/dashboard' ? `flex items-start justify-start py-[12px] bg-[#FF0200] pl-[15px] hover:bg-[#FF0200] hover:text-white ml-2` :`hover:bg-[#FF0200] ml-2 pl-[15px] flex items-center justify-start py-[12px]`}>
             <div className="flex items-center gap-2">
               <LuLayoutGrid />
-              <p className="">Dashboard</p>
+              <p>Dashboard</p>
             </div>
           </Link>
           <Link href='/my-profile' className={pathname === '/my-profile' ? `flex items-center justify-between py-[12px] bg-[#FF0200] pl-[15px] hover:bg-[#FF0200] hover:text-white ml-2` :`hover:bg-[#FF0200] ml-2 pl-[15px] flex items-center justify-between py-[12px]`}>
             <div className="flex items-center gap-2">
               <HiOutlineUserCircle />
-              <p className="">My Profile</p>
+              <p>My Profile</p>
             </div>
           </Link>
           <Link href='/account-settings' className={pathname === '/account-settings' ? `flex items-center justify-between py-[12px] bg-[#FF0200] pl-[15px] hover:bg-[#FF0200] hover:text-white ml-2` :`hover:bg-[#FF0200] ml-2 pl-[15px] flex items-center justify-between py-[12px]`}>
             <div className="flex items-center gap-2">
               <IoSettingsOutline />
-              <p className="">Settings</p>
+              <p>Settings</p>
             </div>
           </Link>
           {/* Rest of the navigation menu items remain the same */}

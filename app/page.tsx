@@ -14,7 +14,7 @@ import Navbar from './components/nav-bar/Navbar';
 import ServicesCard from './components/services-card/ServicesCard';
 import Footer from './components/footer/Footer';
 import NewlyPostedJobsComponent from './components/newly-posted-jobs-component/NewlyPostedJobsComponent';
-import BlogCard from './components/blog-card/BlogCard';
+import BlogComponent from './components/blog-component/BlogComponent';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -300,11 +300,7 @@ export default function Home() {
           {/* <button className='text-[12px] border rounded-full md:px-4 px-2 py-2 md:w-[120px] w-[110px]' onClick={() => router.push('/blog/post-blog')}>Create a blog</button> */}
         </div>
         <div className='grid md:grid-cols-4 grid-cols-2 md:gap-2 gap-4 md:w-[85%] w-[95%] mx-auto mt-8'>
-          {
-            blogArray.map((blog, index) => (
-              <BlogCard blog={blog} key={index} />
-            )).slice(0, 4)
-          }
+          <BlogComponent  />
         </div>
         <div className='flex items-center justify-center mt-9'>
           <button className='text-[12px] border rounded-full px-4 py-2 flex items-center gap-4' onClick={() => router.push('/blog')}>
