@@ -22,8 +22,8 @@ export default function Page() {
     const [loading, setLoading] = useState<boolean>(false)
     const roleArray = [
         { value: 'user', label: 'User' },
-        { value: 'school_admin', label: 'School Aadmin' },
-        { value: 'main_admin', label: 'Main Aadmin' }
+        { value: 'school_owner', label: 'School Owner' },
+        // { value: 'main_admin', label: 'Main Aadmin' }
     ]
     const [registerData, setRegisterData] = useState({
         email: '',
@@ -97,7 +97,7 @@ export default function Page() {
                 </div>
                 {
                     dropDown === 'user-type' && (
-                        <div className='absolute z-10 top-[65px] bg-[#fff] rounded-[8px] w-full border border-[#C2C5E1] h-[120px] overflow-y-auto'>
+                        <div className='absolute z-10 top-[65px] bg-[#fff] rounded-[8px] w-full border border-[#C2C5E1] h-[80px] overflow-y-auto'>
                             {
                                 roleArray.map((role, index) => (
                                     <div key={index} onClick={() => {

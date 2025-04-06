@@ -11,8 +11,10 @@ import { AxiosError } from 'axios'
 import Alert from '../components/alert/Alert'
 import 'react-quill-new/dist/quill.snow.css';
 import { formats, modules } from "../utils/quillEditorConfig"
+import Cookies from 'js-cookie';
 
 import dynamic from 'next/dynamic'
+// import { LuImage } from 'react-icons/lu'
 
 const ReactQuill = dynamic(() => import("react-quill-new"), {
     ssr: false,
@@ -26,6 +28,7 @@ export default function Page() {
     const [dropDown, setDropDown] = useState<string>('')
     const [msg, setMsg] = useState<string>('')
     const [alertType, setAlertType] = useState<string>('')
+    // const [logoPreview, setLogoPreview] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const [description, setDescription] = useState<string>('')
     const salaryRangeArray = [
@@ -35,11 +38,15 @@ export default function Page() {
         { salary_lower_range: 80000, salary_upper_range: 90000, label: '80,000 to 90,000' },
         { salary_lower_range: 100000, salary_upper_range: 110000, label: '100,000 to 110,000' }
     ]
+    // const [fileUploadLoader, setFileUploadLoader] = useState<boolean>(false)
+    const token = Cookies.get('token')
     const [jobData, setJobData] = useState({
         salary_lower_range: 0,
         salary_upper_range: 0,
         salary: '',
         location: '',
+        title: '',
+        cover_image: '',
         // lga: '',
         // landmark: '',
     })
@@ -53,7 +60,7 @@ export default function Page() {
     };
 
     const handleSubmit = async () => {
-        console.log({ salary_lower_range:jobData.salary_lower_range, salary_upper_range:jobData.salary_upper_range, location:jobData.location, description });
+        console.log({ salary_lower_range:jobData.salary_lower_range, salary_upper_range:jobData.salary_upper_range, location:jobData.location, description, jobData });
         
         try {
             if(!jobData.salary || !description || !jobData.location) {
@@ -82,6 +89,54 @@ export default function Page() {
         }
     }
 
+    // async function handleFileUpload(file: File) {
+    //     console.log("Upload Profile Image ..... ");
+        
+    //     const maxSizeInBytes = 5 * 1024 * 1024; // 5MB in bytes
+    //     if(file.size > maxSizeInBytes){
+    //         setMsg("File size should not exceed 5MB");
+    //         setAlertType('error');
+    //         return;
+    //     }
+        
+    //     setFileUploadLoader(true);
+    //     const formData = new FormData();
+    //     formData.append('media', file);
+    //     formData.append('media_type', 'photo');
+    
+    //     console.log(`Bearer ${token}`);
+    //     try {
+    //       const res = await fetch(`https://brikwabe.onrender.com/media/upload`, {
+    //         method: "POST",
+    //         body: formData,
+    //         headers : {
+    //           'Authorization': `Bearer ${token}`,
+    //         }
+    //       });
+          
+    //       const data = await res.json();
+    //       console.log(res, data);
+    //       setFileUploadLoader(false);
+    //       setMsg("File uploaded successfully");
+    //       setAlertType('success');
+    //       setJobData(prev => ({
+    //         ...prev,
+    //         cover_image: data.data.id
+    //       }))
+    //       console.log(data.data.cover_image.media);
+    //       return
+    //     //   setLogoPreview(data.data.media);
+    //     } catch (error: unknown) {
+    //       if (error instanceof AxiosError) {
+    //           setMsg(error.response?.data?.message || 'Error uploading file');
+    //       } else {
+    //           setMsg('An unexpected error occurred.');
+    //       }
+    //       setFileUploadLoader(false);
+    //       setAlertType('error');
+    //     }
+    //   }
+
   return (
     <div>
         {msg && <Alert alertType={alertType} msg={msg} setMsg={setMsg} />}
@@ -103,6 +158,10 @@ export default function Page() {
                 <p>School phone number</p>
                 <input type="text" placeholder='081-123-123-12' className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
             </div> */}
+            <div className='mt-6'>
+                <p>Job Title</p>
+                <input type="text" onChange={handleInputChange} placeholder='Software Engineer' name="title" className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
+            </div>
             <div className='w-full mt-6 relative'>
                 <p>Salary Range</p>
                 <div onClick={() => setDropDown(dropDown === 'user-type' ? '' : 'user-type' )} className='border border-[#C2C5E1] h-[42px] pl-2 rounded-[6px] pr-2 flex items-center justify-between cursor-pointer'>
@@ -150,7 +209,13 @@ export default function Page() {
                         <LuImage className='text-[20px] mb-2'/>
                         <p>Choose file to Upload</p>
                     </div>
-                    <input type="file" className='w-full h-full opacity-0 relative z-20 cursor-pointer' />
+                    <input type="file"
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                            if (e.target.files && e.target.files.length > 0) {
+                              handleFileUpload(e.target.files[0]);
+                            }
+                          }}
+                        className='w-full h-full opacity-0 relative z-20 cursor-pointer' />
                 </div>
             </div> */}
             {
@@ -161,6 +226,18 @@ export default function Page() {
                 :
                 <button className='w-full bg-[#FF0200] text-white py-[0.4rem] mt-8 rounded-[6px]' onClick={handleSubmit}>Save</button>
             }
+
+            {/* {
+              fileUploadLoader &&
+              <div style={{position:'fixed', width:'100%', left:'0', top:'0', zIndex:'9999', display:'flex', alignItems:'center', justifyContent:'center', height:'100vh', background:"rgba(18, 18, 18, 0.8)" }}>
+                  <div className="bg-white" style={{ borderRadius:'10px' }}>
+                      <div className="flex items-center justify-between mt-[1rem] px-[2rem] mb-[2rem] flex-col" style={{ padding:'2rem', textAlign:'center' }} >
+                          <img src='./images/loader.gif' style={{ height:'40px', width:'40px', margin:'12px auto 30px' }} />
+                          <p className='text-gray-500 text-[15px] mb-2 text-center'>File Upload in progress, please do not refresh the page</p>
+                      </div>
+                  </div>
+              </div>
+            } */}
         </div>
         <Footer />
     </div>

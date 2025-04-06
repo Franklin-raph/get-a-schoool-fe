@@ -60,7 +60,7 @@ export default function Page() {
   const getAllJobs = async () => {
       try {
           setIsLoading(true);
-          const response = await get('/job-posts/');
+          const response = await get('/job-posts?my_jobs=true');
           
           // Check the structure of your response
           // If the API returns data directly, use response
