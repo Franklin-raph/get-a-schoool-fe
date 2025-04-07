@@ -224,7 +224,7 @@ export default function Page() {
                     <BtnLoader />
                 </div>
                 :
-                <button className='w-full bg-[#FF0200] text-white py-[0.4rem] mt-8 rounded-[6px]' onClick={handleSubmit}>Save</button>
+                <button className='w-full bg-[#FF0200] text-white py-[0.4rem] mt-8 rounded-[6px]' onClick={handleSubmit}>Post</button>
             }
 
             {/* {
