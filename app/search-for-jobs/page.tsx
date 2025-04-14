@@ -7,6 +7,7 @@ import { format } from 'timeago.js';
 import { BiUser } from 'react-icons/bi'
 import Footer from '../components/footer/Footer'
 import { get } from '../utils/axiosHelpers';
+import { useRouter } from 'next/navigation';
 
 // Define a type for your job posts
 interface JobPost {
@@ -26,6 +27,7 @@ export default function Page() {
     const [jobs, setJobs] = useState<JobPost[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const router = useRouter();
 
     const getAllJobs = async () => {
         try {
@@ -72,22 +74,22 @@ export default function Page() {
                     <p className='md:text-[15px] text-[12px]'>Home / <span className='text-[#FF0200]'>Jobs</span></p>
                 </div>
             </div>
-            <div className='pb-[4rem] max-w-[1600px] mx-auto px-[4rem]'>
-                <div className='grid grid-cols-4 gap-5 mt-[5rem]'>
+            <div className='pb-[4rem] max-w-[1600px] mx-auto md:px-[4rem] px-[2rem]'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-[5rem] '>
                     {jobs.length > 0 ? (
                         jobs.map((job, index) => (
-                            <div className='pb-4 h-[250px] cursor-pointer' key={job.id || index}>
+                            <div onClick={() => router.push(`/search-for-jobs/${job.id}`)} className='pb-4 cursor-pointer' key={job.id || index}>
                                 <img src="./images/Study-Office-Administration.jpg" alt="" className='w-full h-[180px] object-cover'/>
                                 <div className='pt-3'>
-                                    <div className='flex items-center justify-between'>
-                                        <p className='font-[500]'>{job.description}</p>
+                                    <div className='flex items-center justify-between mb-4'>
+                                        <p className='text-[12px] text-gray-500 flex items-center gap-1'> 
+                                            <BiUser /> {job?.user?.full_name}
+                                        </p>
                                         <p className='text-[12px] flex items-center gap-1 text-gray-500'> 
                                             <BsClock /> {format(job.created_at)}
                                         </p>
                                     </div>
-                                    <p className='text-[12px] text-gray-500 flex items-center gap-1'> 
-                                        <BiUser /> {job?.user?.full_name}
-                                    </p>
+                                    <div dangerouslySetInnerHTML={{ __html: job.description }} />
                                 </div>
                             </div>
                         ))
