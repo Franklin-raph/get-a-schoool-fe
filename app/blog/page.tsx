@@ -4,9 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../components/nav-bar/Navbar'
 import BlogComponent from '../components/blog-component/BlogComponent'
 import { MdAlarm } from 'react-icons/md'
-import { BsClock } from 'react-icons/bs'
-import { format } from 'timeago.js';
-import { BiDislike, BiLike, BiUser } from 'react-icons/bi'
+import { BiDislike, BiLike } from 'react-icons/bi'
 import Footer from '../components/footer/Footer'
 import { TfiCommentAlt } from 'react-icons/tfi';
 import { useRouter } from 'next/navigation';
@@ -23,7 +21,7 @@ interface BlogPost {
 export default function Page() {
 
     const router = useRouter()
-    const [blogs, setBlogs] = useState<BlogPost[]>([]);
+    // const [blogs, setBlogs] = useState<BlogPost[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -39,10 +37,10 @@ export default function Page() {
 
             console.log({response, blogsData});
             
-            setBlogs(blogsData);
+            // setBlogs(blogsData);
             setIsLoading(false);
         } catch (err) {
-            setError('Failed to fetch jobs');
+            setError('Failed to fetch blogs');
             setIsLoading(false);
             console.error(err);
         }
@@ -51,6 +49,18 @@ export default function Page() {
     useEffect(() => {
         getAllBlogs();
     }, [])
+
+
+    // Render loading state
+    if (isLoading) {
+        return <div className='ww-[100vw] h-[100vh] flex items-center justify-center'>Loading blogs...</div>
+    }
+
+    // Render error state
+    if (error) {
+        return <div className='ww-[100vw] h-[100vh] flex items-center justify-center'>Error: {error}</div>
+    }
+    
 
   return (
     <div>
@@ -78,7 +88,7 @@ export default function Page() {
                     <div className='flex items-center gap-6 text-gray-700 mt-5 md:text-[15px] text-[13px]'>
                         <div className='flex items-center gap-1'>
                             <TfiCommentAlt className='cursor-pointer'/>
-                            <p>22</p>
+                            <p>2,213</p>
                         </div>
                         <div className='flex items-center gap-1'>
                             <BiLike className='cursor-pointer'/>
@@ -94,20 +104,6 @@ export default function Page() {
                 <img src="./images/Study-Office-Administration.jpg" className='md:w-[400px] h-[400px] object-cover rounded-[10px]' alt="" />
             </div>
             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-[4rem] border-t pt-[4rem]'>
-                {/* {
-                    [1,2,3,4,5].map(x => (
-                        <div className='pb-4 h-[280px] cursor-pointer' key={x} onClick={() => router.push(`/blog/12`)}>
-                            <img src="./images/Study-Office-Administration.jpg" alt="" className='w-full h-[180px] object-cover'/>
-                            <div className='pt-3'>
-                            <div className='flex items-start justify-between flex-col md:flex-row md:items-center'>
-                                <p className='font-[500]'>Lorem ipsum dolor sit</p>
-                                <p className='text-[12px] flex items-center gap-1 text-gray-500'> <BsClock /> {format("12-06-2021")}</p>
-                            </div>
-                            <p className='text-[12px] text-gray-500 flex items-center gap-1'> <BiUser /> John Doe</p>
-                            </div>
-                        </div>
-                    ))
-                } */}
                 <BlogComponent  />
             </div>
         </div>
