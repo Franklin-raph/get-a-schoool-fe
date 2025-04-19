@@ -10,13 +10,13 @@ import { TfiCommentAlt } from 'react-icons/tfi';
 import { useRouter } from 'next/navigation';
 import { get } from '../utils/axiosHelpers'
 
-interface BlogPost {
-    image: string;
-    title: string;
-    description: string;
-    author: string;
-    date: string;
-}
+// interface BlogPost {
+//     image: string;
+//     title: string;
+//     description: string;
+//     author: string;
+//     date: string;
+// }
 
 export default function Page() {
 

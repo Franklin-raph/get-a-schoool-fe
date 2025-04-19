@@ -11,7 +11,6 @@ import { AxiosError } from 'axios'
 import Alert from '../components/alert/Alert'
 import 'react-quill-new/dist/quill.snow.css';
 import { formats, modules } from "../utils/quillEditorConfig"
-import Cookies from 'js-cookie';
 
 import dynamic from 'next/dynamic'
 // import { LuImage } from 'react-icons/lu'
