@@ -3,8 +3,6 @@
 import React, { useEffect, useState } from 'react'
 import SideNav from '../components/side-nav/SideNav'
 import TopNav from '../components/top-nav/TopNav'
-import { LuHouse } from 'react-icons/lu';
-import { PiMoneyWavyLight } from 'react-icons/pi';
 import { useRouter } from 'next/navigation';
 import { get, remove } from '../utils/axiosHelpers';
 import { format } from 'timeago.js';
@@ -116,14 +114,14 @@ export default function Page() {
                 <BsPostcard className='text-[30px] mb-5'/>
                 <p className='text-[18px] text-[#212121] font-[500]'> <span>Total Jobs Posted:</span> {jobs.length} </p>
               </div>
-              <div className='bg-[#F9F9F9] p-5 rounded-[10px]'>
+              {/* <div className='bg-[#F9F9F9] p-5 rounded-[10px]'>
                 <PiMoneyWavyLight className='text-[30px] mb-5'/>
                 <p className='text-[18px] text-[#212121] font-[500]'> <span>Total Posts:</span> 123</p>
               </div>
               <div className='bg-[#F9F9F9] p-5 rounded-[10px]'>
                 <LuHouse className='text-[30px] mb-5'/>
                 <p className='text-[18px] text-[#212121] font-[500]'> <span>Total Posts:</span> 123</p>
-              </div>
+              </div> */}
             </div>
           </section>
           <section className="w-[95%] mx-auto md:px-[1rem] px-[0px] pb-[80px]">

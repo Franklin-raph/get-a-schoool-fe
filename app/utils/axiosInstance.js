@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 const axiosInstance = axios.create({
     baseURL: `https://brikwabe.onrender.com`,
-    timeout: 10000, // 10 seconds,
+    timeout: 30000, // 10 seconds,
 });
 
 // Requet Interceptor

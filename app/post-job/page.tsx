@@ -28,7 +28,6 @@ export default function Page() {
     const [dropDown, setDropDown] = useState<string>('')
     const [msg, setMsg] = useState<string>('')
     const [alertType, setAlertType] = useState<string>('')
-    // const [logoPreview, setLogoPreview] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const [description, setDescription] = useState<string>('')
     const salaryRangeArray = [
@@ -63,19 +62,23 @@ export default function Page() {
         console.log({ salary_lower_range:jobData.salary_lower_range, salary_upper_range:jobData.salary_upper_range, location:jobData.location, description, jobData });
         
         try {
-            if(!jobData.salary || !description || !jobData.location) {
+            if(!jobData.title || !jobData.salary || !description || !jobData.location) {
                 setMsg('Please fill in all fields.');
                 setAlertType('error');
                 return
-            }else{
-                setLoading(true)
-                const response = await post('/job-posts/', { salary_lower_range:jobData.salary_lower_range, salary_upper_range:jobData.salary_upper_range, location:jobData.location, description })
-                setMsg('Job posted successfully.');
-                setAlertType('success');
-                console.log(response)
             }
-            console.log(jobData);
-            
+
+            // Check if description is less than 200 characters
+            if(description.length < 200) {
+                setMsg('Job description must be at least 200 characters.');
+                setAlertType('error');
+                return;
+            }
+            setLoading(true)
+            const response = await post('/job-posts/', { salary_lower_range:jobData.salary_lower_range, salary_upper_range:jobData.salary_upper_range, location:jobData.location, description, title:jobData.title })
+            setMsg('Job posted successfully.');
+            setAlertType('success');
+            console.log(response)
             setLoading(false)
         } catch (error: unknown) {
             if (error instanceof AxiosError) {

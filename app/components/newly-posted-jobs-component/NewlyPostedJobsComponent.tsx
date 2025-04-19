@@ -32,10 +32,6 @@ const NewlyPostedJobsComponent = () => {
         try {
             setIsLoading(true);
             const response = await get('/job-posts/');
-            
-            // Check the structure of your response
-            // If the API returns data directly, use response
-            // If it returns with a 'data' property, use response.data
             const jobsData = response.results || response;
 
             console.log({response, jobsData});

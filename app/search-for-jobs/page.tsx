@@ -57,12 +57,12 @@ export default function Page() {
 
     // Render loading state
     if (isLoading) {
-        return <div>Loading jobs...</div>
+        return <div className='ww-[100vw] h-[100vh] flex items-center justify-center'>Loading jobs...</div>
     }
 
     // Render error state
     if (error) {
-        return <div>Error: {error}</div>
+        return <div className='ww-[100vw] h-[100vh] flex items-center justify-center'>Error: {error}</div>
     }
 
     return (
@@ -78,9 +78,9 @@ export default function Page() {
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-[5rem] '>
                     {jobs.length > 0 ? (
                         jobs.map((job, index) => (
-                            <div onClick={() => router.push(`/search-for-jobs/${job.id}`)} className='pb-4 cursor-pointer' key={job.id || index}>
-                                <img src="./images/Study-Office-Administration.jpg" alt="" className='w-full h-[180px] object-cover'/>
-                                <div className='pt-3'>
+                            <div onClick={() => router.push(`/search-for-jobs/${job.id}`)} className='border border-gray rounded-[10px] pb-4 cursor-pointer' key={job.id || index}>
+                                <img src="./images/jobimg.jpg" alt="" className='w-full h-[180px] object-cover'/>
+                                <div className='px-3 pt-3'>
                                     <div className='flex items-center justify-between mb-4'>
                                         <p className='text-[12px] text-gray-500 flex items-center gap-1'> 
                                             <BiUser /> {job?.user?.full_name}
@@ -89,7 +89,7 @@ export default function Page() {
                                             <BsClock /> {format(job.created_at)}
                                         </p>
                                     </div>
-                                    <div dangerouslySetInnerHTML={{ __html: job.description }} />
+                                    <p className='text-[14px]'> <span className='text-gray-500'>Position:</span> {job.title ? job.title : "Nill"}</p>
                                 </div>
                             </div>
                         ))

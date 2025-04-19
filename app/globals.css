@@ -102,7 +102,7 @@
 
 .loader {
   border: 2px solid #f3f3f3; /* Light grey */
-  border-top: 2px solid #2E8B57; /* Blue */
+  border-top: 2px solid #FF0200; /* Red */
   border-radius: 50%;
   width: 20px;
   margin: 0 auto;

@@ -13,37 +13,31 @@ import { useParams, useRouter } from 'next/navigation';
 interface JobPost {
     id?: number;
     title?: string;
-    description?: string;
+    description?: string | TrustedHTML;
     created_at: string;
-    user?: {
-        full_name: string;
-        // other properties of profile_pic if needed
-      };
-    // Add other properties as needed
+    salary_lower_range?: number;
+    salary_upper_range?: number;
+    location?: string;
 }
 
 export default function Page() {
     // Specify the type for jobs state
-    const [jobs, setJobs] = useState<JobPost[]>([]);
+    const [jobs, setJobs] = useState<JobPost>({} as JobPost);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
-    const { job } = useParams()
+    const { job } = useParams();
 
     const getAllJobs = async () => {
         try {
             setIsLoading(true);
             const response = await get(`/job-posts/${job}/`);
             
-            // Check the structure of your response
-            // If the API returns data directly, use response
-            // If it returns with a 'data' property, use response.data
-            const jobsData = response.results || response;
+            const jobData = response.results || response;
 
-            console.log({response, jobsData});
+            console.log({response, jobData});
             
-            
-            setJobs(jobsData);
+            setJobs(jobData);
             setIsLoading(false);
         } catch (err) {
             setError('Failed to fetch job');
@@ -58,12 +52,12 @@ export default function Page() {
 
     // Render loading state
     if (isLoading) {
-        return <div>Loading job...</div>
+        return <div className='w-[100vw] h-[100vh] flex items-center justify-center'>Loading job...</div>
     }
 
     // Render error state
     if (error) {
-        return <div>Error: {error}</div>
+        return <div className='w-[100vw] h-[100vh] flex items-center justify-center'>Error: {error}</div>
     }
 
     return (
@@ -75,7 +69,24 @@ export default function Page() {
                     <p className='md:text-[15px] text-[12px]'>Home / <span className='text-[#FF0200]'>Job</span></p>
                 </div>
             </div>
-            
+            <div className='max-w-[1600px] mx-auto md:px-[4rem] px-[1.2rem] py-[2rem]'>
+                <div>
+                    <p className='text-gray-500 text-[14px]'>Position:</p>
+                    <p className='text-[14px] font-bold'> {jobs?.title ? jobs?.title : "Nill"}</p>
+                </div>
+                <div className='my-2'>
+                    <p className='text-gray-500 text-[14px]'>Salary Range:</p>
+                    <p className='text-[14px] font-bold'> ₦{jobs?.salary_lower_range?.toLocaleString()} - ₦{jobs?.salary_upper_range?.toLocaleString()}</p>
+                </div>
+                <div>
+                    <p className='text-gray-500 text-[14px]'>Location:</p>
+                    <p className='text-[14px] font-bold'> {jobs?.location} </p>
+                </div>
+                <div className='mt-4'>
+                    <p className='text-gray-500 text-[14px]'>Description:</p>
+                    <div className='text-[14px]' dangerouslySetInnerHTML={{ __html:jobs?.description as string }} />
+                </div>
+            </div>
             <Footer />
         </div>
     )
