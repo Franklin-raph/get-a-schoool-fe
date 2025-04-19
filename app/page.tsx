@@ -51,44 +51,6 @@ export default function Home() {
     }
   ];
 
-  const blogArray = [
-    {
-      image: "./images/hire-staff.jpeg",
-      title: "School Life",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque.",
-      author: "John Doe",
-      date: "2022-12-12"
-    },
-    {
-      image: "./images/child-girl-schoolgirl-elementary-school-student-123686003.webp",
-      title: "School Life",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque.",
-      author: "John Doe",
-      date: "2025-01-12"
-    },
-    {
-      image: "./images/Study-Office-Administration.jpg",
-      title: "School Life",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque.",
-      author: "John Doe",
-      date: "2023-12-12"
-    },
-    {
-      image: "./images/School-Kids-scaled.jpg",
-      title: "School Life",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque.",
-      author: "John Doe",
-      date: "2024-12-12"
-    },
-    {
-      image: "./images/School-Kids-scaled.jpg",
-      title: "School Life",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus nec pulvinar facilisis, mauris ligula ultricies velit, at consectetur risus ligula sed neque.",
-      author: "John Doe",
-      date: "2023-2-12"
-    }
-  ]
-
   const faqItems = [
     {
       question: 'What is Next.js?',

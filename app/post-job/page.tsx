@@ -37,8 +37,6 @@ export default function Page() {
         { salary_lower_range: 80000, salary_upper_range: 90000, label: '80,000 to 90,000' },
         { salary_lower_range: 100000, salary_upper_range: 110000, label: '100,000 to 110,000' }
     ]
-    // const [fileUploadLoader, setFileUploadLoader] = useState<boolean>(false)
-    const token = Cookies.get('token')
     const [jobData, setJobData] = useState({
         salary_lower_range: 0,
         salary_upper_range: 0,

@@ -2,12 +2,9 @@
 
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/nav-bar/Navbar'
-import { BsClock } from 'react-icons/bs'
-import { format } from 'timeago.js';
-import { BiUser } from 'react-icons/bi'
 import Footer from '../../components/footer/Footer'
 import { get } from '../../utils/axiosHelpers';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 
 // Define a type for your job posts
 interface JobPost {
@@ -25,7 +22,6 @@ export default function Page() {
     const [jobs, setJobs] = useState<JobPost>({} as JobPost);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const router = useRouter();
     const { job } = useParams();
 
     const getAllJobs = async () => {

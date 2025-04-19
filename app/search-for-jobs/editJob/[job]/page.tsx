@@ -6,7 +6,7 @@ import Footer from '../../../components/footer/Footer'
 // import { useRouter } from 'next/navigation'
 import { BiChevronDown } from 'react-icons/bi'
 import BtnLoader from '../../../components/btnLoader/BtnLoader'
-import { get, patch, post } from '../../../utils/axiosHelpers'
+import { get, patch } from '../../../utils/axiosHelpers'
 import { AxiosError } from 'axios'
 import Alert from '../../../components/alert/Alert'
 import 'react-quill-new/dist/quill.snow.css';

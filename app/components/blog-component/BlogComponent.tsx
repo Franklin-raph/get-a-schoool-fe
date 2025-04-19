@@ -64,9 +64,9 @@ export default function BlogCard() {
   return (
     <div>
         {
-          blogs?.map(blog => (
+          blogs?.map((blog, index) => (
     
-            <div className='border rounded-[10px] pb-4 h-[350px] overflow-y-scroll'>
+            <div key={index} className='border rounded-[10px] pb-4 h-[350px] overflow-y-scroll'>
                 <img src={blog.image} alt="" className='w-full h-[180px] rounded-t-[10px] object-cover'/>
                 <div className='px-3 pt-3'>
                 <div className='flex sm:items-center justify-between flex-col sm:flex-row items-start'>
