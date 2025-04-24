@@ -20,7 +20,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { RxMinus, RxPlus } from 'react-icons/rx';
 import { PiDotDuotone, PiPhoneCall } from 'react-icons/pi';
-import { IoChatboxEllipsesOutline, IoNotificationsOutline, IoVideocamOutline } from 'react-icons/io5';
+import { IoNotificationsOutline } from 'react-icons/io5';
 import { FaRegMessage } from 'react-icons/fa6';
 import Marquee from 'react-fast-marquee';
 // import { get } from './utils/axiosHelpers';
@@ -286,6 +286,16 @@ export default function Home() {
             There are thousands of parents, teachers, employees, guardians, aunties, uncles, elder brothers and sisters searching for the best school in GetASchool.
           </p>
           <button className="py-[10px] px-[20px] bg-[#FF0200] mt-[3rem] rounded-[8px]" onClick={() => router.push('/sign-up')}>Get Started</button>
+        </div>
+      </section>
+
+      <section>
+        <div className='text-left mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto'>
+          <p className='md:text-[35px] text-[20px] font-[600] mb-[-1px] text-[#FF0200]'>Our Advisors</p>
+          {/* <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p> */}
+        </div>
+        <div className='grid md:grid-cols-3 gap-4 w-[85%] mx-auto mt-8'>
+          {/* <ServicesCard /> */}
         </div>
       </section>
 

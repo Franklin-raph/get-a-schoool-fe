@@ -23,7 +23,7 @@ export default function Footer() {
             </div>
             <p className="text-[#777575] text-[13px]">
               Welcome to the Birikwa job hub.
-              This is a general forum for connecting all users. Questions, discussions, and posts relevant to jobs are accommodated in this forum from both employers and employees. To start a discussion or post a question about a job or related discussions, use the "Start Conversation" button. <br />
+              This is a general forum for connecting all users. Questions, discussions, and posts relevant to jobs are accommodated in this forum from both employers and employees. To start a discussion or post a question about a job or related discussions, use the &quot;Start Conversation&quot; button. <br />
               We strive to give you the best as you are our ultimate priority.
             </p>
           </div>
