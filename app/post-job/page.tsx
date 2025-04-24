@@ -226,6 +226,7 @@ export default function Page() {
                 :
                 <button className='w-full bg-[#FF0200] text-white py-[0.4rem] mt-8 rounded-[6px]' onClick={handleSubmit}>Post</button>
             }
+            <p className='italic text-[14px] mt-5'>Note: While we strive to give you the best user experience, in order to get the best of Birikwa; please ensure that your posts, comments, etc doesn&apos;t violate Birikwa policy</p>
 
             {/* {
               fileUploadLoader &&

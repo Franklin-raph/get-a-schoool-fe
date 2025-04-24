@@ -39,7 +39,7 @@ const NewlyPostedJobsComponent = () => {
             setJobs(jobsData);
             setIsLoading(false);
         } catch (err) {
-            setError('Failed to fetch jobs');
+            setError('Hello, We are currently unable to display any job postings due to a system upgrade; please be patient. Because our developers are already working on resolving this issue, we would appreciate your patience. You can always check back later. Thank you. ');
             setIsLoading(false);
             console.error(err);
         }

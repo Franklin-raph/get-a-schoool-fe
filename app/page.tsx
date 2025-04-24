@@ -32,20 +32,20 @@ export default function Home() {
 
   const heroContent = [
     {
-      heroText: 'Lorem Ipsum',
-      servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
+      heroText: 'Get the best teachers which specialise in (Featured Different Job Categories)',
+      // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
       image: "./images/child-girl-schoolgirl-elementary-school-student-123686003.webp",
       buttonText: "Get hired by a school"
     },
     {
-      heroText: 'Lorem Ipsum Dolor',
-      servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
+      heroText: 'Get your school to reach thousands of Peoples and Parents (Want to Advertize????)',
+      // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
       image: "./images/School-Kids-scaled.jpg",
       buttonText: "Hire a staff now"
     },
     {
-      heroText: 'Lorem Ipsum Dolor Cannabis',
-      servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
+      heroText: 'Add your school to be among the top viewed schools in your area (ADD YOUR SCHOOL TO OUR FOOTPAGE GALLERY) ',
+      // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
       image: "./images/Young-student-writing-in-notebook-in-school.webp",
       buttonText: "Schedule a seminar for your staff"
     }
@@ -53,16 +53,68 @@ export default function Home() {
 
   const faqItems = [
     {
-      question: 'What is Next.js?',
-      answer: 'Next.js is a React framework that enables functionality such as server-side rendering and generating static websites.',
+      question: 'Where can I get a teaching job?',
+      answer: 'By clicking on Birikwa.com, sign in or sign up (for new users) and apply for thousands of teaching jobs in Birikwa.',
     },
     {
-      question: 'What is Tailwind CSS?',
-      answer: 'Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces.',
+      question: 'Are teachers always needed in Birikwa?',
+      answer: 'Teachers are always needed by employers because many employers are looking for good or better teachers to employ or replace any nonchalant teacher in their school.',
     },
     {
-      question: 'How do I use TypeScript with Next.js?',
-      answer: 'You can create a Next.js project with TypeScript by using the `--typescript` flag when setting up your project.',
+      question: 'How do you find the best teachers?',
+      answer: 'As an employer, we are assured of getting the best and soundest teachers close to you; just make a job post today and get many applicants to your mail address.',
+    },
+    {
+      question: 'Is the Birikwa service free for me?',
+      answer: "For now, Birikwa's services are free for all to have full access to; from 01/01/2023, Birikwa's employers will have to pay a monthly or annual subscription to maintain full access.",
+    },
+    {
+      question: 'How do I get a job in Birikwa?',
+      answer: 'As an employee, you need to scroll down to the latest job posts or click on the "Hub" page to see posts and post yours.',
+    },
+    {
+      question: 'How do I update my profile?',
+      answer: 'Login, click on your "name" showing at the top right, then click on "update profile" and get your profile updated.',
+    },
+    {
+      question: 'How do I get my account verified?',
+      answer: 'For now, verification is for employers. You need to click on your profile, then click on update profile and scroll down to "get verified" and enter your registration number with OPSAN/CAC/Valid Certificate to get verified.',
+    },
+    {
+      question: 'Why should my account be verified?',
+      answer: 'Your account being verified shows that Birikwa confirms everything about your account and business or as a person is legit and verifiable.',
+    },
+    {
+      question: 'How many jobs can I apply for in a day?',
+      answer: 'As an employee, you can apply to as many jobs as you can in a day without any limit.',
+    },
+    {
+      question: 'How many job posts can I post a day?',
+      answer: 'As an employer, you can post as many jobs as you can in a day without any limit.',
+    },
+    {
+      question: 'How do I know I have gotten a job offer?',
+      answer: 'As an employee, after applying for a job, the employer is left to review your CV or resume and get in contact with you through your phone number or email.',
+    },
+    {
+      question: 'How do I see who applied for my job post?',
+      answer: 'As an employer, after posting a job, the employees will click on the apply button (you as an employer will not see this apply button) to send you their CV/resume directly to your email address provided in your profile',
+    },
+    {
+      question: 'When can I post a job offer?',
+      answer: 'As an employer, you can post job offers 24/7 without any limitations.',
+    },
+    {
+      question: 'Can I change the email I used for my job post?',
+      answer: "Of course, you can change the email used to get applicants' responses at any time and any day.",
+    },
+    {
+      question: 'Will parents or users or viewers see my school address and phone number?',
+      answer: 'Yes, every parent or viewer is eligible to see everything about your school and can contact your school easily',
+    },
+    {
+      question: 'What is Birikwa Policy?',
+      answer: 'in order to get the best of Birikwa; please we advised you to take a look at  Birikwa policy',
     },
   ];
 
@@ -75,23 +127,17 @@ export default function Home() {
   const contactMethods = [
     {
       title: 'Call',
-      number: '08139362969',
-      icon: <PiPhoneCall />
-    },
-    {
-      title: 'Chat',
-      number: '08139362969',
-      icon: <IoChatboxEllipsesOutline />
-    },
-    {
-      title: 'Video Call',
-      number: '08139362969',
-      icon: <IoVideocamOutline />
+      number: '+23489031317411',
+      icon: <PiPhoneCall />,
+      btnText: 'Call Now',
+      link: 'tel:+23489031317411'
     },
     {
       title: 'Message',
-      number: '08139362969',
-      icon: <FaRegMessage />
+      number: 'hello@birikwa.com',
+      icon: <FaRegMessage />,
+      btnText: 'Send Message',
+      link: 'mailto:hello@birikwa.com'
     }
   ];
 
@@ -126,7 +172,7 @@ export default function Home() {
           slidesPerView={1}
           spaceBetween={10}
           autoplay={{
-            delay: 2500,
+            delay: 5000,
             disableOnInteraction: false,
           }}
           pagination={{
@@ -157,12 +203,12 @@ export default function Home() {
               <div className='mb-5 shadow-md rounded-[20px] relative md:h-full h-[50vh]'>
                 <div className='absolute bg-[#212121a8] text-white h-full w-full px-3 py-1 md:text-[14px] text-[12px] rounded-r-[5px] flex flex-col items-center justify-center'>
                   <div className='text-center w-[90%] mx-auto'>
-                    <p className='md:text-[50px] text-[30px] fonnt-bold'>
+                    <p className='md:text-[40px] text-[30px] fonnt-bold'>
                       {content.heroText}
                     </p>
-                    <p className='text-[18px]'>
+                    {/* <p className='text-[18px]'>
                       {content.servicesText}
-                    </p>
+                    </p> */}
                     <button className='bg-transparent hover:bg-[#FF0200] transition-all py-4 px-5 border mt-5'>
                       {content.buttonText}
                     </button>
@@ -197,7 +243,7 @@ export default function Home() {
         <div className='mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto flex items-center justify-between'>
           <div className='text-left w-[70%]'>
             <p className='md:text-[35px] text-[20px] font-[600] mb-[-1px] text-[#FF0200]'>Newly Posted Jobs</p>
-            <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
+            {/* <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p> */}
           </div>
           <button onClick={() => router.push('/search-for-jobs')} className='text-[12px] border rounded-full md:px-4 px-2 py-2 w-[110px]'>View More</button>
         </div>
@@ -213,31 +259,31 @@ export default function Home() {
       <section>
         <div className='text-left mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto'>
           <p className='md:text-[35px] text-[20px] font-[600] mb-[-1px] text-[#FF0200]'>About Us</p>
-          <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
+          {/* <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p> */}
         </div>
-        <div className='flex items-center justify-between flex-col md:flex-row md:w-[85%] w-[95%] mx-auto mt-8 gap-5'>
+        <div className='flex items-start justify-between flex-col md:flex-row md:w-[85%] w-[95%] mx-auto mt-8 gap-5'>
           <img src="./images/School-Kids-scaled.jpg" alt="" className='md:w-[450px] w-full rounded-[12px]' />
           <div className='grid gap-7'>
             <div>
-              <p className='font-bold text-[18px]'>Title</p>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident neque accusantium nemo quod incidunt!</p>
+              {/* <p className='font-bold text-[18px]'>Title</p> */}
+              <p>Birikwa is a startup working on bridging the gap in the job hunting industry by stimulating the stress of reaching out to employees by employers to be free without stress and thereby exposing employees to a variety of job opportunities.</p>
             </div>
             <div>
+              {/* <p className='font-bold text-[18px]'>Title</p> */}
+              <p>Birikwa is bridging the barriers between employers and employees, creating common ground for common entities and common people by giving them that trust to corporate for effective transactions among themselves. Hence, creating jobs for job seekers and creating more options for job creators from anywhere and anytime.</p>
+            </div>
+            {/* <div>
               <p className='font-bold text-[18px]'>Title</p>
               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident neque accusantium nemo quod incidunt!</p>
-            </div>
-            <div>
-              <p className='font-bold text-[18px]'>Title</p>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident neque accusantium nemo quod incidunt!</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
       {/* bg-gradient-to-r from-[#8b2e2e] to-[#FF0200] h-64 */}
       <section className='w-[100%] mx-auto mt-[6rem] bg-video flex flex-col items-center justify-center'>
-        <div className="text-center flex flex-col items-center justify-center text-white mt-[60px]">
-          <p className="font-[600] md:text-[30px] text-[20px]">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        <div className="text-center flex flex-col items-center justify-center text-white mt-[60px] px-6">
+          <p className="text-[20px]">
+            There are thousands of parents, teachers, employees, guardians, aunties, uncles, elder brothers and sisters searching for the best school in GetASchool.
           </p>
           <button className="py-[10px] px-[20px] bg-[#FF0200] mt-[3rem] rounded-[8px]" onClick={() => router.push('/sign-up')}>Get Started</button>
         </div>
@@ -246,7 +292,7 @@ export default function Home() {
       <section>
         <div className='text-left mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto'>
           <p className='md:text-[35px] text-[20px] font-[600] mb-[-1px] text-[#FF0200]'>Our Services</p>
-          <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
+          {/* <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p> */}
         </div>
         <div className='grid md:grid-cols-3 gap-4 w-[85%] mx-auto mt-8'>
           <ServicesCard />
@@ -257,7 +303,7 @@ export default function Home() {
         <div className='mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto flex items-center justify-between'>
           <div className='text-left w-[60%]'>
             <p className='md:text-[35px] text-[20px] font-[600] md:mb-[-1px] mb-2 text-[#FF0200]'>Latest Blogs</p>
-            <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p>
+            {/* <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p> */}
           </div>
           {/* <button className='text-[12px] border rounded-full md:px-4 px-2 py-2 md:w-[120px] w-[110px]' onClick={() => router.push('/blog/post-blog')}>Create a blog</button> */}
         </div>
@@ -273,9 +319,9 @@ export default function Home() {
       </section>
 
       <section className='w-[100%] mx-auto mt-[6rem] bg-video flex flex-col items-center justify-center'>
-        <div className="text-center flex flex-col items-center justify-center text-white mt-[60px]">
-          <p className="font-[600] md:text-[30px] text-[20px]">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        <div className="text-center flex flex-col items-center justify-center text-white mt-[60px] px-5">
+          <p className="text-[30px] font-[600]">
+            Get your school advertised by Birikwa for them to contact you easily.
           </p>
           <button onClick={() => router.push('/sign-up')} className="py-[10px] px-[20px] bg-[#FF0200] mt-[3rem] rounded-[8px]">Get Started</button>
         </div>
@@ -286,7 +332,7 @@ export default function Home() {
           <p className="text-[#212121] font-bold md:text-[30px] text-[20px]">Frequently Asked Questions</p>
           <p className="text-[#777575] text-[14px] md:text-[16px]">Got Questions? We&apos;ve Got Answers!</p>
         </div>
-        <div className="max-w-3xl mx-auto p-4">
+        <div className="max-w-[900px] mx-auto p-4">
           {faqItems.map((item, index) => (
             <div key={index} className="mb-4 border-b border-gray-200">
               <button
@@ -334,9 +380,9 @@ export default function Home() {
                         <p className="text-[#121212] text-[14px] md:text-[16px]">{method.number}</p>
                       </div>
                     </div>
-                    <button className="w-full py-3 bg-[#ffeded] text-[#121212] rounded-lg hover:bg-red-100 transition-colors">
-                      Call Now
-                    </button>
+                    <a target='_blank' className="w-full block text-center py-3 bg-[#ffeded] text-[#121212] rounded-lg hover:bg-red-100 transition-colors" href={method.link}>
+                      {method.btnText}
+                    </a>
                   </div>
                 ))}
               </div>
