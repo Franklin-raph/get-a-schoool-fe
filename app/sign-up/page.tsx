@@ -21,8 +21,8 @@ export default function Page() {
     const [alertType, setAlertType] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const roleArray = [
-        { value: 'user', label: 'User' },
-        { value: 'school_owner', label: 'School Owner' },
+        { value: 'user', label: 'Teacher/Tutor' },
+        { value: 'school_owner', label: 'School/Academy/EducationHub' },
         // { value: 'main_admin', label: 'Main Aadmin' }
     ]
     const [registerData, setRegisterData] = useState({
@@ -90,7 +90,7 @@ export default function Page() {
                 <input type="text" placeholder='jhondoe@gmail.com' onChange={handleInputChange} name='email' value={registerData.email} className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2' />
             </div>
             <div className='w-full mt-6 relative'>
-                <p>Select Role</p>
+                <p>Register as a:</p>
                 <div onClick={() => setDropDown(dropDown === 'user-type' ? '' : 'user-type' )} className='border border-[#C2C5E1] h-[42px] pl-2 rounded-[6px] pr-2 flex items-center justify-between cursor-pointer'>
                     <p>{registerData.role}</p>
                     <BiChevronDown className='text-[20px]'/>

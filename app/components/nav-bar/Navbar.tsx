@@ -19,6 +19,14 @@ export default function Navbar() {
             link: "/blog",
         },
         {
+            label: "About",
+            link: "/about",
+        },
+        {
+            label: "Services",
+            link: "/our-services",
+        },
+        {
             label: "Post Job",
             link: "/post-job",
         },

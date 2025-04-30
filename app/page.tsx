@@ -23,6 +23,8 @@ import { PiDotDuotone, PiPhoneCall } from 'react-icons/pi';
 import { IoNotificationsOutline } from 'react-icons/io5';
 import { FaRegMessage } from 'react-icons/fa6';
 import Marquee from 'react-fast-marquee';
+import { BsInstagram, BsTiktok, BsTwitterX } from 'react-icons/bs';
+import { FaFacebook } from 'react-icons/fa';
 // import { get } from './utils/axiosHelpers';
 
 // import { ChevronLeft, ChevronRight } from 'react-icons/lucide-react'
@@ -53,69 +55,29 @@ export default function Home() {
 
   const faqItems = [
     {
-      question: 'Where can I get a teaching job?',
-      answer: 'By clicking on Birikwa.com, sign in or sign up (for new users) and apply for thousands of teaching jobs in Birikwa.',
+      question: 'What is GetASchool.com?',
+      answer: 'GetASchool.com is an online edu-oriented platform that gives schools owners and teachers a leverage to interact with themselves when it comes to job seeking and hiring competent staff for betterment of the education sector.',
     },
     {
-      question: 'Are teachers always needed in Birikwa?',
-      answer: 'Teachers are always needed by employers because many employers are looking for good or better teachers to employ or replace any nonchalant teacher in their school.',
+      question: 'How do I get School to hire me?',
+      answer: 'You just have to scroll around the GetAschool.com and see the school that matches your expectations and send a direct message to them in order to schedule interview with them and be hired.',
     },
     {
-      question: 'How do you find the best teachers?',
-      answer: 'As an employer, we are assured of getting the best and soundest teachers close to you; just make a job post today and get many applicants to your mail address.',
+      question: 'How do I hire staff as a school owner?',
+      answer: 'Get registered and scroll around to see job seeking post from teachers and send any that matches your expectations a direct message and fix a date for physical interview. Or You can make a post for vacancies in your School and teachers will inbox you.',
     },
     {
-      question: 'Is the Birikwa service free for me?',
-      answer: "For now, Birikwa's services are free for all to have full access to; from 01/01/2023, Birikwa's employers will have to pay a monthly or annual subscription to maintain full access.",
+      question: 'How trusted are School on GetASchool.com ?',
+      answer: "Schools on GetASchool.com are schools looking for teachers but those that GetASchool.com is assuring you with guranteee of 100% assurance is the schools with Verify Tick batch ✔️",
     },
     {
-      question: 'How do I get a job in Birikwa?',
-      answer: 'As an employee, you need to scroll down to the latest job posts or click on the "Hub" page to see posts and post yours.',
+      question: 'Are teachers making subscription payment on GetASchool.com?',
+      answer: 'Please, if you sign up as a teacher/tutor you will NOT be asked to make any payment to GetASchool.com as an teacher/tutor and for any confirmation, contact 09031317411. Only School/Academy/Hub are expected to make Payment by subscription monthly or bi-anbually or Yearly. See our "subscription"',
     },
     {
-      question: 'How do I update my profile?',
-      answer: 'Login, click on your "name" showing at the top right, then click on "update profile" and get your profile updated.',
-    },
-    {
-      question: 'How do I get my account verified?',
-      answer: 'For now, verification is for employers. You need to click on your profile, then click on update profile and scroll down to "get verified" and enter your registration number with OPSAN/CAC/Valid Certificate to get verified.',
-    },
-    {
-      question: 'Why should my account be verified?',
-      answer: 'Your account being verified shows that Birikwa confirms everything about your account and business or as a person is legit and verifiable.',
-    },
-    {
-      question: 'How many jobs can I apply for in a day?',
-      answer: 'As an employee, you can apply to as many jobs as you can in a day without any limit.',
-    },
-    {
-      question: 'How many job posts can I post a day?',
-      answer: 'As an employer, you can post as many jobs as you can in a day without any limit.',
-    },
-    {
-      question: 'How do I know I have gotten a job offer?',
-      answer: 'As an employee, after applying for a job, the employer is left to review your CV or resume and get in contact with you through your phone number or email.',
-    },
-    {
-      question: 'How do I see who applied for my job post?',
-      answer: 'As an employer, after posting a job, the employees will click on the apply button (you as an employer will not see this apply button) to send you their CV/resume directly to your email address provided in your profile',
-    },
-    {
-      question: 'When can I post a job offer?',
-      answer: 'As an employer, you can post job offers 24/7 without any limitations.',
-    },
-    {
-      question: 'Can I change the email I used for my job post?',
-      answer: "Of course, you can change the email used to get applicants' responses at any time and any day.",
-    },
-    {
-      question: 'Will parents or users or viewers see my school address and phone number?',
-      answer: 'Yes, every parent or viewer is eligible to see everything about your school and can contact your school easily',
-    },
-    {
-      question: 'What is Birikwa Policy?',
-      answer: 'in order to get the best of Birikwa; please we advised you to take a look at  Birikwa policy',
-    },
+      question: 'Why must you make payment as School Owner?',
+      answer: '',
+    }
   ];
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -134,16 +96,44 @@ export default function Home() {
     },
     {
       title: 'Message',
-      number: 'hello@birikwa.com',
+      number: 'info@getaschool.com',
       icon: <FaRegMessage />,
       btnText: 'Send Message',
-      link: 'mailto:hello@birikwa.com'
+      link: 'mailto:info@getaschool.com'
+    },
+    {
+      title: 'Twitter',
+      number: '',
+      icon: <BsTwitterX />,
+      btnText: 'Send Message',
+      link: 'x.com'
+    },
+    {
+      title: 'Facebook',
+      number: '',
+      icon: <FaFacebook />,
+      btnText: 'Send Message',
+      link: 'facebook.com'
+    },
+    {
+      title: 'Instagram',
+      number: '',
+      icon: <BsInstagram />,
+      btnText: 'Send Message',
+      link: 'instagram.com'
+    },
+    {
+      title: 'Tiktok',
+      number: '',
+      icon: <BsTiktok />,
+      btnText: 'Send Message',
+      link: 'tiktok.com'
     }
   ];
 
   const router = useRouter()
 
-  const announcement = ["I can be a React component, multiple React components, or just some text.", "I can be a React component, multiple React components, or just some text.", "I can be a React component, multiple React components, or just some text.", "I can be a React component, multiple React components, or just some text."]
+  const announcement = ["Be a verifiable school by subscribing with our guarantee subscription plan and get 50% discount, offer expires soon)", "Be a verifiable school by subscribing with our guarantee subscription plan and get 50% discount, offer expires soon)", "Be a verifiable school by subscribing with our guarantee subscription plan and get 50% discount, offer expires soon)"]
 
 
 
@@ -159,7 +149,7 @@ export default function Home() {
             announcement.map((item, index) => {
               return(
                 <div key={index} className='flex items-center gap-1 text-color text-[14px] mx-[20px]'>
-                  <PiDotDuotone className='text-[20px] text-white'/>
+                  <PiDotDuotone className='md:text-[20px] text-white'/>
                   <p className='text-white text-[14px] md:text-[16px]'>{item}</p>
                 </div>
               )
@@ -203,7 +193,7 @@ export default function Home() {
               <div className='mb-5 shadow-md rounded-[20px] relative md:h-full h-[50vh]'>
                 <div className='absolute bg-[#212121a8] text-white h-full w-full px-3 py-1 md:text-[14px] text-[12px] rounded-r-[5px] flex flex-col items-center justify-center'>
                   <div className='text-center w-[90%] mx-auto'>
-                    <p className='md:text-[40px] text-[30px] fonnt-bold'>
+                    <p className='lg:text-[40px] md:text-[30px] text-[20px] font-bold'>
                       {content.heroText}
                     </p>
                     {/* <p className='text-[18px]'>
@@ -266,11 +256,11 @@ export default function Home() {
           <div className='grid gap-7'>
             <div>
               {/* <p className='font-bold text-[18px]'>Title</p> */}
-              <p>Birikwa is a startup working on bridging the gap in the job hunting industry by stimulating the stress of reaching out to employees by employers to be free without stress and thereby exposing employees to a variety of job opportunities.</p>
+              <p className='md:text-[16px] text-[14px]'>GetASchool is a startup working on bridging the gap in the job hunting industry by stimulating the stress of reaching out to employees by employers to be free without stress and thereby exposing employees to a variety of job opportunities.</p>
             </div>
             <div>
               {/* <p className='font-bold text-[18px]'>Title</p> */}
-              <p>Birikwa is bridging the barriers between employers and employees, creating common ground for common entities and common people by giving them that trust to corporate for effective transactions among themselves. Hence, creating jobs for job seekers and creating more options for job creators from anywhere and anytime.</p>
+              <p className='md:text-[16px] text-[14px]'>GetASchool is bridging the barriers between employers and employees, creating common ground for common entities and common people by giving them that trust to corporate for effective transactions among themselves. Hence, creating jobs for job seekers and creating more options for job creators from anywhere and anytime.</p>
             </div>
             {/* <div>
               <p className='font-bold text-[18px]'>Title</p>
@@ -282,32 +272,29 @@ export default function Home() {
       {/* bg-gradient-to-r from-[#8b2e2e] to-[#FF0200] h-64 */}
       <section className='w-[100%] mx-auto mt-[6rem] bg-video flex flex-col items-center justify-center'>
         <div className="text-center flex flex-col items-center justify-center text-white mt-[60px] px-6">
-          <p className="text-[20px]">
+          <p className="md:text-[20px] text-[16px]">
             There are thousands of parents, teachers, employees, guardians, aunties, uncles, elder brothers and sisters searching for the best school in GetASchool.
           </p>
           <button className="py-[10px] px-[20px] bg-[#FF0200] mt-[3rem] rounded-[8px]" onClick={() => router.push('/sign-up')}>Get Started</button>
         </div>
       </section>
 
-      <section>
+      {/* <section>
         <div className='text-left mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto'>
           <p className='md:text-[35px] text-[20px] font-[600] mb-[-1px] text-[#FF0200]'>Our Advisors</p>
-          {/* <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p> */}
         </div>
         <div className='grid md:grid-cols-3 gap-4 w-[85%] mx-auto mt-8'>
-          {/* <ServicesCard /> */}
         </div>
-      </section>
+      </section> */}
 
-      <section>
+      {/* <section>
         <div className='text-left mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto'>
           <p className='md:text-[35px] text-[20px] font-[600] mb-[-1px] text-[#FF0200]'>Our Services</p>
-          {/* <p className='text-gray-500 md:text-[15px] text-[12px] leading-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, iusto! </p> */}
         </div>
         <div className='grid md:grid-cols-3 gap-4 w-[85%] mx-auto mt-8'>
           <ServicesCard />
         </div>
-      </section>
+      </section> */}
 
       <section>
         <div className='mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto flex items-center justify-between'>
@@ -330,8 +317,8 @@ export default function Home() {
 
       <section className='w-[100%] mx-auto mt-[6rem] bg-video flex flex-col items-center justify-center'>
         <div className="text-center flex flex-col items-center justify-center text-white mt-[60px] px-5">
-          <p className="text-[30px] font-[600]">
-            Get your school advertised by Birikwa for them to contact you easily.
+          <p className="md:text-[30px] text-[22px] font-[600]">
+            Get your school advertised by GetASchool for them to contact you easily.
           </p>
           <button onClick={() => router.push('/sign-up')} className="py-[10px] px-[20px] bg-[#FF0200] mt-[3rem] rounded-[8px]">Get Started</button>
         </div>

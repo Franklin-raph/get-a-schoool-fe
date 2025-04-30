@@ -5,6 +5,7 @@ import React from 'react'
 import { IoIosSend } from 'react-icons/io'
 import { IoLocationOutline } from 'react-icons/io5'
 import logo from '../../../public/images/Get-a-school.png'
+import Link from 'next/link'
 
 export default function Footer() {
 
@@ -22,7 +23,7 @@ export default function Footer() {
               <Image src={logo} width="40" height="40" alt='Logo' />
             </div>
             <p className="text-[#777575] text-[13px]">
-              Welcome to the Birikwa job hub.
+              Welcome to the GetASchool.
               This is a general forum for connecting all users. Questions, discussions, and posts relevant to jobs are accommodated in this forum from both employers and employees. To start a discussion or post a question about a job or related discussions, use the &quot;Start Conversation&quot; button. <br />
               We strive to give you the best as you are our ultimate priority.
             </p>
@@ -68,11 +69,11 @@ export default function Footer() {
       </div>
       <div className="bg-[#121212] text-white py-5 text-center text-[14px] mt-5">
         <div className="mb-5">
-          <a href="#" className="text-sm text-[#777575]">Privacy Policy</a>
+          <Link href="/privacy-policy" className="text-sm text-[#777575]">Privacy Policy</Link>
           <span className="mx-2">|</span>
-          <a href="#" className="text-sm text-[#777575]">Terms and Conditions</a>
+          <Link href="/terms-and-conditions" className="text-sm text-[#777575]">Terms and Conditions</Link>
         </div>
-        <p>&copy; All Right Reserved Birikwa {new Date().getFullYear()} </p>
+        <p>&copy; All Right Reserved GetASchool {new Date().getFullYear()} </p>
       </div>
     </footer>
   )
