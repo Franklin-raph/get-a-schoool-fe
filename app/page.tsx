@@ -11,7 +11,6 @@ import 'swiper/css/navigation'
 // import required modules
 import { Pagination, Autoplay } from 'swiper/modules';
 import Navbar from './components/nav-bar/Navbar';
-import ServicesCard from './components/services-card/ServicesCard';
 import Footer from './components/footer/Footer';
 import NewlyPostedJobsComponent from './components/newly-posted-jobs-component/NewlyPostedJobsComponent';
 import BlogComponent from './components/blog-component/BlogComponent';
