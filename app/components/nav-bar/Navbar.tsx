@@ -20,7 +20,7 @@ export default function Navbar() {
         },
         {
             label: "About",
-            link: "/about",
+            link: "/about-us",
         },
         {
             label: "Services",

@@ -210,7 +210,7 @@ export default function Home() {
         </Swiper>
       </section>
 
-      <div className='bg-[#FF0200] flex items-center py-2'>
+      {/* <div className='bg-[#FF0200] flex items-center py-2'>
         <div className='p-2 text-white'>
           <IoNotificationsOutline />
         </div>
@@ -226,7 +226,7 @@ export default function Home() {
             })
           }
         </Marquee>
-      </div>
+      </div> */}
 
       <section>
         <div className='mt-[5rem] mb-4 md:w-[85%] w-[95%] mx-auto flex items-center justify-between'>
@@ -254,17 +254,11 @@ export default function Home() {
           <img src="./images/School-Kids-scaled.jpg" alt="" className='md:w-[450px] w-full rounded-[12px]' />
           <div className='grid gap-7'>
             <div>
-              {/* <p className='font-bold text-[18px]'>Title</p> */}
               <p className='md:text-[16px] text-[14px]'>GetASchool is a startup working on bridging the gap in the job hunting industry by stimulating the stress of reaching out to employees by employers to be free without stress and thereby exposing employees to a variety of job opportunities.</p>
             </div>
             <div>
-              {/* <p className='font-bold text-[18px]'>Title</p> */}
               <p className='md:text-[16px] text-[14px]'>GetASchool is bridging the barriers between employers and employees, creating common ground for common entities and common people by giving them that trust to corporate for effective transactions among themselves. Hence, creating jobs for job seekers and creating more options for job creators from anywhere and anytime.</p>
             </div>
-            {/* <div>
-              <p className='font-bold text-[18px]'>Title</p>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident neque accusantium nemo quod incidunt!</p>
-            </div> */}
           </div>
         </div>
       </section>
