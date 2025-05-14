@@ -24,6 +24,7 @@ import { FaRegMessage } from 'react-icons/fa6';
 import Marquee from 'react-fast-marquee';
 import { BsInstagram, BsTiktok, BsTwitterX } from 'react-icons/bs';
 import { FaFacebook } from 'react-icons/fa';
+import Link from 'next/link';
 // import { get } from './utils/axiosHelpers';
 
 // import { ChevronLeft, ChevronRight } from 'react-icons/lucide-react'
@@ -258,6 +259,9 @@ export default function Home() {
             </div>
             <div>
               <p className='md:text-[16px] text-[14px]'>GetASchool is bridging the barriers between employers and employees, creating common ground for common entities and common people by giving them that trust to corporate for effective transactions among themselves. Hence, creating jobs for job seekers and creating more options for job creators from anywhere and anytime.</p>
+            </div>
+            <div>
+              <Link href='/about-us' className="inline-block py-[10px] px-[20px] bg-[#FF0200] text-white mt-[2rem] rounded-[8px]">Read More</Link>
             </div>
           </div>
         </div>

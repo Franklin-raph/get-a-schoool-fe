@@ -19,7 +19,7 @@ export default function Navbar() {
             link: "/blog",
         },
         {
-            label: "About",
+            label: "About Us",
             link: "/about-us",
         },
         {

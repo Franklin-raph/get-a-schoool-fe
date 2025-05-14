@@ -80,7 +80,10 @@ export default function Page() {
                 </div>
                 <div className='mt-4'>
                     <p className='text-gray-500 text-[14px]'>Description:</p>
-                    <div className='text-[14px]' dangerouslySetInnerHTML={{ __html:jobs?.description as string }} />
+                    <div 
+                        className='text-[14px] styleElements unreset' 
+                        dangerouslySetInnerHTML={{ __html: (jobs?.description as string) }} 
+                    />
                 </div>
             </div>
             <Footer />
