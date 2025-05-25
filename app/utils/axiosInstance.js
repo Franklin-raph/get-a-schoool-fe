@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 
 const axiosInstance = axios.create({
-    baseURL: `https://brikwabe.onrender.com`,
+    baseURL: `https://admin.getaschool.com`,
     timeout: 30000, // 10 seconds,
 });
 

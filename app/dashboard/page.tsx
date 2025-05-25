@@ -144,9 +144,7 @@ export default function Page() {
                             return(
                                 <tr style={{borderBottom:"1px solid #dcdcdc"}} key={index}>
                                     <td className="px-6 py-4">{index +1}</td>
-                                    <td className="px-6 py-4 flex items-center gap-1">
-                                      <p className='text-[12px] md:text-[16px]'></p>
-                                    </td>
+                                    <td className="px-6 py-4 text-[12px] md:text-[16px]">{job.title}</td>
                                     <td className="px-6 py-4 text-[12px] md:text-[16px]">{job.salary_upper_range}</td>
                                     <td className="px-6 py-4 text-[12px] md:text-[16px]">{job.salary_lower_range}</td>
                                     <td className="px-6 py-4 capitalize text-[12px] md:text-[16px]">{format(job.created_at)}</td>

@@ -49,7 +49,7 @@ export default function Page() {
             setLoading(true)
             console.log("Sign Up");
             const response = await post('/register', {email:"lll", password: passwordResetData.password, token:passwordResetData.token});
-            router.push(`/login`)
+            router.push(`/sign-in`)
             console.log(response);
         } catch (error: unknown) {
             if (error instanceof AxiosError) {

@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'; // For Next.js App Router
 import { IoSettingsOutline } from 'react-icons/io5';
 import { HiOutlineUserCircle } from 'react-icons/hi';
 import { BiHome } from 'react-icons/bi';
+import Cookies from 'js-cookie'
 
 interface Toggle {
   toggleNav: boolean;
@@ -67,6 +68,8 @@ const SideNav = ({toggle}: ToggleProps) => {
                 localStorage.clear()
                 sessionStorage.clear()
                 window.location.href = '/'
+                Cookies.remove('token')
+
           }}>
             <IoIosLogOut fontSize={"20px"}/>
             <p className="ml-[15.67px]">Log-out</p>

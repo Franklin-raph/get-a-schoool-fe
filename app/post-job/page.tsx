@@ -13,6 +13,7 @@ import 'react-quill-new/dist/quill.snow.css';
 import { formats, modules } from "../utils/quillEditorConfig"
 
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/navigation'
 // import { LuImage } from 'react-icons/lu'
 
 const ReactQuill = dynamic(() => import("react-quill-new"), {
@@ -25,6 +26,7 @@ const ReactQuill = dynamic(() => import("react-quill-new"), {
 export default function Page() {
 
     const [dropDown, setDropDown] = useState<string>('')
+    const router = useRouter()
     const [msg, setMsg] = useState<string>('')
     const [alertType, setAlertType] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
@@ -75,6 +77,7 @@ export default function Page() {
             const response = await post('/job-posts/', { salary_lower_range:jobData.salary_lower_range, salary_upper_range:jobData.salary_upper_range, location:jobData.location, description, title:jobData.title })
             setMsg('Job posted successfully.');
             setAlertType('success');
+            router.push('/dashboard')
             console.log(response)
             setLoading(false)
         } catch (error: unknown) {

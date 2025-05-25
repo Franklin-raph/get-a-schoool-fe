@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../../components/nav-bar/Navbar'
 import Footer from '../../../components/footer/Footer'
-// import { useRouter } from 'next/navigation'
 import { BiChevronDown } from 'react-icons/bi'
 import BtnLoader from '../../../components/btnLoader/BtnLoader'
 import { get, patch } from '../../../utils/axiosHelpers'
@@ -42,7 +41,7 @@ export default function Page() {
         salary_upper_range: 0,
         salary: '',
         location: '',
-        // lga: '',
+        title: '',
         // landmark: '',
     })
 
@@ -97,7 +96,8 @@ export default function Page() {
                 salary_lower_range: jobsData.salary_lower_range,
                 salary_upper_range: jobsData.salary_upper_range,
                 salary: jobsData.salary,
-                location: jobsData.location
+                location: jobsData.location,
+                title: jobsData.title,
             })
             setDescription(jobsData.description)
 
@@ -127,19 +127,14 @@ export default function Page() {
         </div>
         <div className='md:w-[844px] mx-auto md:mt-[4rem] md:p-[4rem] py-[4rem] px-[1rem] shadow-xl text-[#9096B2] mb-[9rem]'>
             <h1 className='font-[600] text-[#101750] text-[24px] mb-7'>Update Job</h1>
-            {/* <p className='mb-7'>Welcome to Zillow9ja. Let's create your account</p> */}
-            {/* <div>
-                <p>School address</p>
-                <input type="text" placeholder='123 Abc Street' onChange={handleInputChange} name='address' className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
-            </div> */}
-            {/* <div className='mt-6'>
-                <p>School phone number</p>
-                <input type="text" placeholder='081-123-123-12' className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
-            </div> */}
+            <div className='mt-6'>
+                <p>Job Title</p>
+                <input value={jobData.title} onChange={handleInputChange} type="text" placeholder='Job title' className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
+            </div>
             <div className='w-full mt-6 relative'>
                 <p>Salary Range</p>
                 <div onClick={() => setDropDown(dropDown === 'user-type' ? '' : 'user-type' )} className='border border-[#C2C5E1] h-[42px] pl-2 rounded-[6px] pr-2 flex items-center justify-between cursor-pointer'>
-                    <p>{jobData.salary}</p>
+                    <p>{jobData.salary_lower_range} to {jobData.salary_upper_range}</p>
                     <BiChevronDown className='text-[20px]'/>
                 </div>
                 {

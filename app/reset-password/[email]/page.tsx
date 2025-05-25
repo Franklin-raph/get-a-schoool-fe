@@ -55,7 +55,7 @@ export default function Page() {
     
             setMsg(response?.message);
             setAlertType('success');
-            router.push(`/login`);
+            router.push(`/sign-in`);
         } catch (error: unknown) {
             if (error instanceof AxiosError) {
                 setMsg(error.response?.data?.message || 'An error occurred');
