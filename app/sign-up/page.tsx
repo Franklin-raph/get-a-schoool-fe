@@ -87,7 +87,7 @@ export default function Page() {
             {/* <p className='mb-7'>Welcome to Zillow9ja. Let's create your account</p> */}
             <div>
                 <p>Email</p>
-                <input type="text" placeholder='jhondoe@gmail.com' onChange={handleInputChange} name='email' value={registerData.email} className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2' />
+                <input type="text" placeholder='johndoe@gmail.com' onChange={handleInputChange} name='email' value={registerData.email} className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2' />
             </div>
             <div className='w-full mt-6 relative'>
                 <p>Register as a:</p>

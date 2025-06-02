@@ -106,28 +106,28 @@ export default function Home() {
       number: '',
       icon: <BsTwitterX />,
       btnText: 'Send Message',
-      link: 'x.com'
+      link: 'https://x.com/GetASchoolcom?t=L5CCpb4NIyiY4eGkwHth4A&s=09'
     },
     {
       title: 'Facebook',
       number: '',
       icon: <FaFacebook />,
       btnText: 'Send Message',
-      link: 'facebook.com'
+      link: 'https://www.facebook.com/share/1J9u54K1Yq/?mibextid=qi2Omg'
     },
     {
       title: 'Instagram',
       number: '',
       icon: <BsInstagram />,
       btnText: 'Send Message',
-      link: 'instagram.com'
+      link: 'https://www.instagram.com/getaschool?igsh=YTNnaXZpb3NtMG1p'
     },
     {
       title: 'Tiktok',
       number: '',
       icon: <BsTiktok />,
       btnText: 'Send Message',
-      link: 'tiktok.com'
+      link: 'https://www.tiktok.com/@getaschool.com?_t=ZM-8wEEK5uPEKF&_r=1'
     }
   ];
 
