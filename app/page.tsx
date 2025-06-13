@@ -350,6 +350,18 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="mt-[9rem] mb-[10rem]">
+        <div className="text-center mb-5">
+          <p className="text-[#212121] font-bold md:text-[30px] text-[20px]">Our Patners</p>
+          <div className='flex items-center gap-[80px] w-[800px] mx-auto mt-9'>
+            <img src="./images/APSON.jpeg" alt="" className='w-[20%]'/>
+            <img src="./images/NAPPS.jpeg" alt="" className='w-[20%]'/>
+            <img src="./images/NSP.jpeg" alt="" className='w-[20%]'/>
+            <img src="./images/OPSAN.jpeg" alt="" className='w-[20%]'/>
+          </div>
+        </div>
+      </section>
+
       <section className="md:max-w-[1600px] w-[95%] mx-auto lg:px-[2rem] flex items-start">
         <div>
           <div className="flex flex-col md:flex-row gap-12">
