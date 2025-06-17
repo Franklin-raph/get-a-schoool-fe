@@ -26,10 +26,10 @@ export default function Navbar() {
             label: "Services",
             link: "/our-services",
         },
-        {
-            label: "Post Job",
-            link: "/post-job",
-        },
+        // {
+        //     label: "Post Job",
+        //     link: "/post-job",
+        // },
         {
             label: "Search For Jobs",
             link: "/search-for-jobs",

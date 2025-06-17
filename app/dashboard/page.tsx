@@ -11,6 +11,7 @@ import { BiPencil, BiTrash } from 'react-icons/bi';
 import { IoCloseOutline } from 'react-icons/io5';
 import BtnLoader from '../components/btnLoader/BtnLoader';
 import Alert from '../components/alert/Alert';
+import Link from 'next/link';
 
 interface JobPost {
   id?: string;
@@ -106,7 +107,9 @@ export default function Page() {
                 <p className="font-[#212121] font-[700] md:text-[25px] text-[18px] mb-3">Dashboard</p>
                 <div className='flex items-center gap-3'>
                     {/* <button className='border rounded-[10px] px-5 py-2 hover:bg-[#FF0200] hover:text-white'>Create Blog Post</button> */}
-                    <button className='border rounded-[10px] px-5 py-2 hover:bg-[#FF0200] hover:text-white' onClick={() => router.push('/post-job')} >Post A Job</button>
+                    <Link href='/post-job' className='border rounded-[10px] px-5 py-2 hover:bg-[#FF0200] hover:text-white'>
+                      Post Job
+                    </Link>
                 </div>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 border-b pb-5'>
