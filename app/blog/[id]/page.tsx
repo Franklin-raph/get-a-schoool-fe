@@ -127,6 +127,25 @@ export default function Page() {
         }
     }
 
+    const likeBlog = async (blogId: string) => {
+        try {
+            const response = await post(`/likes/`, {content_type:"blogpost", object_id: blogId});
+            console.log('Blog liked:', response);
+            // Optionally, you can update the state to reflect the new like count
+            // setBlogs(prevBlogs => 
+            //     prevBlogs.map(blog => 
+            //         blog.id === blogId ? { ...blog, like_count: (parseInt(blog.like_count) + 1).toString() } : blog
+            //     )
+            // );
+
+            getAllBlogsAfterCommenting()
+        }
+        catch (error) {
+            console.error('Error liking blog:', error);
+            setMsg('Failed to like blog');
+            setAlertType('error');
+        }
+    }
 
 
   return (
@@ -161,7 +180,7 @@ export default function Page() {
                         <p>{blog?.comment_count}</p>
                     </div>
                     <div className='flex items-center gap-1'>
-                        <BiLike className='cursor-pointer'/>
+                        <BiLike onClick={() => blog?.id && likeBlog(blog?.id)} className='cursor-pointer'/>
                         <p className='md:text-[15px] text-[13px]'>{blog?.like_count}</p>
                     </div>
                 </div>

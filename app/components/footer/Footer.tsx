@@ -6,6 +6,10 @@ import { IoIosSend } from 'react-icons/io'
 import { IoLocationOutline } from 'react-icons/io5'
 import logo from '../../../public/images/Get-a-school.png'
 import Link from 'next/link'
+import { PiPhoneCall } from 'react-icons/pi';
+import { FaFacebook } from 'react-icons/fa6';
+import { BsInstagram, BsTiktok, BsTwitterX } from 'react-icons/bs';
+import { CgMail } from 'react-icons/cg';
 
 export default function Footer() {
 
@@ -13,12 +17,57 @@ export default function Footer() {
     // Handle newsletter submission
   };
 
+  const contactMethods = [
+    {
+      title: 'Call',
+      number: '+23489031317411',
+      icon: <PiPhoneCall size="20px"/>,
+      btnText: 'Call Now',
+      link: 'tel:+23489031317411'
+    },
+    {
+      title: 'Message',
+      number: 'info@getaschool.com',
+      icon: <CgMail size="21px"/>,
+      btnText: 'Send Message',
+      link: 'mailto:info@getaschool.com'
+    },
+    {
+      title: 'Twitter',
+      number: '',
+      icon: <BsTwitterX />,
+      btnText: 'Send Message',
+      link: 'https://x.com/GetASchoolcom?t=L5CCpb4NIyiY4eGkwHth4A&s=09'
+    },
+    {
+      title: 'Facebook',
+      number: '',
+      icon: <FaFacebook />,
+      btnText: 'Send Message',
+      link: 'https://www.facebook.com/share/1J9u54K1Yq/?mibextid=qi2Omg'
+    },
+    {
+      title: 'Instagram',
+      number: '',
+      icon: <BsInstagram />,
+      btnText: 'Send Message',
+      link: 'https://www.instagram.com/getaschool?igsh=YTNnaXZpb3NtMG1p'
+    },
+    {
+      title: 'Tiktok',
+      number: '',
+      icon: <BsTiktok />,
+      btnText: 'Send Message',
+      link: 'https://www.tiktok.com/@getaschool.com?_t=ZM-8wEEK5uPEKF&_r=1'
+    }
+  ];
+
   return (
-    <footer className="text-[#777575] mt-[8rem]">
-      <div className="md:max-w-[2000px] w-[95%] mx-auto md:px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="text-[#777575] mt-[8rem] border-t pt-5">
+      <div className="lg:max-w-[2000px] w-[95%] mx-auto md:px-4">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
           {/* Logo and Vision Section */}
-          <div className="flex flex-col gap-2 md:w-[600px]">
+          <div className="flex flex-col gap-2 lg:w-[600px]">
             <div className="flex items-center gap-1">
               <Image src={logo} width="40" height="40" alt='Logo' />
             </div>
@@ -29,7 +78,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex w-full justify-between flex-col sm:flex-row lg:ml-[5rem] gap-[1rem] md:ml-[2rem] ml-0">
+          <div className="flex w-full justify-between flex-col md:flex-row gap-[1rem] ml-0">
             {/* Newsletter Section */}
             <div className="flex flex-col gap-2">
               <h2 className="text-[#777575] text-[13px]">Subscribe for our weekly news letter</h2>
@@ -50,18 +99,25 @@ export default function Footer() {
             </div>
 
             {/* Location and Navigation */}
-            <div className="flex flex-col sm:items-end gap-2 md:w-[100px]">
-              <div className="flex flex-col sm:items-end gap-2 text-[#777575]">
+            <div className="flex flex-col sm:items-center gap-2 md:w-[300px]">
+              <div className="flex flex-col sm:items-end items-center gap-2 text-[#777575]">
                 <IoLocationOutline className="text-[20px]" />
-                <p className=" text-[13px]">145 New York, FL 5467, USA</p>
+                <p className=" text-[13px] md:text-right">7 Oguejiofor Aniakor Street, Nkwelle GRA, Anambra State, Nigeria</p>
               </div>
-              {/* <nav>
-                <ul className="flex gap-6 text-[#777575] text-[13px]">
-                  <li><a href="#" className="hover:text-[#121212] transition-colors">Buy</a></li>
+              <nav>
+                <ul className="flex gap-6 text-[#777575] text-[13px] mt-3">
+                  {
+                    contactMethods.map(contact => (
+                      <li>
+                        <Link className='text-[16px] hover:text-[#df3939]' target='_blank' href={contact.link}>{contact.icon}</Link>
+                      </li>
+                    ))
+                  }
+                  {/* <li><a href="#" className="hover:text-[#121212] transition-colors">Buy</a></li>
                   <li><a href="#" className="hover:text-[#121212] transition-colors">Sell</a></li>
-                  <li><a href="#" className="hover:text-[#121212] transition-colors">Find an agent</a></li>
+                  <li><a href="#" className="hover:text-[#121212] transition-colors">Find an agent</a></li> */}
                 </ul>
-              </nav> */}
+              </nav>
             </div>
           </div>
 

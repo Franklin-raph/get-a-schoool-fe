@@ -18,14 +18,10 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { RxMinus, RxPlus } from 'react-icons/rx';
-import { PiDotDuotone, PiPhoneCall } from 'react-icons/pi';
+import { PiDotDuotone } from 'react-icons/pi';
 import { IoNotificationsOutline } from 'react-icons/io5';
-import { FaRegMessage } from 'react-icons/fa6';
 import Marquee from 'react-fast-marquee';
-import { BsInstagram, BsTiktok, BsTwitterX } from 'react-icons/bs';
-import { FaFacebook } from 'react-icons/fa';
 import Link from 'next/link';
-// import { get } from './utils/axiosHelpers';
 
 // import { ChevronLeft, ChevronRight } from 'react-icons/lucide-react'
 // Define a type for your job posts
@@ -86,50 +82,50 @@ export default function Home() {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  const contactMethods = [
-    {
-      title: 'Call',
-      number: '+23489031317411',
-      icon: <PiPhoneCall />,
-      btnText: 'Call Now',
-      link: 'tel:+23489031317411'
-    },
-    {
-      title: 'Message',
-      number: 'info@getaschool.com',
-      icon: <FaRegMessage />,
-      btnText: 'Send Message',
-      link: 'mailto:info@getaschool.com'
-    },
-    {
-      title: 'Twitter',
-      number: '',
-      icon: <BsTwitterX />,
-      btnText: 'Send Message',
-      link: 'https://x.com/GetASchoolcom?t=L5CCpb4NIyiY4eGkwHth4A&s=09'
-    },
-    {
-      title: 'Facebook',
-      number: '',
-      icon: <FaFacebook />,
-      btnText: 'Send Message',
-      link: 'https://www.facebook.com/share/1J9u54K1Yq/?mibextid=qi2Omg'
-    },
-    {
-      title: 'Instagram',
-      number: '',
-      icon: <BsInstagram />,
-      btnText: 'Send Message',
-      link: 'https://www.instagram.com/getaschool?igsh=YTNnaXZpb3NtMG1p'
-    },
-    {
-      title: 'Tiktok',
-      number: '',
-      icon: <BsTiktok />,
-      btnText: 'Send Message',
-      link: 'https://www.tiktok.com/@getaschool.com?_t=ZM-8wEEK5uPEKF&_r=1'
-    }
-  ];
+  // const contactMethods = [
+  //   {
+  //     title: 'Call',
+  //     number: '+23489031317411',
+  //     icon: <PiPhoneCall />,
+  //     btnText: 'Call Now',
+  //     link: 'tel:+23489031317411'
+  //   },
+  //   {
+  //     title: 'Message',
+  //     number: 'info@getaschool.com',
+  //     icon: <FaRegMessage />,
+  //     btnText: 'Send Message',
+  //     link: 'mailto:info@getaschool.com'
+  //   },
+  //   {
+  //     title: 'Twitter',
+  //     number: '',
+  //     icon: <BsTwitterX />,
+  //     btnText: 'Send Message',
+  //     link: 'https://x.com/GetASchoolcom?t=L5CCpb4NIyiY4eGkwHth4A&s=09'
+  //   },
+  //   {
+  //     title: 'Facebook',
+  //     number: '',
+  //     icon: <FaFacebook />,
+  //     btnText: 'Send Message',
+  //     link: 'https://www.facebook.com/share/1J9u54K1Yq/?mibextid=qi2Omg'
+  //   },
+  //   {
+  //     title: 'Instagram',
+  //     number: '',
+  //     icon: <BsInstagram />,
+  //     btnText: 'Send Message',
+  //     link: 'https://www.instagram.com/getaschool?igsh=YTNnaXZpb3NtMG1p'
+  //   },
+  //   {
+  //     title: 'Tiktok',
+  //     number: '',
+  //     icon: <BsTiktok />,
+  //     btnText: 'Send Message',
+  //     link: 'https://www.tiktok.com/@getaschool.com?_t=ZM-8wEEK5uPEKF&_r=1'
+  //   }
+  // ];
 
   const router = useRouter()
 
@@ -353,16 +349,16 @@ export default function Home() {
       <section className="mt-[9rem] mb-[10rem]">
         <div className="text-center mb-5">
           <p className="text-[#212121] font-bold md:text-[30px] text-[20px]">Our Patners</p>
-          <div className='flex items-center gap-[80px] w-[800px] mx-auto mt-9'>
-            <img src="./images/APSON.jpeg" alt="" className='w-[20%]'/>
-            <img src="./images/NAPPS.jpeg" alt="" className='w-[20%]'/>
-            <img src="./images/NSP.jpeg" alt="" className='w-[20%]'/>
-            <img src="./images/OPSAN.jpeg" alt="" className='w-[20%]'/>
+          <div className='grid sm:grid-cols-4 grid-cols-2 items-center gap-[30px] sm:gap-[50px] md:gap-[80px] md:w-[800px] w-[95%] mx-auto mt-9'>
+            <img src="./images/APSON.jpeg" alt="" className='md:w-[100%] w-[80%] mx-auto'/>
+            <img src="./images/NAPPS.jpeg" alt="" className='md:w-[100%] w-[80%] mx-auto'/>
+            <img src="./images/NSP.jpeg" alt="" className='md:w-[100%] w-[80%] mx-auto'/>
+            <img src="./images/OPSAN.jpeg" alt="" className='md:w-[100%] w-[80%] mx-auto'/>
           </div>
         </div>
       </section>
 
-      <section className="md:max-w-[1600px] w-[95%] mx-auto lg:px-[2rem] flex items-start">
+      {/* <section className="md:max-w-[1600px] w-[95%] mx-auto lg:px-[2rem] flex items-start">
         <div>
           <div className="flex flex-col md:flex-row gap-12">
             <div className="w-full md:w-1/2">
@@ -402,7 +398,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </div>

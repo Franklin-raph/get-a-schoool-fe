@@ -96,9 +96,9 @@ export default function Page() {
   }, [])
 
     // Render empty state if no jobs
-    if (blogs.length === 0) {
-        return <div>No blogs found</div>
-    }
+    // if (blogs.length === 0) {
+    //     return <div>No blogs found</div>
+    // }
 
     // Render loading state
     if (isLoading) {

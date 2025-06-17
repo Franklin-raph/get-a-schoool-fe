@@ -68,7 +68,12 @@ export default function Navbar() {
                                 </li>
                             ))
                         }
-                    <Link className='hover:bg-[#FF0200] transition-all ml-[1rem] mt-3 border py-[10px] px-7 text-white' href="/sign-in">Sign In..</Link>
+                        {
+                            token ?
+                            <Link className='pl-[1rem] hover:bg-[#FF0200] transition-all w-full block py-4' href="/my-profile">My Profile</Link>
+                            :
+                            <Link className='hover:bg-[#FF0200] transition-all ml-[1rem] mt-3 border py-[10px] px-7 text-white' href="/sign-in">Sign In</Link>
+                        }
                     </ul>
                 </div>
             }
