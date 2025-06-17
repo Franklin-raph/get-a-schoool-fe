@@ -107,8 +107,8 @@ export default function Footer() {
               <nav>
                 <ul className="flex gap-6 text-[#777575] text-[13px] mt-3">
                   {
-                    contactMethods.map(contact => (
-                      <li>
+                    contactMethods.map((contact, index) => (
+                      <li key={index}>
                         <Link className='text-[16px] hover:text-[#df3939]' target='_blank' href={contact.link}>{contact.icon}</Link>
                       </li>
                     ))

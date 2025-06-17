@@ -30,7 +30,7 @@ interface BlogPost {
 export default function Page() {
 
     const router = useRouter()
-    const [blogs, setBlogs] = useState<BlogPost[]>([]);
+    // const [blogs, setBlogs] = useState<BlogPost[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [blog, setBlog] = useState<BlogPost | null>(null);
@@ -45,7 +45,7 @@ export default function Page() {
 
           console.log({response, blogsData});
           
-          setBlogs(blogsData);
+        //   setBlogs(blogsData);
           setBlog(blogsData[0]);
           setIsLoading(false);
       } catch (err) {
@@ -63,7 +63,7 @@ export default function Page() {
 
           console.log({response, blogsData});
           
-          setBlogs(blogsData);
+        //   setBlogs(blogsData);
           setBlog(blogsData[0]);
       } catch (err) {
           setError('Failed to fetch blogs');
@@ -77,11 +77,11 @@ export default function Page() {
       const response = await post(`/likes/`, {content_type:"blogpost", object_id: blogId});
       console.log('Blog liked:', response);
       // Optionally, you can update the state to reflect the new like count
-      setBlogs(prevBlogs => 
-        prevBlogs.map(blog => 
-          blog.id === blogId ? { ...blog, like_count: (parseInt(blog.like_count) + 1).toString() } : blog
-        )
-      );
+    //   setBlogs(prevBlogs => 
+    //     prevBlogs.map(blog => 
+    //       blog.id === blogId ? { ...blog, like_count: (parseInt(blog.like_count) + 1).toString() } : blog
+    //     )
+    //   );
       getAllBlogsAfterLiking()
     }
     catch (error) {
@@ -149,7 +149,7 @@ export default function Page() {
                 </div>
                 <img src="./images/Study-Office-Administration.jpg" className='md:w-[400px] h-[400px] object-cover rounded-[10px]' alt="" />
             </div>
-                <BlogComponent  />
+            <BlogComponent  />
         </div>
         <Footer />
     </div>
