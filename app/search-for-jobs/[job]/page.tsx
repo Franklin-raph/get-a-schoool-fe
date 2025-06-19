@@ -108,11 +108,11 @@ export default function Page() {
                     />
                 </div>
                 {/* Share Buttons Section */}
-                <div className="mt-4 flex items-center gap-5 mb-6 border-t pt-3 relative">
+                <div className="mt-4 flex items-center gap-[40px] md:gap-[30px] mb-6 border-t pt-3 relative">
                     <IoShareSocialOutline onClick={() => setShareOptions(!shareOptions)} className='text-[24px] cursor-pointer'/>
                     {
                         shareOptions &&
-                        <div className="absolute left-0 top-[40px] flex items-center gap-3 bg-gray-200 p-2">
+                        <div className="absolute left-0 top-[40px] flex items-center gap-[22px] bg-gray-200 p-2">
                             <FacebookShareButton 
                                 url={shareUrl}
                                 hashtag="#JobOpportunity"  // Optional hashtag
