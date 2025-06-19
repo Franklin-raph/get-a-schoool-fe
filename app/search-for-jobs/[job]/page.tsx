@@ -15,6 +15,7 @@ import {
   WhatsappIcon
 } from 'react-share';
 import { IoShareSocialOutline } from 'react-icons/io5';
+import Alert from '@/app/components/alert/Alert';
 
 interface JobPost {
     id?: number;
@@ -30,7 +31,8 @@ export default function Page() {
     const [jobs, setJobs] = useState<JobPost>({} as JobPost);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [copied, setCopied] = useState(false);
+    const [msg, setMsg] = useState<string>('')
+    const [alertType, setAlertType] = useState<string>('')
     const [shareOptions, setShareOptions] = useState<boolean>(false)
     const { job } = useParams();
 
@@ -57,8 +59,8 @@ export default function Page() {
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(shareUrl);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        setAlertType('success');
+        setMsg("Copied to clipboard");
     }
 
     useEffect(() => {
@@ -75,6 +77,7 @@ export default function Page() {
 
     return (
         <div>
+            {msg && <Alert alertType={alertType} msg={msg} setMsg={setMsg} />}
             <Navbar />
             <div className='bg-[#F5F6F7]'>
                 <div className='md:py-[4rem] py-[2rem] max-w-[1600px] mx-auto md:px-[4rem] px-[1.2rem]'>
