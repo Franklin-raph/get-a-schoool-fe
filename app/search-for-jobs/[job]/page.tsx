@@ -5,8 +5,17 @@ import Navbar from '../../components/nav-bar/Navbar'
 import Footer from '../../components/footer/Footer'
 import { get } from '../../utils/axiosHelpers';
 import { useParams } from 'next/navigation';
+import { BiCopy } from 'react-icons/bi';
+import { 
+  FacebookShareButton, 
+  TwitterShareButton, 
+  WhatsappShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon
+} from 'react-share';
+import { IoShareSocialOutline } from 'react-icons/io5';
 
-// Define a type for your job posts
 interface JobPost {
     id?: number;
     title?: string;
@@ -18,21 +27,25 @@ interface JobPost {
 }
 
 export default function Page() {
-    // Specify the type for jobs state
     const [jobs, setJobs] = useState<JobPost>({} as JobPost);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [copied, setCopied] = useState(false);
+    const [shareOptions, setShareOptions] = useState<boolean>(false)
     const { job } = useParams();
 
-    const getAllJobs = async () => {
+    // Get current URL
+    const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+    const title = jobs?.title || 'Job Posting';
+    const salaryRange = jobs?.salary_lower_range && jobs?.salary_upper_range 
+        ? `₦${jobs.salary_lower_range.toLocaleString()} - ₦${jobs.salary_upper_range.toLocaleString()}`
+        : 'Competitive Salary';
+
+    const getJob = async () => {
         try {
             setIsLoading(true);
             const response = await get(`/job-posts/${job}/`);
-            
             const jobData = response.results || response;
-
-            console.log({response, jobData});
-            
             setJobs(jobData);
             setIsLoading(false);
         } catch (err) {
@@ -42,16 +55,20 @@ export default function Page() {
         }
     }
 
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(shareUrl);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    }
+
     useEffect(() => {
-        getAllJobs();
+        getJob();
     }, [])
 
-    // Render loading state
     if (isLoading) {
         return <div className='w-[100vw] h-[100vh] flex items-center justify-center'>Loading job...</div>
     }
 
-    // Render error state
     if (error) {
         return <div className='w-[100vw] h-[100vh] flex items-center justify-center'>Error: {error}</div>
     }
@@ -78,12 +95,53 @@ export default function Page() {
                     <p className='text-gray-500 text-[14px]'>Location:</p>
                     <p className='text-[14px] font-bold'> {jobs?.location} </p>
                 </div>
+                
+                
                 <div className='mt-4'>
                     <p className='text-gray-500 text-[14px]'>Description:</p>
                     <div 
                         className='text-[14px] styleElements unreset' 
                         dangerouslySetInnerHTML={{ __html: (jobs?.description as string) }} 
                     />
+                </div>
+                {/* Share Buttons Section */}
+                <div className="mt-4 flex items-center gap-5 mb-6 border-t pt-3 relative">
+                    <IoShareSocialOutline onClick={() => setShareOptions(!shareOptions)} className='text-[24px] cursor-pointer'/>
+                    {
+                        shareOptions &&
+                        <div className="absolute left-0 top-[40px] flex items-center gap-3 bg-gray-200 p-2">
+                            <FacebookShareButton 
+                                url={shareUrl}
+                                hashtag="#JobOpportunity"  // Optional hashtag
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <FacebookIcon size={26} round />
+                            </FacebookShareButton>
+                            
+                            <TwitterShareButton 
+                                url={shareUrl}
+                                title={`Check out this job: ${title} - ${salaryRange}`}
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <TwitterIcon size={26} round />
+                            </TwitterShareButton>
+                            
+                            <WhatsappShareButton 
+                                url={shareUrl}
+                                title={`Check out this job: ${title} - ${salaryRange} at ${jobs?.location}`}
+                                className="hover:opacity-80 transition-opacity"
+                            >
+                                <WhatsappIcon size={26} round />
+                            </WhatsappShareButton>  
+                    </div>
+                    }
+                    <button 
+                        onClick={copyToClipboard}
+                        className="hover:text-gray-400 text-[20px]"
+                    >
+                        <BiCopy />
+                        {/* <span className="text-sm">{copied ? 'Copied!' : 'Copy'}</span> */}
+                    </button>
                 </div>
             </div>
             <Footer />

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 interface NewlyPostedJobsCardProps {
@@ -12,9 +13,12 @@ interface NewlyPostedJobsCardProps {
 }
 
 export default function NewlyPostedJobsCards({ job }: NewlyPostedJobsCardProps) {
+
+  const router = useRouter()
+
   return (
     <div>
-      <div className="text-left px-7 border rounded-[15px] shadow py-6 cursor-pointer mx-1 h-[175px] overflow-y-scroll">
+      <div onClick={() => router.push(`/search-for-jobs/${job.id}`)} className="text-left px-7 border rounded-[15px] shadow py-6 cursor-pointer mx-1 h-[175px] overflow-y-scroll">
         {/* <img
           src={job.image}
           alt={job.jobTitle}

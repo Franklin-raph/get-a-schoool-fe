@@ -11,19 +11,15 @@ import { CustomArrowProps } from "react-slick";
 import { useEffect, useState } from "react";
 import { get } from "@/app/utils/axiosHelpers";
 
-// Define a type for your job posts
 interface JobPost {
     id?: number;
     location?: string;
     description?: string;
     salary_lower_range?: number;
     salary_upper_range?: number;
-    // Add other properties as needed
 }
 
 const NewlyPostedJobsComponent = () => {
-
-
     const [jobs, setJobs] = useState<JobPost[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -33,8 +29,6 @@ const NewlyPostedJobsComponent = () => {
             setIsLoading(true);
             const response = await get('/job-posts/');
             const jobsData = response.results || response;
-
-            console.log({response, jobsData});
             
             setJobs(jobsData);
             setIsLoading(false);
@@ -53,7 +47,7 @@ const NewlyPostedJobsComponent = () => {
         const { onClick } = props;
         return(
             <div onClick={onClick} >
-            <IoIosArrowForward className="custom-arrow-next" style={{color:"black"}}/>
+                <IoIosArrowForward className="custom-arrow-next" style={{color:"black"}}/>
             </div>
         )
     }
@@ -62,62 +56,75 @@ const NewlyPostedJobsComponent = () => {
         const { onClick } = props;
         return(
             <div onClick={onClick} >
-            <MdOutlineArrowBackIos className="custom-arrow-prev" style={{color:"black"}}/>
+                <MdOutlineArrowBackIos className="custom-arrow-prev" style={{color:"black"}}/>
             </div>
         )
     }
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        arrows:true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        autoplay: false,
-        autoplaySpeed: 1000,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
-        responsive: [
-            {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                infinite: true,
-                dots: false
-            }
-            },
-            {
-            breakpoint: 600,
-            settings: {
+    // Dynamic settings based on number of jobs
+    const getSettings = () => {
+        const baseSettings = {
+            dots: false,
+            speed: 500,
+            slidesToScroll: 1,
+            initialSlide: 0,
+            autoplay: false,
+            autoplaySpeed: 1000,
+            nextArrow: <SampleNextArrow />,
+            prevArrow: <SamplePrevArrow />,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: Math.min(2, jobs.length),
+                        slidesToScroll: 1,
+                        infinite: jobs.length > 1,
+                        dots: false
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        initialSlide: Math.min(2, jobs.length - 1)
+                    }
+                }
+            ]
+        };
+
+        if (jobs.length <= 1) {
+            return {
+                ...baseSettings,
                 slidesToShow: 1,
-                slidesToScroll: 1,
-                initialSlide: 2
-            }
-            }
-        ]
+                infinite: false,
+                arrows: false
+            };
+        }
+
+        return {
+            ...baseSettings,
+            slidesToShow: Math.min(3, jobs.length),
+            infinite: true,
+            arrows: true
+        };
     };
 
-    // Render loading state
     if (isLoading) {
         return <div>Loading jobs...</div>
     }
 
-    // Render error state
     if (error) {
         return <div>Error: {error}</div>
     }
 
-    // Render empty state if no jobs
     if (jobs.length === 0) {
         return <div>No jobs found</div>
     }
 
     return (
-        <Slider {...settings}>
-            {jobs?.map((job, index) => (
+        <Slider {...getSettings()}>
+            {jobs.map((job, index) => (
                 <NewlyPostedJobsCards job={job} key={job.id || index}/>
             ))}
         </Slider>

@@ -61,9 +61,6 @@ export default function Page() {
           setIsLoading(true);
           const response = await get('/job-posts?my_jobs=true');
           
-          // Check the structure of your response
-          // If the API returns data directly, use response
-          // If it returns with a 'data' property, use response.data
           const jobsData = response.results || response;
 
           console.log({response, jobsData});
@@ -117,14 +114,6 @@ export default function Page() {
                 <BsPostcard className='text-[30px] mb-5'/>
                 <p className='text-[18px] text-[#212121] font-[500]'> <span>Total Jobs Posted:</span> {jobs.length} </p>
               </div>
-              {/* <div className='bg-[#F9F9F9] p-5 rounded-[10px]'>
-                <PiMoneyWavyLight className='text-[30px] mb-5'/>
-                <p className='text-[18px] text-[#212121] font-[500]'> <span>Total Posts:</span> 123</p>
-              </div>
-              <div className='bg-[#F9F9F9] p-5 rounded-[10px]'>
-                <LuHouse className='text-[30px] mb-5'/>
-                <p className='text-[18px] text-[#212121] font-[500]'> <span>Total Posts:</span> 123</p>
-              </div> */}
             </div>
           </section>
           <section className="w-[95%] mx-auto md:px-[1rem] px-[0px] pb-[80px]">
@@ -148,8 +137,8 @@ export default function Page() {
                                 <tr style={{borderBottom:"1px solid #dcdcdc"}} key={index}>
                                     <td className="px-6 py-4">{index +1}</td>
                                     <td className="px-6 py-4 text-[12px] md:text-[16px]">{job.title}</td>
-                                    <td className="px-6 py-4 text-[12px] md:text-[16px]">{job.salary_upper_range}</td>
-                                    <td className="px-6 py-4 text-[12px] md:text-[16px]">{job.salary_lower_range}</td>
+                                    <td className="px-6 py-4 text-[12px] md:text-[16px]">₦{job.salary_upper_range?.toLocaleString()}</td>
+                                    <td className="px-6 py-4 text-[12px] md:text-[16px]">₦{job.salary_lower_range?.toLocaleString()}</td>
                                     <td className="px-6 py-4 capitalize text-[12px] md:text-[16px]">{format(job.created_at)}</td>
                                     <td className='px-6 py-4 flex gap-4 text-[18px]'>
                                       <BiPencil onClick={() => router.push(`/search-for-jobs/editJob/${job.id}`)} className='cursor-pointer'/>

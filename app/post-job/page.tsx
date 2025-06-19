@@ -32,11 +32,14 @@ export default function Page() {
     const [loading, setLoading] = useState<boolean>(false)
     const [description, setDescription] = useState<string>('')
     const salaryRangeArray = [
-        { salary_lower_range: 20000, salary_upper_range: 30000, label: '20,000 to 30,000' },
-        { salary_lower_range: 40000, salary_upper_range: 50000, label: '40,000 to 50,000' },
-        { salary_lower_range: 60000, salary_upper_range: 70000, label: '60,000 to 70,000' },
-        { salary_lower_range: 80000, salary_upper_range: 90000, label: '80,000 to 90,000' },
-        { salary_lower_range: 100000, salary_upper_range: 110000, label: '100,000 to 110,000' }
+        { salary_lower_range: 25000, salary_upper_range: 30000, label: '₦25,000 to ₦30,000' },
+        { salary_lower_range: 30000, salary_upper_range: 45000, label: '₦30,000 to ₦45,000' },
+        { salary_lower_range: 45000, salary_upper_range: 55000, label: '₦45,000 to ₦55,000' },
+        { salary_lower_range: 55000, salary_upper_range: 70000, label: '₦55,000 to ₦70,000' },
+        { salary_lower_range: 70000, salary_upper_range: 1000000, label: '₦70,000 to ₦100,000' },
+        { salary_lower_range: 100000, salary_upper_range: 1200000, label: '₦100,000 to ₦120,000' },
+        { salary_lower_range: 120000, salary_upper_range: 1500000, label: '₦120,000 to ₦150,000' },
+        { salary_lower_range: 150000, salary_upper_range: 100000000, label: '₦150,000 and above' }
     ]
     const [jobData, setJobData] = useState({
         salary_lower_range: 0,
@@ -110,13 +113,13 @@ export default function Page() {
             </div>
             <div className='w-full mt-6 relative'>
                 <p>Salary Range</p>
-                <div onClick={() => setDropDown(dropDown === 'user-type' ? '' : 'user-type' )} className='border border-[#C2C5E1] h-[42px] pl-2 rounded-[6px] pr-2 flex items-center justify-between cursor-pointer'>
+                <div onClick={() => setDropDown(dropDown === 'salary-range' ? '' : 'salary-range' )} className='border border-[#C2C5E1] h-[42px] pl-2 rounded-[6px] pr-2 flex items-center justify-between cursor-pointer'>
                     <p>{jobData.salary}</p>
                     <BiChevronDown className='text-[20px]'/>
                 </div>
                 {
-                    dropDown === 'user-type' && (
-                        <div className='absolute z-10 top-[70px] bg-[#fff] rounded-[8px] w-full border border-[#C2C5E1] h-[150px] overflow-y-auto'>
+                    dropDown === 'salary-range' && (
+                        <div className='absolute z-10 top-[70px] bg-[#fff] rounded-[8px] w-full border border-[#C2C5E1] h-[170px] overflow-y-auto'>
                             {
                                 salaryRangeArray.map((salary, index) => (
                                     <div key={index} onClick={() => {
