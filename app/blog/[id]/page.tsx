@@ -206,10 +206,10 @@ export default function Page() {
                             blog?.comments.slice().reverse().map((comment, index) => (
                                 <div key={index} className='flex items-start mt-7 border-b pb-2'>
                                     <div className='text-[13px] md:text-[16px]'>
-                                        <p>
+                                        <p className='text-[16px]'>
                                             {comment.content}
                                         </p>
-                                        <p className='mt-1 font-[500] text-[13px] text-gray-600'>Comment by: {comment.user.full_name}</p>
+                                        <p className='mt-1 font-[500] text-[12px] text-gray-600'>Comment by: {comment.user.full_name}</p>
                                     </div>
                                 </div>
                             ))

@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/nav-bar/Navbar'
 import Footer from '../../components/footer/Footer'
-import { get } from '../../utils/axiosHelpers';
+import { get, post } from '../../utils/axiosHelpers';
 import { useParams } from 'next/navigation';
-import { BiCopy } from 'react-icons/bi';
+import { BiComment, BiCopy, BiLike } from 'react-icons/bi';
 import { 
   FacebookShareButton, 
   TwitterShareButton, 
@@ -16,6 +16,8 @@ import {
 } from 'react-share';
 import { IoShareSocialOutline } from 'react-icons/io5';
 import Alert from '@/app/components/alert/Alert';
+import Cookies from 'js-cookie';
+import BtnLoader from '@/app/components/btnLoader/BtnLoader';
 
 interface JobPost {
     id?: number;
@@ -24,6 +26,18 @@ interface JobPost {
     created_at: string;
     salary_lower_range?: number;
     salary_upper_range?: number;
+    like_count?: number;
+    comment_count?: number;
+    comments: [
+        {
+            id: string;
+            content: string;
+            created_at: string;
+            user: {
+                full_name: string;
+            }
+        }
+    ];
     location?: string;
 }
 
@@ -33,8 +47,12 @@ export default function Page() {
     const [error, setError] = useState<string | null>(null);
     const [msg, setMsg] = useState<string>('')
     const [alertType, setAlertType] = useState<string>('')
+    const [content, setContent] = useState<string>('')
+    const [loading, setLoading] = useState<boolean>(false);
     const [shareOptions, setShareOptions] = useState<boolean>(false)
+    // setContent
     const { job } = useParams();
+    const token = Cookies.get('token');
 
     // Get current URL
     const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
@@ -49,6 +67,26 @@ export default function Page() {
             const response = await get(`/job-posts/${job}/`);
             const jobData = response.results || response;
             setJobs(jobData);
+        } catch (err) {
+            setError('Failed to fetch job');
+            console.error(err);
+        }finally{
+            setIsLoading(false);
+        }
+    }
+
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(shareUrl);
+        setAlertType('success');
+        setMsg("Copied to clipboard");
+    }
+
+    const getJobAfterLikingOrCommenting = async () => {
+        try {
+            const response = await get(`/job-posts/${job}/`);
+            const jobData = response.results || response;
+            console.log('Job data after liking:', jobData);
+            setJobs(jobData);
             setIsLoading(false);
         } catch (err) {
             setError('Failed to fetch job');
@@ -57,10 +95,46 @@ export default function Page() {
         }
     }
 
-    const copyToClipboard = () => {
-        navigator.clipboard.writeText(shareUrl);
-        setAlertType('success');
-        setMsg("Copied to clipboard");
+    const likeJob = async () => {
+        try {
+            const response = await post(`/likes/`, {content_type:"jobpost", object_id: job});
+            console.log('Job liked:', response);
+            // Optionally, you can update the state to reflect the new like count
+        //   setBlogs(prevBlogs => 
+        //     prevBlogs.map(blog => 
+        //       blog.id === blogId ? { ...blog, like_count: (parseInt(blog.like_count) + 1).toString() } : blog
+        //     )
+        //   );
+            getJobAfterLikingOrCommenting()
+        }
+        catch (error) {
+            console.error('Error liking blog:', error);
+            setMsg('Failed to like blog');
+            setAlertType('error');
+        }
+    }
+
+    const commentOnJob = async () => {
+        if(!content){
+            setMsg('Please enter a comment');
+            setAlertType('error');
+            return
+        }
+        try {
+            setLoading(true)
+            const response = await post(`/comments/`, {content_type:"jobpost", object_id: jobs?.id, content});
+            console.log('Blog liked:', response);
+            setContent('')
+            // Optionally, you can update the state to reflect the new like count
+            getJobAfterLikingOrCommenting()
+        }
+        catch (error) {
+            console.error('Error liking blog:', error);
+            setMsg('Failed to like blog');
+            setAlertType('error');
+        }finally{
+            setLoading(false)
+        }
     }
 
     useEffect(() => {
@@ -108,8 +182,8 @@ export default function Page() {
                     />
                 </div>
                 {/* Share Buttons Section */}
-                <div className="mt-4 flex items-center gap-[40px] md:gap-[30px] mb-6 border-t pt-3 relative">
-                    <IoShareSocialOutline onClick={() => setShareOptions(!shareOptions)} className='text-[24px] cursor-pointer'/>
+                <div className="mt-4 flex items-center gap-[35px] md:gap-[25px] mb-6 border-t pt-3 relative">
+                    <IoShareSocialOutline onClick={() => setShareOptions(!shareOptions)} className='text-[24px] cursor-pointer hover:text-gray-400'/>
                     {
                         shareOptions &&
                         <div className="absolute left-0 top-[40px] flex items-center gap-[22px] bg-gray-200 p-2">
@@ -143,9 +217,56 @@ export default function Page() {
                         className="hover:text-gray-400 text-[20px]"
                     >
                         <BiCopy />
-                        {/* <span className="text-sm">{copied ? 'Copied!' : 'Copy'}</span> */}
                     </button>
+                    {
+                        token &&
+                        <>
+                            <div className='flex items-center gap-[6px]'>
+                                <BiLike onClick={likeJob} className="hover:text-gray-400 text-[20px] cursor-pointer"/>
+                                <p className='text-gray-500'>{jobs?.like_count}</p>
+                            </div>
+                            <div className='flex items-center gap-[6px]'>
+                                <BiComment onClick={likeJob} className="hover:text-gray-400 text-[20px] cursor-pointer"/>
+                                <p className='text-gray-500'>{jobs?.comment_count}</p>
+                            </div>
+                        </>
+                    }
                 </div>
+                {
+                    token &&
+                    <div className='pt-[2rem] mt-[2rem]'>
+                        <p className='font-[500] md:text-[18px]'>Comment Section</p>
+                        <textarea value={content} onChange={e => setContent(e.target.value)} className='border outline-none w-full h-[80px] text-[14px] p-2 rounded-[5px] resize-none mt-2'></textarea>
+                        {
+                            loading ?
+                            <BtnLoader />
+                            :
+                            <button onClick={commentOnJob} className='bg-[#FF0200] text-white text-[14px] py-[6px] px-3 rounded-[4px]'>Post Comment</button>
+                        }
+
+                        <div className='mt-10'>
+                            <p>Comments</p>
+                            {
+                                (!jobs?.comments?.length) && 
+                                <p className='text-gray-500 mt-2'>No comments yet. Be the first to comment!</p>
+                            }
+                            <div>
+                                {
+                                    jobs?.comments.slice().reverse().map((comment, index) => (
+                                        <div key={index} className='flex items-start mt-7 border-b pb-2'>
+                                            <div className='text-[13px] md:text-[16px]'>
+                                                <p className='text-[16px]'>
+                                                    {comment.content}
+                                                </p>
+                                                <p className='mt-1 font-[500] text-[12px] text-gray-600'>Comment by: {comment.user.full_name}</p>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
             <Footer />
         </div>
