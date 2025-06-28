@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import { get, post } from '../utils/axiosHelpers'
 import { format } from 'timeago.js';
 import Alert from '../components/alert/Alert'
+import Cookies from 'js-cookie';
 
 interface BlogPost {
     id: string;
@@ -36,6 +37,7 @@ export default function Page() {
     const [blog, setBlog] = useState<BlogPost | null>(null);
     const [msg, setMsg] = useState<string>('')
     const [alertType, setAlertType] = useState<string>('')
+    const token = Cookies.get('token');
 
   const getAllBlogs = async () => {
       try {
@@ -140,10 +142,18 @@ export default function Page() {
                             <TfiCommentAlt className='cursor-pointer'/>
                             <p>{blog?.comment_count}</p>
                         </div>
-                        <div className='flex items-center gap-1'>
-                            <BiLike onClick={() => blog?.id && likeBlog(blog.id)} className='cursor-pointer'/>
-                            <p>{blog?.like_count}</p>
-                        </div>
+                        {
+                            token ?
+                            <div className='flex items-center gap-1'>
+                                <BiLike onClick={() => blog?.id && likeBlog(blog.id)} className='cursor-pointer'/>
+                                <p>{blog?.like_count}</p>
+                            </div>
+                            :
+                            <div className='flex items-center gap-1'>
+                                <BiLike className='cursor-pointer'/>
+                                <p>{blog?.like_count}</p>
+                            </div>
+                        }
                     </div>
                     <button onClick={() => blog?.slug && router.push(`/blog/${blog.slug}`)} className='border py-[7px] px-[18px] mt-5 rounded-[4px] text-[14px]'>Read More..</button>
                 </div>

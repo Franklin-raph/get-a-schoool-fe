@@ -11,6 +11,7 @@ import { get, post } from '../../utils/axiosHelpers'
 import { format } from 'timeago.js';
 import Alert from '@/app/components/alert/Alert'
 import BtnLoader from '@/app/components/btnLoader/BtnLoader'
+import Cookies from 'js-cookie';
 
 interface BlogPost {
     id: string;
@@ -48,6 +49,7 @@ export default function Page() {
     const [alertType, setAlertType] = useState<string>('')
     const [content, setContent] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false);
+    const token = Cookies.get('token');
 
     const getAllBlogs = async () => {
         try {
@@ -179,20 +181,33 @@ export default function Page() {
                         <TfiCommentAlt className='cursor-pointer'/>
                         <p>{blog?.comment_count}</p>
                     </div>
-                    <div className='flex items-center gap-1'>
-                        <BiLike onClick={() => blog?.id && likeBlog(blog?.id)} className='cursor-pointer'/>
-                        <p className='md:text-[15px] text-[13px]'>{blog?.like_count}</p>
-                    </div>
+                    {
+                        token ?
+                        <div className='flex items-center gap-1'>
+                            <BiLike onClick={() => blog?.id && likeBlog(blog?.id)} className='cursor-pointer'/>
+                            <p className='md:text-[15px] text-[13px]'>{blog?.like_count}</p>
+                        </div>
+                        :
+                        <div className='flex items-center gap-1'>
+                            <BiLike className='cursor-pointer'/>
+                            <p className='md:text-[15px] text-[13px]'>{blog?.like_count}</p>
+                        </div>
+                    }
                 </div>
             </div>
             <div className='border-t pt-[2rem] mt-[4rem]'>
                 <p className='font-[500] md:text-[18px]'>Comment Section</p>
-                <textarea value={content} onChange={e => setContent(e.target.value)} className='border outline-none w-full h-[80px] text-[14px] p-2 rounded-[5px] resize-none mt-2'></textarea>
                 {
-                    loading ?
-                    <BtnLoader />
-                    :
-                    <button onClick={commentOnBlog} className='bg-[#FF0200] text-white text-[14px] py-[6px] px-3 rounded-[4px]'>Post Comment</button>
+                    token &&
+                    <>
+                        <textarea value={content} onChange={e => setContent(e.target.value)} className='border outline-none w-full h-[80px] text-[14px] p-2 rounded-[5px] resize-none mt-2'></textarea>
+                        {
+                            loading ?
+                            <BtnLoader />
+                            :
+                            <button onClick={commentOnBlog} className='bg-[#FF0200] text-white text-[14px] py-[6px] px-3 rounded-[4px]'>Post Comment</button>
+                        }
+                    </>
                 }
 
                 <div className='mt-10'>
