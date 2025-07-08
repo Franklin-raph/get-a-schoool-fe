@@ -178,7 +178,7 @@ export default function Page() {
                     <p className='text-gray-500 text-[14px]'>Description:</p>
                     <div 
                         className='text-[14px] styleElements unreset' 
-                        dangerouslySetInnerHTML={{ __html: (jobs?.description as string) }} 
+                        dangerouslySetInnerHTML={{ __html: (jobs?.description as string) }}
                     />
                 </div>
                 {/* Share Buttons Section */}

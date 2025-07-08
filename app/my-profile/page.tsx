@@ -8,6 +8,7 @@ import Cookies from 'js-cookie';
 import Alert from '../components/alert/Alert'
 import { AxiosError } from 'axios'
 import { BiCamera } from 'react-icons/bi'
+import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
 import ReactCrop, { centerCrop, makeAspectCrop, Crop } from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css'
 import { IoCloseOutline } from 'react-icons/io5'
@@ -20,6 +21,7 @@ interface UserData {
   phone?: string;
   bio?: string;
   address?: string,
+  is_verified?: boolean,
   sex?: string
   profile_pic?: {
     media: string;
@@ -162,7 +164,7 @@ export default function Page() {
     
     
     try {
-      const res = await fetch(`https://zillow9jabe.onrender.com/media/upload`, {
+      const res = await fetch(`https://admin.getaschool.com/upload`, {
         method: "POST",
         body: formData,
         headers : {
@@ -261,7 +263,13 @@ export default function Page() {
               </div>
               <div className='mt-3'>
                 <p className='border-b border-[#2D8B57] font-[500]'>Email</p>
-                <p className='pt-1'>{user?.email || 'Null'}</p>
+                <div className='flex items-center gap-2 pt-1'>
+                  <p>{user?.email || 'Null'}</p>
+                  {
+                    user?.is_verified &&
+                    <TbRosetteDiscountCheckFilled className='text-[#2D8B57]'/>
+                  }
+                </div>
               </div>
               <div className='mt-3'>
                 <p className='border-b border-[#2D8B57] font-[500]'>Sex</p>
