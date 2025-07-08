@@ -33,8 +33,6 @@ export default function Page() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [blog, setBlog] = useState<BlogPost | null>(null);
-    const [msg, setMsg] = useState<string>('')
-    const [alertType, setAlertType] = useState<string>('')
     const token = Cookies.get('token');
 
   const getAllAnswerToQuestions = async () => {
@@ -48,27 +46,27 @@ export default function Page() {
           setBlog(blogsData[blogsData.length - 1]);
           setIsLoading(false);
       } catch (err) {
-          setError('Failed to fetch blogs');
+          setError('Failed to fetch posts');
           setIsLoading(false);
           console.error(err);
       }
   }
 
-  const getAllBlogsAfterLiking = async () => {
-      try {
-          const response = await get('/blog-posts/');
+//   const getAllBlogsAfterLiking = async () => {
+//       try {
+//           const response = await get('/blog-posts/');
           
-          const blogsData = response.results || response;
+//           const blogsData = response.results || response;
 
-          console.log({response, blogsData});
+//           console.log({response, blogsData});
           
-        //   setBlogs(blogsData);
-          setBlog(blogsData[0]);
-      } catch (err) {
-          setError('Failed to fetch blogs');
-          console.error(err);
-      }
-  }
+//         //   setBlogs(blogsData);
+//           setBlog(blogsData[0]);
+//       } catch (err) {
+//           setError('Failed to fetch blogs');
+//           console.error(err);
+//       }
+//   }
 
 
 //   const likeBlog = async (blogId: string) => {
@@ -112,7 +110,6 @@ export default function Page() {
 
   return (
     <div>
-        {msg && <Alert alertType={alertType} msg={msg} setMsg={setMsg} />}
         <Navbar />
         <div className='bg-[#F5F6F7]'>
             <div className='md:py-[4rem] py-[2rem] max-w-[1600px] mx-auto md:px-[4rem] px-[1.2rem] flex items-center justify-between'>
