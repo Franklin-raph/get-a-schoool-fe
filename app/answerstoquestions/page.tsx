@@ -5,7 +5,7 @@ import Navbar from '../components/nav-bar/Navbar'
 import { MdAlarm } from 'react-icons/md'
 import Footer from '../components/footer/Footer'
 import { useRouter } from 'next/navigation';
-import { get, post } from '../utils/axiosHelpers'
+import { get } from '../utils/axiosHelpers'
 import { format } from 'timeago.js';
 import Alert from '../components/alert/Alert'
 import Cookies from 'js-cookie';
@@ -71,24 +71,24 @@ export default function Page() {
   }
 
 
-  const likeBlog = async (blogId: string) => {
-    try {
-      const response = await post(`/likes/`, {content_type:"blogpost", object_id: blogId});
-      console.log('Blog liked:', response);
-      // Optionally, you can update the state to reflect the new like count
-    //   setBlogs(prevBlogs => 
-    //     prevBlogs.map(blog => 
-    //       blog.id === blogId ? { ...blog, like_count: (parseInt(blog.like_count) + 1).toString() } : blog
-    //     )
-    //   );
-      getAllBlogsAfterLiking()
-    }
-    catch (error) {
-        console.error('Error liking blog:', error);
-        setMsg('Failed to like answer to question');
-        setAlertType('error');
-    }
-  }
+//   const likeBlog = async (blogId: string) => {
+//     try {
+//       const response = await post(`/likes/`, {content_type:"blogpost", object_id: blogId});
+//       console.log('Blog liked:', response);
+//       // Optionally, you can update the state to reflect the new like count
+//     //   setBlogs(prevBlogs => 
+//     //     prevBlogs.map(blog => 
+//     //       blog.id === blogId ? { ...blog, like_count: (parseInt(blog.like_count) + 1).toString() } : blog
+//     //     )
+//     //   );
+//       getAllBlogsAfterLiking()
+//     }
+//     catch (error) {
+//         console.error('Error liking blog:', error);
+//         setMsg('Failed to like answer to question');
+//         setAlertType('error');
+//     }
+//   }
 
   useEffect(() => {
     getAllAnswerToQuestions();

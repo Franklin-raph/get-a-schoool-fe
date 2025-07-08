@@ -38,7 +38,6 @@ export default function Page() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [msg, setMsg] = useState<string>('')
-  const [error, setError] = useState<string>('')
   const [alertType, setAlertType] = useState<string>('')
   const [deleteJob, setDeleteJob] = useState<string | null | undefined>(null);
   const [deletePost, setDeletePost] = useState<string | null | undefined>(null);
@@ -125,7 +124,8 @@ export default function Page() {
           setPosts(postsData);
           setIsLoading(false);
       } catch (err) {
-          setError('Failed to fetch posts');
+          setMsg('Failed to fetch posts');
+          setAlertType('error')
           setIsLoading(false);
           console.error(err);
       }
