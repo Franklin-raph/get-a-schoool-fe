@@ -7,7 +7,6 @@ import Footer from '../components/footer/Footer'
 import { useRouter } from 'next/navigation';
 import { get } from '../utils/axiosHelpers'
 import { format } from 'timeago.js';
-import Alert from '../components/alert/Alert'
 import Cookies from 'js-cookie';
 import AnswersToQuestionComponent from '../components/answers-to-question-component/AnswersToQuestionComponent'
 
