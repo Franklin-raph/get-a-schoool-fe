@@ -9,7 +9,6 @@ import { format } from 'timeago.js';
 interface BlogPost {
     id:string;
     slug:string;
-    image: string;
     title: string;
     description: string;
     content: string;
@@ -17,6 +16,9 @@ interface BlogPost {
     created_at: string;
     user : {
         full_name: string;
+    },
+    cover_image : {
+        media: string;
     }
 }
 
@@ -27,10 +29,10 @@ export default function AnswersToQuestionComponent() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const getAllBlogs = async () => {
+  const getAllPosts = async () => {
       try {
           setIsLoading(true);
-          const response = await get('/posts/');
+          const response = await get('/posts/filter-posts/');
           
           // Check the structure of your response
           // If the API returns data directly, use response
@@ -49,7 +51,7 @@ export default function AnswersToQuestionComponent() {
   }
 
   useEffect(() => {
-    getAllBlogs();
+    getAllPosts();
   }, [])
 
     // Render loading state
@@ -68,17 +70,17 @@ export default function AnswersToQuestionComponent() {
     }
 
   return (
-    <div className='grid md:grid-cols-4 grid-cols-2 md:gap-2 gap-4 md:w-[100%] w-[95%] mx-auto mt-8'>
+    <div className='grid md:grid-cols-4 sm:grid-cols-2 md:gap-2 gap-4 md:w-[100%] w-[95%] mx-auto mt-8'>
         {
           blogs?.map((blog, index) => (
             <div key={index} className='border rounded-[10px] pb-4 h-[350px] overflow-y-scroll'>
-                <img src={blog.image} alt="" className='w-full h-[180px] rounded-t-[10px] object-cover'/>
+                <img src={blog?.cover_image ? blog?.cover_image?.media : "../images/Study-Office-Administration.jpg"} alt="" className='w-full h-[180px] rounded-t-[10px] object-cover'/>
                 <div className='px-3 pt-3'>
                   <div className='flex sm:items-center justify-between flex-col sm:flex-row items-start'>
                       <p className='font-[500] text-[14px] mb-2'>{blog.title}</p>
                       <p className='text-[12px] flex items-center gap-1 text-gray-500'> <BsClock className='text-[12px]'/> {format(blog.created_at)}</p>
                   </div>
-                  <p className='text-[12px] text-gray-500 flex items-center gap-1'> <BiUser /> {blog.user.full_name}</p>
+                  <p className='text-[12px] text-gray-500 flex items-center gap-1'> <BiUser /> {blog?.user?.full_name}</p>
                   {/* <p className='text-[12px] text-gray-500 mt-3'>{blog.content}</p> */}
                   <p dangerouslySetInnerHTML={{ __html: (blog?.content as string) }} className='text-[12px] text-gray-500 mt-3' />
                   <button className='border border-gray-500 text-[12px] text-gray-500 px-2 py-1 mt-3' onClick={() => router.push(`/answerstoquestions/${blog.id}`)}>Read More</button>

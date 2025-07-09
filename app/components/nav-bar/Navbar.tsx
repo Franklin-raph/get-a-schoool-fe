@@ -27,7 +27,7 @@ export default function Navbar() {
             link: "/our-services",
         },
         {
-            label: "Answers To Questions",
+            label: "Discussion Group(A2Q)",
             link: "/answerstoquestions",
         },
         {

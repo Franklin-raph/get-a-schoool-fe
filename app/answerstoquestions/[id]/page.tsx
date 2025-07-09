@@ -15,7 +15,6 @@ import Cookies from 'js-cookie';
 
 interface BlogPost {
     id: string;
-    image: string;
     title: string;
     description: string;
     content: string;
@@ -24,6 +23,9 @@ interface BlogPost {
     created_at: string;
     user : {
         full_name: string;
+    }
+    cover_image : {
+        media: string;
     }
     comments: [
         {
@@ -172,7 +174,7 @@ export default function Page() {
                 <div className='w-full'>
                     <p className='md:text-[22px] text-[18px] font-[600] mb-2'>{blog?.title}</p>
                     <p dangerouslySetInnerHTML={{ __html: (blog?.content as string) }} className='md:text-[17px] text-[14px] text-gray-700' />
-                    <img src="../images/Study-Office-Administration.jpg" className='h-[400px] mt-7 w-full object-cover rounded-[10px]' alt="" />
+                    <img src={blog?.cover_image ? blog?.cover_image?.media : "../images/Study-Office-Administration.jpg"} className='h-[400px] mt-7 w-full object-cover rounded-[10px]' alt="" />
                     <div className='flex items-center gap-3 my-3 text-gray-700'>
                         <MdAlarm />
                         <p>{blog?.created_at ? format(blog.created_at) : ''}</p>

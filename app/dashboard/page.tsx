@@ -121,7 +121,7 @@ export default function Page() {
   const getAllAnswerToQuestions = async () => {
       try {
           setIsLoading(true);
-          const response = await get('/posts/filter-posts/?q=wf&my_posts=true');
+          const response = await get('/posts/filter-posts/?my_posts=true');
           const postsData = response.results || response;
           console.log({response, postsData});
           setPosts(postsData);

@@ -133,6 +133,28 @@ export default function Page() {
                     )
                 }
             </div>
+            {/* <div className='w-full mt-6 relative'>
+                <p>Job Type</p>
+                <div onClick={() => setDropDown(dropDown === 'job-type' ? '' : 'job-type' )} className='border border-[#C2C5E1] h-[42px] pl-2 rounded-[6px] pr-2 flex items-center justify-between cursor-pointer'>
+                    <p>{jobData.salary}</p>
+                    <BiChevronDown className='text-[20px]'/>
+                </div>
+                {
+                    dropDown === 'job-type' && (
+                        <div className='absolute z-10 top-[70px] bg-[#fff] rounded-[8px] w-full border border-[#C2C5E1] h-[170px] overflow-y-auto'>
+                            {
+                                salaryRangeArray.map((salary, index) => (
+                                    <div key={index} onClick={() => {
+                                        setJobData({...jobData, salary_lower_range: salary.salary_lower_range, salary_upper_range: salary.salary_upper_range, salary: salary.label })
+                                        setDropDown('')
+                                    }} 
+                                    className='py-2 px-2 text-[14px] border-b-[#C2C5E1] border-b-0 cursor-pointer hover:bg-[#F5F6F7]'>{salary.label}</div>
+                                ))
+                            }
+                        </div>
+                    )
+                }
+            </div> */}
             <div className='mt-6'>
                 <p>Location of school</p>
                 <input type="text" onChange={handleInputChange} placeholder='Lagos State' name="location" className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
