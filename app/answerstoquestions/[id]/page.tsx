@@ -115,7 +115,7 @@ export default function Page() {
         }
         try {
             setLoading(true)
-            const response = await post(`/comments/`, {content_type:"blogpost", object_id: blog?.id, content});
+            const response = await post(`/comments/`, {content_type:"post", object_id: blog?.id, content});
             console.log('Post Commented:', response);
             setContent('')
             // Optionally, you can update the state to reflect the new like count
@@ -132,7 +132,7 @@ export default function Page() {
 
     const likePost = async (blogId: string) => {
         try {
-            const response = await post(`/likes/`, {content_type:"blogpost", object_id: blogId});
+            const response = await post(`/likes/`, {content_type:"post", object_id: blogId});
             console.log('Blog liked:', response);
             // Optionally, you can update the state to reflect the new like count
             // setBlogs(prevBlogs => 

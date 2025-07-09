@@ -59,7 +59,7 @@ export default function Page() {
       setMsg('Job deleted successfully');
       setAlertType('success');
       setIsLoading(false);
-      getAllJobs()
+      getMyJobs()
     } catch (err) {
       setMsg('Failed to delete job');
       setAlertType('error');
@@ -91,11 +91,14 @@ export default function Page() {
     }
   };
 
-  const getAllJobs = async () => {
+  const getMyJobs = async () => {
       try {
           setIsLoading(true);
-          const response = await get('/job-posts?my_jobs=true');
+          const response = await get('/job-posts/get_jobs_by_filter/?my_jobs=true');
           const jobsData = response.results || response;
+
+          console.log(jobsData);
+          
 
           setJobs(jobsData);
           setIsLoading(false);
@@ -107,7 +110,7 @@ export default function Page() {
   }
 
   useEffect(() => {
-      getAllJobs();
+      getMyJobs();
       getAllAnswerToQuestions()
   }, [])
 
@@ -118,7 +121,7 @@ export default function Page() {
   const getAllAnswerToQuestions = async () => {
       try {
           setIsLoading(true);
-          const response = await get('/posts/');
+          const response = await get('/posts/filter-posts/?q=wf&my_posts=true');
           const postsData = response.results || response;
           console.log({response, postsData});
           setPosts(postsData);
@@ -242,7 +245,7 @@ export default function Page() {
                           jobs?.map((job, index) => {
                               return(
                                   <tr style={{borderBottom:"1px solid #dcdcdc"}} key={index}>
-                                      <td className="px-6 py-4">{index +1}</td>
+                                      <td className="px-6 py-4">{index + 1}</td>
                                       <td className="px-6 py-4 text-[12px] md:text-[16px]">{job.title}</td>
                                       <td className="px-6 py-4 text-[12px] md:text-[16px]">₦{job.salary_upper_range?.toLocaleString()}</td>
                                       <td className="px-6 py-4 text-[12px] md:text-[16px]">₦{job.salary_lower_range?.toLocaleString()}</td>

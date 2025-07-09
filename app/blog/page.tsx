@@ -25,6 +25,9 @@ interface BlogPost {
     created_at: string;
     user : {
         full_name: string;
+    },
+    cover_image : {
+        media: string;
     }
 }
 
@@ -157,7 +160,10 @@ export default function Page() {
                     </div>
                     <button onClick={() => blog?.slug && router.push(`/blog/${blog.slug}`)} className='border py-[7px] px-[18px] mt-5 rounded-[4px] text-[14px]'>Read More..</button>
                 </div>
-                <img src="./images/Study-Office-Administration.jpg" className='md:w-[400px] h-[400px] object-cover rounded-[10px]' alt="" />
+                {
+                    blog?.cover_image &&
+                    <img src={blog?.cover_image?.media} className='md:w-[400px] h-[400px] object-cover rounded-[10px]' alt="" />
+                }
             </div>
             <BlogComponent  />
         </div>
