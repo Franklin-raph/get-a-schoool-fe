@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import InstallPrompt from "./components/InstallPrompt"; // Adjust path as needed
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
       { url: "./images/Get-a-school.png", sizes: "512x512", type: "image/png" }
     ],
     apple: [
-      { url: "./images/Get-a-school.png", sizes: "180x180", type: "image/png" }
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
     ]
   }
 };
@@ -48,6 +49,7 @@ export default function RootLayout({
         className={`${poppins.className} antialiased`}
       >
         {children}
+        <InstallPrompt />
       </body>
     </html>
   );
