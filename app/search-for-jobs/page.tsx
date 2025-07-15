@@ -225,7 +225,7 @@ export default function Page() {
                     {filteredJobs.length > 0 ? (
                         filteredJobs.map((job, index) => (
                             <div onClick={() => router.push(`/search-for-jobs/${job.id}`)} className='border border-gray rounded-[10px] pb-4 cursor-pointer' key={job.id || index}>
-                                <img src="./images/jobimg.jpg" alt="" className='w-full h-[180px] object-cover'/>
+                                <img src="./images/jobimg.jpg" alt="" className='w-full h-[180px] object-cover rounded-t-[8px]'/>
                                 <div className='px-3 pt-3'>
                                     <div className='flex items-center justify-between mb-4'>
                                         <p className='text-[12px] text-gray-500 flex items-center gap-1'> 

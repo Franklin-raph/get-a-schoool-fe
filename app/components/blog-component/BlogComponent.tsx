@@ -54,17 +54,17 @@ export default function BlogCard() {
 
     // Render loading state
     if (isLoading) {
-        return <div>Loading blogs...</div>
+        return <div className='text-center'>Loading blogs...</div>
     }
 
     // Render error state
     if (error) {
-        return <div>Error: {error}</div>
+        return <div className='text-center'>Error: {error}</div>
     }
 
     // Render empty state if no jobs
     if (blogs.length === 0) {
-        return <div>No blogs found</div>
+        return <div className='text-center' >No blogs found</div>
     }
 
   return (

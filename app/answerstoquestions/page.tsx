@@ -124,36 +124,39 @@ export default function Page() {
             </div>
         </div>
         <div className='pt-[4rem] max-w-[1600px] mx-auto md:px-[4rem] px-[1.2rem]'>
-            <div className='flex justify-between md:gap-[5rem] gap-[2rem] flex-col md:flex-row'>
-                <div className='md:w-[700px]'>
-                    <p className='md:text-[22px] text-[18px] font-[600] mb-2'>{blog?.title}</p>
-                    <p dangerouslySetInnerHTML={{ __html: (blog?.content as string) }} className='md:text-[17px] text-[14px] text-gray-700' />
-                    <div className='flex items-center gap-3 mb-3 text-gray-700 mt-6'>
-                        <MdAlarm />
-                        <p>{blog?.created_at ? format(blog.created_at) : ''}</p>
-                    </div>
-                    {/* <div className='flex items-center gap-6 text-gray-700 mt-5 md:text-[15px] text-[13px]'>
-                        <div className='flex items-center gap-1'>
-                            <TfiCommentAlt className='cursor-pointer'/>
-                            <p>{blog?.comment_count}</p>
+            {
+                blog &&
+                <div className='flex justify-between md:gap-[5rem] gap-[2rem] flex-col md:flex-row'>
+                    <div className='md:w-[700px]'>
+                        <p className='md:text-[22px] text-[18px] font-[600] mb-2'>{blog?.title}</p>
+                        <p dangerouslySetInnerHTML={{ __html: (blog?.content as string) }} className='md:text-[17px] text-[14px] text-gray-700' />
+                        <div className='flex items-center gap-3 mb-3 text-gray-700 mt-6'>
+                            <MdAlarm />
+                            <p>{blog?.created_at ? format(blog.created_at) : ''}</p>
                         </div>
-                        {
-                            token ?
+                        {/* <div className='flex items-center gap-6 text-gray-700 mt-5 md:text-[15px] text-[13px]'>
                             <div className='flex items-center gap-1'>
-                                <BiLike onClick={() => blog?.id && likeBlog(blog.id)} className='cursor-pointer'/>
-                                <p>{blog?.like_count}</p>
+                                <TfiCommentAlt className='cursor-pointer'/>
+                                <p>{blog?.comment_count}</p>
                             </div>
-                            :
-                            <div className='flex items-center gap-1'>
-                                <BiLike className='cursor-pointer'/>
-                                <p>{blog?.like_count}</p>
-                            </div>
-                        }
-                    </div> */}
-                    <button onClick={() => blog?.slug && router.push(`/answerstoquestions/${blog.id}`)} className='border py-[7px] px-[18px] mt-5 rounded-[4px] text-[14px]'>Read More..</button>
+                            {
+                                token ?
+                                <div className='flex items-center gap-1'>
+                                    <BiLike onClick={() => blog?.id && likeBlog(blog.id)} className='cursor-pointer'/>
+                                    <p>{blog?.like_count}</p>
+                                </div>
+                                :
+                                <div className='flex items-center gap-1'>
+                                    <BiLike className='cursor-pointer'/>
+                                    <p>{blog?.like_count}</p>
+                                </div>
+                            }
+                        </div> */}
+                        <button onClick={() => blog?.slug && router.push(`/answerstoquestions/${blog.id}`)} className='border py-[7px] px-[18px] mt-5 rounded-[4px] text-[14px]'>Read More..</button>
+                    </div>
+                    {/* <img src="./images/Study-Office-Administration.jpg" className='md:w-[400px] h-[400px] object-cover rounded-[10px]' alt="" /> */}
                 </div>
-                {/* <img src="./images/Study-Office-Administration.jpg" className='md:w-[400px] h-[400px] object-cover rounded-[10px]' alt="" /> */}
-            </div>
+            }
             <AnswersToQuestionComponent  />
         </div>
         <Footer />

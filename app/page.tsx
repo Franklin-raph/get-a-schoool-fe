@@ -32,13 +32,13 @@ export default function Home() {
     {
       heroText: 'Get the best teachers which specialise in (Featured Different Job Categories)',
       // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
-      image: "./images/child-girl-schoolgirl-elementary-school-student-123686003.webp",
+      image: "./images/bg2.jpg",
       buttonText: "Get hired by a school"
     },
     {
       heroText: 'Get your school to reach thousands of Peoples and Parents (Want to Advertize????)',
       // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
-      image: "./images/School-Kids-scaled.jpg",
+      image: "./images/bg1.jpg",
       buttonText: "Hire a staff now"
     },
     {

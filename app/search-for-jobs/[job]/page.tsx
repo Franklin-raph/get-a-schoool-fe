@@ -226,7 +226,20 @@ export default function Page() {
                                 <p className='text-gray-500'>{jobs?.like_count}</p>
                             </div>
                             <div className='flex items-center gap-[6px]'>
-                                <BiComment onClick={likeJob} className="hover:text-gray-400 text-[20px] cursor-pointer"/>
+                                <BiComment className="hover:text-gray-400 text-[20px] cursor-pointer"/>
+                                <p className='text-gray-500'>{jobs?.comment_count}</p>
+                            </div>
+                        </>
+                    }
+                    {
+                        !token &&
+                        <>
+                            <div className='flex items-center gap-[6px]'>
+                                <BiLike className="hover:text-gray-400 text-[20px] cursor-pointer"/>
+                                <p className='text-gray-500'>{jobs?.like_count}</p>
+                            </div>
+                            <div className='flex items-center gap-[6px]'>
+                                <BiComment className="hover:text-gray-400 text-[20px] cursor-pointer"/>
                                 <p className='text-gray-500'>{jobs?.comment_count}</p>
                             </div>
                         </>
@@ -234,8 +247,7 @@ export default function Page() {
                 </div>
                 {
                     token &&
-                    <div className='pt-[2rem] mt-[2rem]'>
-                        <p className='font-[500] md:text-[18px]'>Comment Section</p>
+                    <>
                         <textarea value={content} onChange={e => setContent(e.target.value)} className='border outline-none w-full h-[80px] text-[14px] p-2 rounded-[5px] resize-none mt-2'></textarea>
                         {
                             loading ?
@@ -243,30 +255,32 @@ export default function Page() {
                             :
                             <button onClick={commentOnJob} className='bg-[#FF0200] text-white text-[14px] py-[6px] px-3 rounded-[4px]'>Post Comment</button>
                         }
-
-                        <div className='mt-10'>
-                            <p>Comments</p>
+                    </>
+                }
+                <div className='pt-[2rem] mt-[2rem]'>
+                    <p className='font-[500] md:text-[18px]'>Comment Section</p>
+                    <div className='mt-10'>
+                        <p>Comments</p>
+                        {
+                            (!jobs?.comments?.length) && 
+                            <p className='text-gray-500 mt-2'>No comments yet. Be the first to comment!</p>
+                        }
+                        <div>
                             {
-                                (!jobs?.comments?.length) && 
-                                <p className='text-gray-500 mt-2'>No comments yet. Be the first to comment!</p>
-                            }
-                            <div>
-                                {
-                                    jobs?.comments.slice().reverse().map((comment, index) => (
-                                        <div key={index} className='flex items-start mt-7 border-b pb-2'>
-                                            <div className='text-[13px] md:text-[16px]'>
-                                                <p className='text-[16px]'>
-                                                    {comment.content}
-                                                </p>
-                                                <p className='mt-1 font-[500] text-[12px] text-gray-600'>Comment by: {comment.user.full_name}</p>
-                                            </div>
+                                jobs?.comments.slice().reverse().map((comment, index) => (
+                                    <div key={index} className='flex items-start mt-7 border-b pb-2'>
+                                        <div className='text-[13px] md:text-[16px]'>
+                                            <p className='text-[16px]'>
+                                                {comment.content}
+                                            </p>
+                                            <p className='mt-1 font-[500] text-[12px] text-gray-600'>Comment by: {comment.user.full_name}</p>
                                         </div>
-                                    ))
-                                }
-                            </div>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
-                }
+                </div>
             </div>
             <Footer />
         </div>
