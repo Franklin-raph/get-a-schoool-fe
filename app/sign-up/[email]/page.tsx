@@ -82,13 +82,13 @@ export default function Page() {
                     style={{ padding: "0 8vw", position: "relative" }}
                 >
                     <div style={{ maxWidth: 664, width: "100%", paddingBottom: 90 }}>
-                        <div className='flex items-center justify-between'>
-                            <div className='flex items-center gap-1 cursor-pointer' onClick={() => router.back()}>
+                        <div className='flex items-center md:justify-between justify-center'>
+                            <div className='hidden md:flex items-center gap-1 cursor-pointer' onClick={() => router.back()}>
                                 <GoChevronLeft />
                                 <p>Back</p>
                             </div>
-                            <p className='text-[#19201D] text-[22px] font-[500]'>Verify your Email Address</p>
-                            <p></p>
+                            <p className='text-[#19201D] text-[22px] font-[500] text-center'>Verify your Email Address</p>
+                            <p className='hidden md:block'></p>
                         </div>
                         <p className='text-[14px] text-[#828282] mb-[35px] mt-[2.5rem] text-center'>A verification code has been sent to your email address {decodeURIComponent(email as string)} Enter the code below to complete your registration.</p>
                         <div style={{ display:'flex', justifyContent:'center', alignItems:'center' }}>

@@ -40,7 +40,7 @@ export default function Page() {
         } catch (error: unknown) {
             if (error instanceof AxiosError) {
                 if (error?.response?.data?.data?.is_active === false) {
-                    router.push(`/register/${email}`)
+                    router.push(`/sign-up/${email}`)
                 }
                 setMsg(error.response?.data?.message || 'An error occurred');
             } else {
