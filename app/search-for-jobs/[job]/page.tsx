@@ -18,6 +18,7 @@ import { IoShareSocialOutline } from 'react-icons/io5';
 import Alert from '@/app/components/alert/Alert';
 import Cookies from 'js-cookie';
 import BtnLoader from '@/app/components/btnLoader/BtnLoader';
+import { TbRosetteDiscountCheckFilled } from 'react-icons/tb';
 
 interface JobPost {
     id?: number;
@@ -35,6 +36,7 @@ interface JobPost {
             created_at: string;
             user: {
                 full_name: string;
+                is_verified?: boolean;
             }
         }
     ];
@@ -67,6 +69,8 @@ export default function Page() {
             const response = await get(`/job-posts/${job}/`);
             const jobData = response.results || response;
             setJobs(jobData);
+            console.log('Job data:', jobData);
+            
         } catch (err) {
             setError('Failed to fetch job');
             console.error(err);
@@ -245,6 +249,8 @@ export default function Page() {
                         </>
                     }
                 </div>
+                <div className='pt-[2rem] mt-[2rem]'>
+                <p className='font-[500] md:text-[18px]'>Comment Section</p>
                 {
                     token &&
                     <>
@@ -257,8 +263,6 @@ export default function Page() {
                         }
                     </>
                 }
-                <div className='pt-[2rem] mt-[2rem]'>
-                    <p className='font-[500] md:text-[18px]'>Comment Section</p>
                     <div className='mt-10'>
                         <p>Comments</p>
                         {
@@ -273,7 +277,13 @@ export default function Page() {
                                             <p className='text-[16px]'>
                                                 {comment.content}
                                             </p>
-                                            <p className='mt-1 font-[500] text-[12px] text-gray-600'>Comment by: {comment.user.full_name}</p>
+                                            <div className='flex items-center gap-2 mt-1'>
+                                                <p className='mt-1 font-[500] text-[12px] text-gray-600'>Comment by: {comment.user.full_name}</p>
+                                                {
+                                                    comment?.user?.is_verified &&
+                                                    <TbRosetteDiscountCheckFilled className='text-[#2D8B57]'/>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                 ))

@@ -12,6 +12,7 @@ import { format } from 'timeago.js';
 import Alert from '@/app/components/alert/Alert'
 import BtnLoader from '@/app/components/btnLoader/BtnLoader'
 import Cookies from 'js-cookie';
+import { TbRosetteDiscountCheckFilled } from 'react-icons/tb'
 
 interface BlogPost {
     id: string;
@@ -34,6 +35,7 @@ interface BlogPost {
             created_at: string;
             user: {
                 full_name: string;
+                is_verified?: boolean;
             }
         }
     ]
@@ -228,7 +230,14 @@ export default function Page() {
                                         <p className='text-[16px]'>
                                             {comment.content}
                                         </p>
-                                        <p className='mt-1 font-[500] text-[12px] text-gray-600'>Comment by: {comment.user.full_name}</p>
+                                        <div className='flex items-center gap-2 mt-1'>
+                                            <p className='mt-1 font-[500] text-[12px] text-gray-600'>Comment by: {comment.user.full_name}</p>
+                                            {
+                                                comment?.user?.is_verified &&
+                                                <TbRosetteDiscountCheckFilled className='text-[#2D8B57]'/>
+                                            }
+                                        </div>
+                                        {/* <p className='mt-1 font-[500] text-[12px] text-gray-600'>Comment by: {comment.user.full_name}</p> */}
                                     </div>
                                 </div>
                             ))

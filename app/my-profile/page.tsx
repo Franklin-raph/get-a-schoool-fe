@@ -258,17 +258,17 @@ export default function Page() {
             </div>
             <div>
               <p className='font-[500] border-b border-[#2D8B57]'>Full Name</p>
-              <div className='flex gap-3 pt-1'>
+              <div className='flex items-center gap-2 pt-1'>
                 <p className='text-[16px]'>{user?.full_name || 'Null'}</p>
-              </div>
-              <div className='mt-3'>
-                <p className='border-b border-[#2D8B57] font-[500]'>Email</p>
-                <div className='flex items-center gap-2 pt-1'>
-                  <p>{user?.email || 'Null'}</p>
                   {
                     user?.is_verified &&
                     <TbRosetteDiscountCheckFilled className='text-[#2D8B57]'/>
                   }
+              </div>
+              <div className='mt-3'>
+                <p className='border-b border-[#2D8B57] font-[500]'>Email</p>
+                <div className='flex gap-2 pt-1'>
+                  <p>{user?.email || 'Null'}</p>
                 </div>
               </div>
               <div className='mt-3'>
