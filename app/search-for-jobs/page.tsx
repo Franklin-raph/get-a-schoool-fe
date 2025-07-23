@@ -8,6 +8,7 @@ import { BiFilter, BiUser } from 'react-icons/bi'
 import Footer from '../components/footer/Footer'
 import { get } from '../utils/axiosHelpers';
 import { useRouter } from 'next/navigation';
+import { TbRosetteDiscountCheckFilled } from 'react-icons/tb';
 
 // Define a type for your job posts
 interface JobPost {
@@ -18,6 +19,7 @@ interface JobPost {
     created_at: string;
     user?: {
         full_name: string;
+        is_verified?: boolean;
         // other properties of profile_pic if needed
       };
     // Add other properties as needed
@@ -228,9 +230,16 @@ export default function Page() {
                                 <img src="./images/jobimg.jpg" alt="" className='w-full h-[180px] object-cover rounded-t-[8px]'/>
                                 <div className='px-3 pt-3'>
                                     <div className='flex items-center justify-between mb-4'>
-                                        <p className='text-[12px] text-gray-500 flex items-center gap-1'> 
-                                            <BiUser /> {job?.user?.full_name}
-                                        </p>
+
+                                        <div className='flex items-center gap-2 mt-1'>
+                                            <p className='text-[12px] text-gray-500 flex items-center gap-1'> 
+                                                <BiUser /> {job?.user?.full_name}
+                                            </p>
+                                            {
+                                                job?.user?.is_verified &&
+                                                <TbRosetteDiscountCheckFilled className='text-[#2D8B57]'/>
+                                            }
+                                        </div>
                                         <p className='text-[12px] flex items-center gap-1 text-gray-500'> 
                                             <BsClock /> {format(job.created_at)}
                                         </p>

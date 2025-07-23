@@ -34,7 +34,7 @@ export default function Page() {
             console.log(response)
             Cookies.set('token', response.data.token)
             localStorage.setItem('user', JSON.stringify(response.data.user))
-            router.push('/dashboard')
+            router.push('/')
             setMsg(`Login successful! Welcome`)
             setAlertType('success')
         } catch (error: unknown) {
