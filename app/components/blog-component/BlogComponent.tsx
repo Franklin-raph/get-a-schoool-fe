@@ -79,7 +79,8 @@ export default function BlogCard() {
                       <p className='text-[12px] flex items-center gap-1 text-gray-500'> <BsClock className='text-[12px]'/> {format(blog.created_at)}</p>
                   </div>
                   <p className='text-[12px] text-gray-500 flex items-center gap-1'> <BiUser /> {blog.user.full_name}</p>
-                  <p className='text-[12px] text-gray-500 mt-3'>{blog.content}</p>
+                  {/* <p className='text-[12px] text-gray-500 mt-3'>{blog.content}</p> */}
+                  <p dangerouslySetInnerHTML={{ __html: (blog?.content as string) }} className='text-[12px] text-gray-500 mt-3' />
                   <button className='border border-gray-500 text-[12px] text-gray-500 px-2 py-1 mt-3' onClick={() => router.push(`/blog/${blog.slug}`)}>Read More</button>
                 </div>
             </div>

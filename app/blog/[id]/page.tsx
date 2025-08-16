@@ -173,10 +173,11 @@ export default function Page() {
                         <p>{blog?.created_at ? format(blog.created_at) : ''}</p>
                     </div>
                     <p className='md:text-[22px] text-[18px] font-[600] mb-2'>{blog?.title}</p>
-                    <p className='md:text-[17px] text-[14px] text-gray-700'>
+                    <p dangerouslySetInnerHTML={{ __html: (blog?.content as string) }} className='md:text-[17px] text-[14px] text-gray-700' />
+                    {/* <p className='md:text-[17px] text-[14px] text-gray-700'>
                         {blog?.content}
-                    </p>
-                    <img src="../images/Study-Office-Administration.jpg" className='h-[400px] mt-7 w-full object-cover rounded-[10px]' alt="" />
+                    </p> */}
+                    {/* <img src="../images/Study-Office-Administration.jpg" className='h-[400px] mt-7 w-full object-cover rounded-[10px]' alt="" /> */}
                 </div>
                 <div className='flex items-center gap-6 text-gray-700 mt-1'>
                     <div className='flex items-center gap-1 md:text-[15px] text-[13px]'>
