@@ -75,7 +75,7 @@ export default function BlogCard() {
                 <img src={blog.image} alt="" className='w-full h-[180px] rounded-t-[10px] object-cover'/>
                 <div className='px-3 pt-3'>
                   <div className='flex sm:items-center justify-between flex-col sm:flex-row items-start'>
-                      <p className='font-[500] text-[14px] mb-2'>{blog.title}</p>
+                      <p onClick={() => router.push(`/blog/${blog.slug}`)} className='font-[500] text-[14px] mb-2 underline cursor-pointer'>{blog.title}</p>
                       <p className='text-[12px] flex items-center gap-1 text-gray-500'> <BsClock className='text-[12px]'/> {format(blog.created_at)}</p>
                   </div>
                   <p className='text-[12px] text-gray-500 flex items-center gap-1'> <BiUser /> {blog.user.full_name}</p>
