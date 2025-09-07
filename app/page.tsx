@@ -32,19 +32,49 @@ export default function Home() {
     {
       heroText: 'Get the best teachers which specialise in (Featured Different Job Categories)',
       // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
-      image: "./images/bg2.jpg",
+      image: "./images/img1.jpeg",
       buttonText: "Get hired by a school"
     },
     {
       heroText: 'Get your school to reach thousands of Peoples and Parents (Want to Advertize????)',
       // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
-      image: "./images/bg1.jpg",
+      image: "./images/img2.jpeg",
       buttonText: "Hire a staff now"
     },
     {
       heroText: 'Add your school to be among the top viewed schools in your area (ADD YOUR SCHOOL TO OUR FOOTPAGE GALLERY) ',
       // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
-      image: "./images/Young-student-writing-in-notebook-in-school.webp",
+      image: "./images/img3.jpeg",
+      buttonText: "Schedule a seminar for your staff"
+    },
+    {
+      heroText: 'Get the best teachers which specialise in (Featured Different Job Categories)',
+      // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
+      image: "./images/img4.jpeg",
+      buttonText: "Get hired by a school"
+    },
+    {
+      heroText: 'Get your school to reach thousands of Peoples and Parents (Want to Advertize????)',
+      // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
+      image: "./images/img5.jpeg",
+      buttonText: "Hire a staff now"
+    },
+    {
+      heroText: 'Add your school to be among the top viewed schools in your area (ADD YOUR SCHOOL TO OUR FOOTPAGE GALLERY) ',
+      // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
+      image: "./images/img6.jpeg",
+      buttonText: "Schedule a seminar for your staff"
+    },
+    {
+      heroText: 'Get your school to reach thousands of Peoples and Parents (Want to Advertize????)',
+      // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
+      image: "./images/img7.jpeg",
+      buttonText: "Hire a staff now"
+    },
+    {
+      heroText: 'Add your school to be among the top viewed schools in your area (ADD YOUR SCHOOL TO OUR FOOTPAGE GALLERY) ',
+      // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
+      image: "./images/img8.jpeg",
       buttonText: "Schedule a seminar for your staff"
     }
   ];
@@ -63,16 +93,20 @@ export default function Home() {
       answer: 'Get registered and scroll around to see job seeking post from teachers and send any that matches your expectations a direct message and fix a date for physical interview. Or You can make a post for vacancies in your School and teachers will inbox you.',
     },
     {
-      question: 'How trusted are School on GetASchool.com ?',
-      answer: "Schools on GetASchool.com are schools looking for teachers but those that GetASchool.com is assuring you with guranteee of 100% assurance is the schools with Verify Tick batch ✔️",
+      question: 'How Trusted are Schools on GetASchool.com?',
+      answer: "Schools on GetASchool.com are trust worthy because they are registered with Corporate Affairs Commission, but GetASchool.com is assuring you of 100% guarantee on Schools with verification tick/batch✔️",
     },
     {
-      question: 'Are teachers making subscription payment on GetASchool.com?',
-      answer: 'Please, if you sign up as a teacher/tutor you will NOT be asked to make any payment to GetASchool.com as an teacher/tutor and for any confirmation, contact 09031317411. Only School/Academy/Hub are expected to make Payment by subscription monthly or bi-anbually or Yearly. See our "subscription"',
+      question: 'Are teachers paying for any subscription fee on GetASchool.com?',
+      answer: 'NO; but teachers who have being using GetASchool.com to get jobs do support what we are doing by donating a token to help us maintain this platform. You too can support us by donating to our account  (8276845135 MONIEPOINT GETASCHOOL.COM Ltd)',
     },
     {
-      question: 'Why must you make payment as School Owner?',
-      answer: '',
+      question: 'Are School or School Owners paying for any subscription fee on GetASchool.com?',
+      answer: `NO, but School and School Owners who have being using GetASchool.com to hire teachers and non academic staff do appreciate us by supporting what we are doing with any little token to help us maintain this platform. \n You can also help to maintain this platform by donating to our account (8276845135 MONIEPOINT GETASCHOOL.COM Ltd)`,
+    },
+    {
+      question: 'How is GetASchool.com earning a token after the services renders to Schools, Teachers, and co...?',
+      answer: `GetASchool.com offers other services like all kinds of CAC Registration & services, other services to Schools like Seminars/Symposium for teachers and School Managers/Owners; Managerial and Financial Analysis needed for growth of any School, and other educative services. For more information: Call/Chat 09031317411`,
     }
   ];
 
@@ -129,7 +163,7 @@ export default function Home() {
 
   const router = useRouter()
 
-  const announcement = ["Be a verifiable school by subscribing with our guarantee subscription plan and get 50% discount, offer expires soon)", "Be a verifiable school by subscribing with our guarantee subscription plan and get 50% discount, offer expires soon)", "Be a verifiable school by subscribing with our guarantee subscription plan and get 50% discount, offer expires soon)"]
+  const announcement = ["Get your CAC Business Name or Company or NGO certificate and others certificates at DISCOUNTED price that is ending soon; pay for your CAC annual returns, and update your CAC with our fast services... Remember that we are not charging you for using this platform to get a job or make a post (be you a teacher or School Owner)... But if you like what we do and will like to appreciate what we do, you can support us to maintain this platform by donating with any amount. (Our Account details: 8276845135, Moniepoint, GetASchool.com Ltd)..... Remember to ensure that the school you are visiting for interview has a verification tick ☑️ to avoid any risk/fraudulent activities. You can call/chat us on 09031317411 for your enquiry or complain...#GetASchool."]
 
 
 
@@ -308,7 +342,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className='w-[100%] mx-auto mt-[6rem] bg-video flex flex-col items-center justify-center'>
+      <section className='w-[100%] mx-auto mt-[6rem] bg-video2 flex flex-col items-center justify-center'>
         <div className="text-center flex flex-col items-center justify-center text-white mt-[60px] px-5">
           <p className="md:text-[30px] text-[22px] font-[600]">
             Get your school advertised by GetASchool for them to contact you easily.
@@ -339,7 +373,7 @@ export default function Home() {
                   activeIndex === index ? 'max-h-40' : 'max-h-0'
                 }`}
               >
-                <p className="py-2 text-[#212121] text-[14px] md:text-[16px]">{item.answer}</p>
+                <p className="py-2 text-[#212121] text-[14px] md:text-[16px] answer-text">{item.answer}</p>
               </div>
             </div>
           ))}
