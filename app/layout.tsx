@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import InstallPrompt from "./components/InstallPrompt"; // Adjust path as needed
+import TawkTo from './components/tawkto';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -50,6 +51,7 @@ export default function RootLayout({
       >
         {children}
         <InstallPrompt />
+        <TawkTo />
       </body>
     </html>
   );
