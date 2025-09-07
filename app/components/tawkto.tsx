@@ -1,9 +1,17 @@
 'use client'
 import { useEffect } from 'react'
 
+// Define proper types for Tawk.to
+interface TawkAPI {
+  onLoad?: () => void;
+  onStatusChange?: (status: string) => void;
+  visitor?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
 declare global {
   interface Window {
-    Tawk_API?: any;
+    Tawk_API?: TawkAPI;
     Tawk_LoadStart?: Date;
   }
 }
@@ -32,7 +40,7 @@ const TawkTo = () => {
     }
   }, []);
 
-  return null; // This component doesn't render anything visible
+  return null;
 };
 
 export default TawkTo;
