@@ -9,7 +9,9 @@ import { format } from 'timeago.js';
 interface BlogPost {
     id:string;
     slug:string;
-    image: string;
+    cover_image: {
+      media: string;
+    };
     title: string;
     description: string;
     content: string;
@@ -72,7 +74,7 @@ export default function BlogCard() {
         {
           blogs?.map((blog, index) => (
             <div key={index} className='border rounded-[10px] pb-4 h-[350px] overflow-y-scroll'>
-                <img src={blog.image} alt="" className='w-full h-[180px] rounded-t-[10px] object-cover'/>
+                <img src={blog.cover_image.media} alt="" className='w-full h-[180px] rounded-t-[10px] object-cover'/>
                 <div className='px-3 pt-3'>
                   <div className='flex sm:items-center justify-between flex-col sm:flex-row items-start'>
                       <p onClick={() => router.push(`/blog/${blog.slug}`)} className='font-[500] text-[14px] mb-2 underline cursor-pointer'>{blog.title}</p>
