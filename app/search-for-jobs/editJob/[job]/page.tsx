@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../../components/nav-bar/Navbar'
 import Footer from '../../../components/footer/Footer'
-import { BiChevronDown } from 'react-icons/bi'
+// import { BiChevronDown } from 'react-icons/bi'
 import BtnLoader from '../../../components/btnLoader/BtnLoader'
 import { get, patch } from '../../../utils/axiosHelpers'
 import { AxiosError } from 'axios'
@@ -23,19 +23,19 @@ const ReactQuill = dynamic(() => import("react-quill-new"), {
 
 export default function Page() {
 
-    const [dropDown, setDropDown] = useState<string>('')
+    // const [dropDown, setDropDown] = useState<string>('')
     const [msg, setMsg] = useState<string>('')
     const [alertType, setAlertType] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const [description, setDescription] = useState<string>('')
     const { job } = useParams()
-    const salaryRangeArray = [
-        { salary_lower_range: 20000, salary_upper_range: 30000, label: '20,000 to 30,000' },
-        { salary_lower_range: 40000, salary_upper_range: 50000, label: '40,000 to 50,000' },
-        { salary_lower_range: 60000, salary_upper_range: 70000, label: '60,000 to 70,000' },
-        { salary_lower_range: 80000, salary_upper_range: 90000, label: '80,000 to 90,000' },
-        { salary_lower_range: 100000, salary_upper_range: 110000, label: '100,000 to 110,000' }
-    ]
+    // const salaryRangeArray = [
+    //     { salary_lower_range: 20000, salary_upper_range: 30000, label: '20,000 to 30,000' },
+    //     { salary_lower_range: 40000, salary_upper_range: 50000, label: '40,000 to 50,000' },
+    //     { salary_lower_range: 60000, salary_upper_range: 70000, label: '60,000 to 70,000' },
+    //     { salary_lower_range: 80000, salary_upper_range: 90000, label: '80,000 to 90,000' },
+    //     { salary_lower_range: 100000, salary_upper_range: 110000, label: '100,000 to 110,000' }
+    // ]
     const [jobData, setJobData] = useState({
         salary_lower_range: 0,
         salary_upper_range: 0,

@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Navbar from '../components/nav-bar/Navbar'
 import Footer from '../components/footer/Footer'
 // import { useRouter } from 'next/navigation'
-import { BiChevronDown } from 'react-icons/bi'
+// import { BiChevronDown } from 'react-icons/bi'
 import BtnLoader from '../components/btnLoader/BtnLoader'
 import { post } from '../utils/axiosHelpers'
 import { AxiosError } from 'axios'
@@ -25,22 +25,22 @@ const ReactQuill = dynamic(() => import("react-quill-new"), {
 
 export default function Page() {
 
-    const [dropDown, setDropDown] = useState<string>('')
+    // const [dropDown, setDropDown] = useState<string>('')
     const router = useRouter()
     const [msg, setMsg] = useState<string>('')
     const [alertType, setAlertType] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const [description, setDescription] = useState<string>('')
-    const salaryRangeArray = [
-        { salary_lower_range: 25000, salary_upper_range: 30000, label: '₦25,000 to ₦30,000' },
-        { salary_lower_range: 30000, salary_upper_range: 45000, label: '₦30,000 to ₦45,000' },
-        { salary_lower_range: 45000, salary_upper_range: 55000, label: '₦45,000 to ₦55,000' },
-        { salary_lower_range: 55000, salary_upper_range: 70000, label: '₦55,000 to ₦70,000' },
-        { salary_lower_range: 70000, salary_upper_range: 1000000, label: '₦70,000 to ₦100,000' },
-        { salary_lower_range: 100000, salary_upper_range: 1200000, label: '₦100,000 to ₦120,000' },
-        { salary_lower_range: 120000, salary_upper_range: 1500000, label: '₦120,000 to ₦150,000' },
-        { salary_lower_range: 150000, salary_upper_range: 100000000, label: '₦150,000 and above' }
-    ]
+    // const salaryRangeArray = [
+    //     { salary_lower_range: 25000, salary_upper_range: 30000, label: '₦25,000 to ₦30,000' },
+    //     { salary_lower_range: 30000, salary_upper_range: 45000, label: '₦30,000 to ₦45,000' },
+    //     { salary_lower_range: 45000, salary_upper_range: 55000, label: '₦45,000 to ₦55,000' },
+    //     { salary_lower_range: 55000, salary_upper_range: 70000, label: '₦55,000 to ₦70,000' },
+    //     { salary_lower_range: 70000, salary_upper_range: 1000000, label: '₦70,000 to ₦100,000' },
+    //     { salary_lower_range: 100000, salary_upper_range: 1200000, label: '₦100,000 to ₦120,000' },
+    //     { salary_lower_range: 120000, salary_upper_range: 1500000, label: '₦120,000 to ₦150,000' },
+    //     { salary_lower_range: 150000, salary_upper_range: 100000000, label: '₦150,000 and above' }
+    // ]
     const [jobData, setJobData] = useState({
         salary_lower_range: 0,
         salary_upper_range: 0,
