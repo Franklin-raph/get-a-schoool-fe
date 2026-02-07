@@ -102,7 +102,8 @@ export default function Footer() {
             <div className="flex flex-col sm:items-center gap-2 md:w-[300px]">
               <div className="flex flex-col sm:items-end items-center gap-2 text-[#777575]">
                 <IoLocationOutline className="text-[20px]" />
-                <p className=" text-[13px] md:text-right">7 Oguejiofor Aniakor Street, Nkwelle GRA, Anambra State, Nigeria</p>
+                <p className=" text-[13px] md:text-right">Online</p>
+                {/* <p className=" text-[13px] md:text-right">7 Oguejiofor Aniakor Street, Nkwelle GRA, Anambra State, Nigeria</p> */}
               </div>
               <nav>
                 <ul className="flex gap-6 text-[#777575] text-[13px] mt-3">

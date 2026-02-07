@@ -61,11 +61,11 @@ export default function Page() {
     };
 
     const handleSubmit = async () => {
-        console.log({ salary_lower_range:jobData.salary_lower_range, salary_upper_range:jobData.salary_upper_range, location:jobData.location, description, jobData });
+        console.log({ title:jobData.title, salary_lower_range:jobData.salary_lower_range, salary_upper_range:jobData.salary_upper_range, location:jobData.location, description, jobData });
         
         try {
-            if(!jobData.title || !jobData.salary || !description || !jobData.location) {
-                setMsg('Please fill in all fields.');
+            if(!jobData.title || !jobData.location || !description) {
+                setMsg('Please fill in the required fields.');
                 setAlertType('error');
                 return
             }
@@ -108,12 +108,16 @@ export default function Page() {
         <div className='md:w-[844px] mx-auto md:mt-[4rem] md:p-[4rem] py-[4rem] px-[1rem] shadow-xl text-[#9096B2] mb-[9rem]'>
             <h1 className='font-[600] text-[#101750] text-[24px] mb-7'>Post a school</h1>
             <div className='mt-6'>
-                <p>Job Title</p>
+                <p>Job Title *</p>
                 <input type="text" onChange={handleInputChange} placeholder='Software Engineer' name="title" className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
             </div>
             <div className='w-full mt-6 relative'>
                 <p>Salary Range</p>
-                <div onClick={() => setDropDown(dropDown === 'salary-range' ? '' : 'salary-range' )} className='border border-[#C2C5E1] h-[42px] pl-2 rounded-[6px] pr-2 flex items-center justify-between cursor-pointer'>
+                <div className='flex items-center gap-5'>
+                    <input type="number" onChange={handleInputChange} placeholder='₦100,000' name="salary_lower_range" className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
+                    <input type="number" onChange={handleInputChange} placeholder='₦200,000' name="salary_upper_range" className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
+                </div>
+                {/* <div onClick={() => setDropDown(dropDown === 'salary-range' ? '' : 'salary-range' )} className='border border-[#C2C5E1] h-[42px] pl-2 rounded-[6px] pr-2 flex items-center justify-between cursor-pointer'>
                     <p>{jobData.salary}</p>
                     <BiChevronDown className='text-[20px]'/>
                 </div>
@@ -131,7 +135,7 @@ export default function Page() {
                             }
                         </div>
                     )
-                }
+                } */}
             </div>
             {/* <div className='w-full mt-6 relative'>
                 <p>Job Type</p>
@@ -156,11 +160,11 @@ export default function Page() {
                 }
             </div> */}
             <div className='mt-6'>
-                <p>Location of school</p>
+                <p>Location of school *</p>
                 <input type="text" onChange={handleInputChange} placeholder='Lagos State' name="location" className='outline-none block border border-[#C2C5E1] h-[42px] rounded-[6px] w-full pl-2 mt-1' />
             </div>
             <div className='mt-6'>
-                <p>Description</p>
+                <p>Description *</p>
                 <ReactQuill theme="snow" className='react-quill' value={description} onChange={e => setDescription(e)} formats={formats} modules={modules} />
             </div>
             {
