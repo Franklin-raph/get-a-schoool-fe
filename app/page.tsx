@@ -32,6 +32,12 @@ export default function Home() {
     {
       heroText: 'Get the best teachers which specialise in (Featured Different Job Categories)',
       // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
+      image: "./images/img9.jpeg",
+      buttonText: "Get hired by a school"
+    },
+    {
+      heroText: 'Get all your CAC certificate (Business Name/Company/NGO) and other services at cheaper and fast rate 12hours...',
+      // servicesText: 'Adeniran Ogunsanya Surulere, Lagos',
       image: "./images/img1.jpeg",
       buttonText: "Get hired by a school"
     },
